@@ -5,7 +5,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 
-public class Board {
+public class Background {
     private final int STARTING_X=25;
     private final int STARTING_Y=25;
     private final int BOARD_HEIGH=550;
@@ -18,7 +18,7 @@ public class Board {
     private Square[][] board=new Square[(int)(BOARD_HEIGH/ Square.HEIGHT)][(int)(BOARD_WIDHT/ Square.HEIGHT)];
     Group group=new Group();
 
-    public Board() {
+    public Background() {
         createEdges();
         fillTheBoard();
     }

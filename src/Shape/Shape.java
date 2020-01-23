@@ -35,4 +35,7 @@ public  class Shape implements Shapes {
     public void removeBottom(){
 
     }
+    public void addShape(){
+
+    }
 }

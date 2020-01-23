@@ -1,15 +1,10 @@
 package sample;
 
 import Shape.Shape;
-import Shape.Square;
 import Shape.Square_Shape;
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.scene.paint.Color;
-
 
 
 public class MainStage extends Application {
@@ -20,7 +15,7 @@ public class MainStage extends Application {
         stage.show();
         stage.setWidth(500);
         stage.setHeight(700);
-        Board board=new Board();
+        Background board=new Background();
         scene1=new Scene(board.getGroup());
         stage.setScene(scene1);
         Shape shape = new Square_Shape();

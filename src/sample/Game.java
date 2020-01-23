@@ -12,6 +12,7 @@ public class Game implements Runnable {
     private Group group;
     Thread thread = new Thread(this);
 
+
     public Game(Shape shape) throws InterruptedException {
         thread.start();
         this.shape=shape;
@@ -21,7 +22,7 @@ public class Game implements Runnable {
     @Override
     public void run() {
         int i = 0;
-        while (i < 5) {
+        while (i<40) {
             shape.moveDown();
             i++;
             try {
