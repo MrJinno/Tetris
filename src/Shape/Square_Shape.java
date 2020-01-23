@@ -3,14 +3,13 @@ package Shape;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 
-public class Square_Shape extends Shape {
+public class Square_Shape extends Shape implements Shapes {
     private Square shape;
     private Square[][]figure =new Square[3][3];
     private Color color=Color.RED;
     Group bigSquare=new Group();
 
-
-    public Group getBigSquare() {
+    public Group getGroup() {
         return bigSquare;
     }
 
@@ -55,6 +54,14 @@ public class Square_Shape extends Shape {
 
     @Override
     public void rotate() {
+
+    }
+    @Override
+    public void removeBottom(){
+        bigSquare.getChildren().removeAll(figure[1][1].getRectangle(),figure[0][1].getRectangle());
+    }
+    @Override
+    public boolean isStuck(){
 
     }
 }

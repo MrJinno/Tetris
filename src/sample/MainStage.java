@@ -1,5 +1,6 @@
 package sample;
 
+import Shape.Shape;
 import Shape.Square;
 import Shape.Square_Shape;
 import javafx.application.Application;
@@ -21,9 +22,10 @@ public class MainStage extends Application {
         stage.setHeight(700);
         Board board=new Board();
         scene1=new Scene(board.getGroup());
-        Square_Shape sqr=new Square_Shape();
-        board.getGroup().getChildren().add(sqr.getBigSquare());
         stage.setScene(scene1);
-        Game game=new Game(sqr);
+        Shape shape = new Square_Shape();
+        board.getGroup().getChildren().add(shape.getGroup());
+        Game game=new Game(shape);
+
     }
 }

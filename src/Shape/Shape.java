@@ -1,5 +1,7 @@
 package Shape;
 
+import javafx.scene.Group;
+
 public  class Shape implements Shapes {
 
 
@@ -18,6 +20,19 @@ public  class Shape implements Shapes {
 
 
     public void rotate() {
+
+    }
+
+    public Group getGroup() {
+        return null;
+    }
+
+    @Override
+    public boolean isStuck() {
+        return false;
+    }
+
+    public void removeBottom(){
 
     }
 }
