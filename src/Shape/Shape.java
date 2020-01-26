@@ -70,4 +70,8 @@ public abstract   class Shape implements Shapes {
     public Square[] movingRightObjects(){
         return null;
     }
+
+    public void setDown(int down) {
+        this.down = down;
+    }
 }

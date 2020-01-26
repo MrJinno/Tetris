@@ -71,6 +71,12 @@ public class Square_Shape extends Shape implements Shapes {
         sqr[1]=figure[3];
         return sqr;
     }
+
+    @Override
+    public void setDown(int down) {
+        this.down = down;
+    }
+
     public Square[] movingLeftObjects(){
         Square[] sqr=new Square[2];
         sqr[0]=figure[0];

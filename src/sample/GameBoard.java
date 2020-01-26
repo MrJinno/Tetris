@@ -20,6 +20,7 @@ public class GameBoard {
     }
 
     public void newPositionDown(Square[] squares, int x, int y){
+
         for (int i=squares.length-1;i>=0;i--){
             plansza[x+squares[i].getStartingArrayX()][y+squares[i].getStartingArrayY()]=squares[i];
             plansza[x+squares[i].getStartingArrayX()][y+squares[i].getStartingArrayY()-1]=null;

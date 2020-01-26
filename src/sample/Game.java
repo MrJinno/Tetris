@@ -25,6 +25,7 @@ public class Game implements Runnable {
         sqr.setRight(5);
         shapes.add(sqr);
         shapes.add(new L_Shape());
+        shapes.add(new L_Shape());
         for (Shape shape:shapes){
             group.getChildren().add(shape.getGroup());
         }
@@ -43,7 +44,6 @@ public class Game implements Runnable {
                         e.printStackTrace();
                     }
                 }
-
 
             }
            /* Platform.runLater(() ->{
