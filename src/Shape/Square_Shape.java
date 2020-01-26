@@ -13,6 +13,7 @@ public class Square_Shape extends Shape implements Shapes {
     GameBoard gameBoard= GameBoard.getInstance();
     Square[][] plansza=gameBoard.getPlansza();
     private int down,right;
+    private ShapeType shapeType=ShapeType.l_SHAPE;
 
     public Square_Shape() {
         down=0;
@@ -71,6 +72,18 @@ public class Square_Shape extends Shape implements Shapes {
         sqr[1]=figure[3];
         return sqr;
     }
+    public Square[] movingLeftObjects(){
+        Square[] sqr=new Square[2];
+        sqr[0]=figure[0];
+        sqr[1]=figure[2];
+        return sqr;
+    }
+    public Square[] movingRightObjects(){
+        Square[] sqr=new Square[2];
+        sqr[0]=figure[1];
+        sqr[1]=figure[3];
+        return sqr;
+    }
 
     @Override
     public void moveDown() {
@@ -102,5 +115,9 @@ public class Square_Shape extends Shape implements Shapes {
 
     public int getRight() {
         return right;
+    }
+
+    public void setRight(int right) {
+        this.right = right;
     }
 }

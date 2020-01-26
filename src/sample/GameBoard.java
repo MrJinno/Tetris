@@ -19,9 +19,7 @@ public class GameBoard {
         return plansza;
     }
 
-    public void newPositionDown(Shape shape, int x, int y){
-        Square[] squares=shape.getFigure();
-        
+    public void newPositionDown(Square[] squares, int x, int y){
         for (int i=squares.length-1;i>=0;i--){
             plansza[x+squares[i].getStartingArrayX()][y+squares[i].getStartingArrayY()]=squares[i];
             plansza[x+squares[i].getStartingArrayX()][y+squares[i].getStartingArrayY()-1]=null;
@@ -30,10 +28,11 @@ public class GameBoard {
     public boolean isMovableDown(Shape shape){
         int down=shape.getDown();
         int right=shape.getRight();
+        Square[] sqr=shape.movingDownObjects();
         down++;
         if (down+1==GameBoard.MAX_Y) return false;
-        for (int i=shape.getFigure().length-1;i>=2;i--){
-            if (plansza[shape.getFigure()[i].getStartingArrayX()+right][shape.getFigure()[i].getStartingArrayY()+down]!=null) return false;
+        for (int i=0;i<sqr.length;i++){
+            if (plansza[sqr[i].getStartingArrayX()+right][sqr[i].getStartingArrayY()+down]!=null) return false;
         }
         return true;
     }

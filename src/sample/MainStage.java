@@ -21,15 +21,9 @@ public class MainStage extends Application {
         Background board=new Background();
         scene1=new Scene(board.getGroup());
         stage.setScene(scene1);
-        ArrayList<Shape> shapes=new ArrayList<Shape>();
-        shapes.add(new Square_Shape());
-        shapes.add(new L_Shape());
-        for (int i=0;i<shapes.size();i++){
 
-            board.getGroup().getChildren().add(shapes.get(i).getGroup());
-        }
 
-        Game game=new Game(shapes, board.getGroup());
+        Game game=new Game( board.getGroup());
 
 
     }

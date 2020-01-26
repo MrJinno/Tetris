@@ -24,6 +24,10 @@ public abstract   class Shape implements Shapes {
 
     }
 
+    public void setRight(int right) {
+        this.right = right;
+    }
+
     public void moveRight() {
 
     }
@@ -56,5 +60,14 @@ public abstract   class Shape implements Shapes {
 
     public Square[] getFigure() {
         return figure;
+    }
+    public Square[] movingDownObjects(){
+        return null;
+    }
+    public Square[] movingLeftObjects(){
+       return null;
+    }
+    public Square[] movingRightObjects(){
+        return null;
     }
 }

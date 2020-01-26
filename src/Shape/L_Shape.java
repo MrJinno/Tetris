@@ -15,7 +15,7 @@ public class L_Shape extends Shape {
     private int down,right;
     public L_Shape() {
         down=0;
-        right=4;
+        right=5;
         figure[0]=new Square(color, 50, 50,0,0);
         figure[0].getRectangle().setX(figure[0].getStartingX()+(25*right));
         figure[0].getRectangle().setY(figure[0].getStartingY()+(25*down));
@@ -40,7 +40,7 @@ public class L_Shape extends Shape {
         figure[3].getRectangle().setX(figure[3].getStartingX()+(25*right));
         figure[3].getRectangle().setY(figure[3].getStartingY()+(25*down));
         bigSquare.getChildren().add(figure[3].getRectangle());
-        plansza[figure[3].getStartingArrayX()][figure[3].getStartingArrayY()]=figure[0];
+        plansza[figure[3].getStartingArrayX()][figure[3].getStartingArrayY()]=figure[3];
     }
     public Group getGroup() {
         return bigSquare;
@@ -93,5 +93,23 @@ public class L_Shape extends Shape {
 
     public int getRight() {
         return right;
+    }
+    public Square[] movingDownObjects(){
+        Square[] sqr=new Square[3];
+        sqr[0]=figure[0];
+        sqr[1]=figure[1];
+        sqr[2]=figure[3];
+        return sqr;
+    }
+    public Square[] movingLeftObjects(){
+        Square[] sqr=new Square[1];
+        sqr[0]=figure[0];
+        return sqr;
+    }
+    public Square[] movingRightObjects(){
+        Square[] sqr=new Square[2];
+        sqr[0]=figure[2];
+        sqr[1]=figure[3];
+        return sqr;
     }
 }
