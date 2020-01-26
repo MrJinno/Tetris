@@ -16,4 +16,11 @@ public class GameBoard {
     public Square[][] getPlansza() {
         return plansza;
     }
+
+    public void newPositionDown(Square[] squares, int x, int y){
+        for (Square square: squares){
+            plansza[x+square.getStartingArrayX()][y+square.getStartingArrayY()]=square;
+        }
+    }
+
 }

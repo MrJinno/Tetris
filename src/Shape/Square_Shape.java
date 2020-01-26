@@ -7,69 +7,69 @@ import sample.GameBoard;
 
 public class Square_Shape extends Shape implements Shapes {
     private Square shape;
-    private Square[][]figure =new Square[3][3];
+    private Square[]figure =new Square[4];
     private Color color=Color.RED;
     Group bigSquare=new Group();
     GameBoard gameBoard= GameBoard.getInstance();
     Square[][] plansza=gameBoard.getPlansza();
+    private int down=0,right=0;
 
     public Group getGroup() {
         return bigSquare;
     }
 
     public Square_Shape() {
-        figure[0][0]=new Square(Color.RED);
-        figure[0][0].getRectangle().setX(150);
-        figure[0][0].getRectangle().setY(50);
-        bigSquare.getChildren().add(figure[0][0].getRectangle());
-        plansza[4][0]=figure[0][0];
-
-        figure[0][1]=new Square(Color.RED);
-        figure[0][1].getRectangle().setX(150);
-        figure[0][1].getRectangle().setY(75);
-        bigSquare.getChildren().add(figure[0][1].getRectangle());
-        plansza[4][1]=figure[0][1];
-
-        figure[1][0]=new Square(Color.RED);
-        figure[1][0].getRectangle().setX(175);
-        figure[1][0].getRectangle().setY(50);
-        bigSquare.getChildren().add(figure[1][0].getRectangle());
-        plansza[5][0]=figure[1][0];
+        down=0;
+        right=0;
+        figure[0]=new Square(Color.RED, 50, 50,0,0);
+        figure[0].getRectangle().setX(figure[0].getStartingX()+(25*right));
+        figure[0].getRectangle().setY(figure[0].getStartingY()+(25*down));
+        bigSquare.getChildren().add(figure[0].getRectangle());
+        plansza[0][0]=figure[0];
 
 
-        figure[1][1]=new Square(Color.RED);
-        figure[1][1].getRectangle().setX(175);
-        figure[1][1].getRectangle().setY(75);
-        bigSquare.getChildren().add(figure[1][1].getRectangle());
-        plansza[5][1]=figure[1][1];
+        figure[1]=new Square(Color.RED, 75, 50,1,0);
+        figure[1].getRectangle().setX(figure[1].getStartingX()+(25*right));
+        figure[1].getRectangle().setY(figure[1].getStartingY()+(25*down));
+        bigSquare.getChildren().add(figure[1].getRectangle());
+        plansza[1][0]=figure[1];
+
+        figure[2]=new Square(Color.RED,50,75,0,1);
+        figure[2].getRectangle().setX(figure[2].getStartingX()+(25*right));
+        figure[2].getRectangle().setY(figure[2].getStartingX()+(25*down));
+        bigSquare.getChildren().add(figure[2].getRectangle());
+        plansza[0][1]=figure[2];
+
+
+        figure[3]=new Square(Color.RED, 75,75,1,1);
+        figure[3].getRectangle().setX(figure[3].getStartingX()+(25*right));
+        figure[3].getRectangle().setY(figure[3].getStartingX()+(25*down));
+        bigSquare.getChildren().add(figure[3].getRectangle());
+        plansza[1][1]=figure[0];
     }
 
     @Override
     public void moveLeft() {
 
     }
-
+    public void setPosition(int right, int down){
+        for (Square square:figure){
+            square.getRectangle().setX(square.getStartingX()+(25*right));
+            square.getRectangle().setY(square.getStartingY()+(25*down));
+        }
+    }
     @Override
     public void moveRight() {
+        right++;
+        setPosition(right,down);
 
     }
 
     @Override
     public void moveDown() {
-        int licznik=0;
-      bigSquare.setLayoutY(bigSquare.getLayoutY()+25);
-      for (int i=0;i<plansza.length;i++){
-          for (int j=0;i<plansza.length;i++){
-              if (plansza[i][j]!=null){
-                  plansza[i][j+1]=new Square(Color.RED,plansza[i][j]);
-                  plansza[i][j]=null;
-                  licznik++;
-                if (licznik==4) break;
-              }
-            if (licznik==4) break;
-          }
-      }
-
+        down++;
+        setPosition(right++, down);
+        gameBoard.newPositionDown(figure, right+1,down+2);
     }
 
     @Override
@@ -78,14 +78,9 @@ public class Square_Shape extends Shape implements Shapes {
     }
     @Override
     public void removeBottom(){
-        bigSquare.getChildren().removeAll(figure[1][1].getRectangle(),figure[0][1].getRectangle());
     }
     @Override
     public boolean isStuck(){
-    for (int i=0;i<figure[i].length;i++){
-        for (int j=0;j<figure.length;j++){
-        }
-    }
     return true;
     }
 }
