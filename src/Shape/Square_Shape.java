@@ -12,12 +12,11 @@ public class Square_Shape extends Shape implements Shapes {
     Group bigSquare=new Group();
     GameBoard gameBoard= GameBoard.getInstance();
     Square[][] plansza=gameBoard.getPlansza();
-    private int down,right;
+    private int down=0,right=4;
     private ShapeType shapeType=ShapeType.l_SHAPE;
 
     public Square_Shape() {
-        down=0;
-        right=4;
+
         figure[0]=new Square(Color.RED, 50, 50,0,0);
         figure[0].getRectangle().setX(figure[0].getStartingX()+(25*right));
         figure[0].getRectangle().setY(figure[0].getStartingY()+(25*down));
@@ -66,7 +65,7 @@ public class Square_Shape extends Shape implements Shapes {
         setPosition(right,down);
 
     }
-    public Square[] movingDownObjects(){
+    public Square[] getMovingDownObjects(){
         Square[] sqr=new Square[2];
         sqr[0]=figure[2];
         sqr[1]=figure[3];

@@ -15,7 +15,7 @@ public class L_Shape extends Shape {
     private int down,right;
     public L_Shape() {
         down=0;
-        right=5;
+        right=4;
         figure[0]=new Square(color, 50, 50,0,0);
         figure[0].getRectangle().setX(figure[0].getStartingX()+(25*right));
         figure[0].getRectangle().setY(figure[0].getStartingY()+(25*down));
@@ -94,7 +94,7 @@ public class L_Shape extends Shape {
     public int getRight() {
         return right;
     }
-    public Square[] movingDownObjects(){
+    public Square[] getMovingDownObjects(){
         Square[] sqr=new Square[3];
         sqr[0]=figure[0];
         sqr[1]=figure[1];

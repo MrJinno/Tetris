@@ -61,7 +61,7 @@ public abstract   class Shape implements Shapes {
     public Square[] getFigure() {
         return figure;
     }
-    public Square[] movingDownObjects(){
+    public Square[] getMovingDownObjects(){
         return null;
     }
     public Square[] movingLeftObjects(){

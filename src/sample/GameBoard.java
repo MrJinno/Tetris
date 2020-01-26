@@ -28,11 +28,13 @@ public class GameBoard {
     public boolean isMovableDown(Shape shape){
         int down=shape.getDown();
         int right=shape.getRight();
-        Square[] sqr=shape.movingDownObjects();
+        Square[] sqr=shape.getMovingDownObjects();
         down++;
         if (down+1==GameBoard.MAX_Y) return false;
         for (int i=0;i<sqr.length;i++){
-            if (plansza[sqr[i].getStartingArrayX()+right][sqr[i].getStartingArrayY()+down]!=null) return false;
+            if (plansza[sqr[i].getStartingArrayX()+right][sqr[i].getStartingArrayY()+down]!=null) {
+                return false;
+            }
         }
         return true;
     }

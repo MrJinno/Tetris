@@ -20,8 +20,11 @@ public class Game implements Runnable {
 
         this.group = group;
         shapes.add(new Square_Shape());
-        shapes.add(new L_Shape());
         shapes.add(new Square_Shape());
+        Square_Shape sqr=new Square_Shape();
+        sqr.setRight(5);
+        shapes.add(sqr);
+        shapes.add(new L_Shape());
         for (Shape shape:shapes){
             group.getChildren().add(shape.getGroup());
         }
@@ -43,11 +46,11 @@ public class Game implements Runnable {
 
 
             }
-            Platform.runLater(() ->{
+           /* Platform.runLater(() ->{
                 shapes.add(new L_Shape());
                 group.getChildren().add(shapes.get(shapes.size()-1).getGroup());
             });
-
+*/
 
         }
     }
