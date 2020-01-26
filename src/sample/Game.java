@@ -10,13 +10,13 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
 public class Game implements Runnable {
-    private ArrayList<Square_Shape> shape;
+    private ArrayList<Shape> shape;
     private Group group;
     Thread thread = new Thread(this);
     GameBoard gameBoard = GameBoard.getInstance();
 
 
-    public Game(ArrayList<Square_Shape> shape, Group group) throws InterruptedException {
+    public Game(ArrayList<Shape> shape, Group group) throws InterruptedException {
         thread.start();
         this.shape = shape;
         this.group = group;
@@ -26,11 +26,8 @@ public class Game implements Runnable {
     @Override
     public void run() {
         for (int j=0;j<shape.size();j++) {
-            int i = 1;
-            while (i < GameBoard.MAX_Y - 1) {
-                if (!gameBoard.isMovableDown(shape.get(j).getFigure(), shape.get(j).getDown(), shape.get(j).getRight())) break;
+            while (gameBoard.isMovableDown(shape.get(j))){
                 shape.get(j).moveDown();
-                i++;
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
@@ -40,4 +37,5 @@ public class Game implements Runnable {
         }
 
     }
+
 }

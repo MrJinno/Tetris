@@ -1,9 +1,24 @@
 package Shape;
 
 import javafx.scene.Group;
+import sample.GameBoard;
 
-public  class Shape implements Shapes {
+public abstract   class Shape implements Shapes {
+    private Square[]figure;
+    private int down, right;
+    private GameBoard gameBoard= GameBoard.getInstance();
 
+
+    public void setPosition(int right, int down){
+
+    }
+    public int getDown() {
+        return down;
+    }
+
+    public int getRight() {
+        return right;
+    }
 
     public void moveLeft() {
 
@@ -37,5 +52,9 @@ public  class Shape implements Shapes {
     }
     public void addShape(){
 
+    }
+
+    public Square[] getFigure() {
+        return figure;
     }
 }

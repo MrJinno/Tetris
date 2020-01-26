@@ -73,6 +73,12 @@ public class Square {
     public Rectangle getRectangle() {
         return rectangle;
     }
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "color=" + color + " X=" + rectangle.getX() + " Y=" + rectangle.getY();
+    }
 }
 
 

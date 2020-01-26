@@ -14,10 +14,6 @@ public class Square_Shape extends Shape implements Shapes {
     Square[][] plansza=gameBoard.getPlansza();
     private int down,right;
 
-    public Group getGroup() {
-        return bigSquare;
-    }
-
     public Square_Shape() {
         down=0;
         right=4;
@@ -43,9 +39,13 @@ public class Square_Shape extends Shape implements Shapes {
 
         figure[3]=new Square(Color.RED, 75,75,1,1);
         figure[3].getRectangle().setX(figure[3].getStartingX()+(25*right));
-        figure[3].getRectangle().setY(figure[3].getStartingX()+(25*down));
+        figure[3].getRectangle().setY(figure[3].getStartingY()+(25*down));
         bigSquare.getChildren().add(figure[3].getRectangle());
-        plansza[1][1]=figure[0];
+        plansza[1][1]=figure[3];
+    }
+
+    public Group getGroup() {
+        return bigSquare;
     }
 
     @Override
@@ -65,16 +65,20 @@ public class Square_Shape extends Shape implements Shapes {
         setPosition(right,down);
 
     }
-
+    public Square[] movingDownObjects(){
+        Square[] sqr=new Square[2];
+        sqr[0]=figure[2];
+        sqr[1]=figure[3];
+        return sqr;
+    }
 
     @Override
     public void moveDown() {
         down++;
-        if (gameBoard.isMovableDown(figure, down, right)) {
-            setPosition(right, down);
-            gameBoard.newPositionDown(figure, right, down);
+        setPosition(right, down);
+        gameBoard.newPositionDown(figure, right, down);
         }
-    }
+
 
     @Override
     public void rotate() {

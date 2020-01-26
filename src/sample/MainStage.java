@@ -5,6 +5,7 @@ import Shape.Square_Shape;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import Shape.*;
 
 import java.util.ArrayList;
 
@@ -20,11 +21,9 @@ public class MainStage extends Application {
         Background board=new Background();
         scene1=new Scene(board.getGroup());
         stage.setScene(scene1);
-        ArrayList<Square_Shape> shapes=new ArrayList<Square_Shape>();
+        ArrayList<Shape> shapes=new ArrayList<Shape>();
         shapes.add(new Square_Shape());
-        shapes.add(new Square_Shape());
-        shapes.add(new Square_Shape());
-        shapes.add(new Square_Shape());
+        shapes.add(new L_Shape());
         for (int i=0;i<shapes.size();i++){
 
             board.getGroup().getChildren().add(shapes.get(i).getGroup());
