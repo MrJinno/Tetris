@@ -16,7 +16,7 @@ public class Background {
     private Square shape;
     private Scene scene;
     private Square[][] board=new Square[(int)(BOARD_HEIGH/ Square.HEIGHT)][(int)(BOARD_WIDHT/ Square.HEIGHT)];
-    Group group=new Group();
+     private Group group=new Group();
 
     public Background() {
         createEdges();

@@ -2,23 +2,18 @@ package Shape;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import sample.Game;
 import sample.GameBoard;
 
-public class Square_Shape extends Shape implements Shapes {
+
+public class L_Shape {
     private Square shape;
     private Square[]figure =new Square[4];
-    private Color color=Color.RED;
+    private Color color=Color.BLUE;
     Group bigSquare=new Group();
     GameBoard gameBoard= GameBoard.getInstance();
     Square[][] plansza=gameBoard.getPlansza();
     private int down,right;
-
-    public Group getGroup() {
-        return bigSquare;
-    }
-
-    public Square_Shape() {
+    public L_Shape() {
         down=0;
         right=4;
         figure[0]=new Square(Color.RED, 50, 50,0,0);
@@ -46,57 +41,5 @@ public class Square_Shape extends Shape implements Shapes {
         figure[3].getRectangle().setY(figure[3].getStartingX()+(25*down));
         bigSquare.getChildren().add(figure[3].getRectangle());
         plansza[1][1]=figure[0];
-    }
-
-    @Override
-    public void moveLeft() {
-        right--;
-        setPosition(right,down);
-    }
-    public void setPosition(int right, int down){
-        for (Square square:figure){
-            square.getRectangle().setX(square.getStartingX()+(25*right));
-            square.getRectangle().setY(square.getStartingY()+(25*down));
-        }
-    }
-    @Override
-    public void moveRight() {
-        right++;
-        setPosition(right,down);
-
-    }
-
-
-    @Override
-    public void moveDown() {
-        down++;
-        if (gameBoard.isMovableDown(figure, down, right)) {
-            setPosition(right, down);
-            gameBoard.newPositionDown(figure, right, down);
-        }
-    }
-
-    @Override
-    public void rotate() {
-
-    }
-    @Override
-    public void removeBottom(){
-    }
-    @Override
-    public boolean isStuck(){
-    return true;
-    }
-
-    public int getDown() {
-        return down;
-    }
-
-    public Square[] getFigure() {
-        return figure;
-    }
-
-    public int getRight() {
-        return right;
     }
 }

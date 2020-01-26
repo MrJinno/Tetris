@@ -4,39 +4,40 @@ import Shape.Shape;
 import javafx.application.Platform;
 import javafx.scene.Group;
 import Shape.Square_Shape;
+
+import java.util.ArrayList;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
 public class Game implements Runnable {
-    private Shape shape;
+    private ArrayList<Square_Shape> shape;
     private Group group;
     Thread thread = new Thread(this);
+    GameBoard gameBoard = GameBoard.getInstance();
 
 
-    public Game(Shape shape) throws InterruptedException {
+    public Game(ArrayList<Square_Shape> shape, Group group) throws InterruptedException {
         thread.start();
-        this.shape=shape;
+        this.shape = shape;
+        this.group = group;
 
     }
 
     @Override
     public void run() {
-        int i = 0;
-        while (i<40) {
-            shape.moveDown();
-            i++;
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        for (int j=0;j<shape.size();j++) {
+            int i = 1;
+            while (i < GameBoard.MAX_Y - 1) {
+                if (!gameBoard.isMovableDown(shape.get(j).getFigure(), shape.get(j).getDown(), shape.get(j).getRight())) break;
+                shape.get(j).moveDown();
+                i++;
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                shape.removeBottom();
-            }
-        });
 
     }
-    }
+}
