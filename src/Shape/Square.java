@@ -10,6 +10,24 @@ import javafx.stage.Stage;
 
 public class Square {
     public static final int HEIGHT=25;
+    private int startingX, startingY, startingArrayX, StartingArrayY;
+
+    public int getStartingX() {
+        return startingX;
+    }
+
+    public void setStartingX(int startingX) {
+        this.startingX = startingX;
+    }
+
+    public int getStartingY() {
+        return startingY;
+    }
+
+    public void setStartingY(int startingY) {
+        this.startingY = startingY;
+    }
+
     private Color color;
     Rectangle rectangle;
 
@@ -23,7 +41,7 @@ public class Square {
         this.color=color;
         rectangle.setFill(this.color);
     }
-    public Square(Color color, Square square){
+    public Square(Color color, int startingX, int startingY, int startingArrayX, int getStartingArrayY){
         rectangle=new Rectangle();
         rectangle.setWidth(HEIGHT);
         rectangle.setHeight(HEIGHT);
@@ -32,8 +50,16 @@ public class Square {
         rectangle.setStroke(Color.BLACK);
         this.color=color;
         rectangle.setFill(this.color);
-        rectangle.setX(square.getRectangle().getX());
-        rectangle.setY(square.getRectangle().getY());
+        this.startingX=startingX;
+        this.startingY=startingY;
+    }
+
+    public int getStartingArrayX() {
+        return startingArrayX;
+    }
+
+    public int getStartingArrayY() {
+        return StartingArrayY;
     }
 
     public static int getHEIGHT() {
