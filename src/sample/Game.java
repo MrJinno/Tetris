@@ -22,7 +22,7 @@ public class Game implements Runnable {
         shapes.add(new Square_Shape());
         shapes.add(new Square_Shape());
         Square_Shape sqr=new Square_Shape();
-        sqr.setRight(5);
+        sqr.setRight(3);
         shapes.add(sqr);
         shapes.add(new L_Shape());
         shapes.add(new L_Shape());

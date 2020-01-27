@@ -3,7 +3,7 @@ package Shape;
 import javafx.scene.Group;
 import sample.GameBoard;
 
-public abstract   class Shape implements Shapes {
+public abstract class Shape implements Shapes {
     private Square[]figure;
     private int down, right;
     private GameBoard gameBoard= GameBoard.getInstance();
@@ -58,18 +58,10 @@ public abstract   class Shape implements Shapes {
 
     }
 
-    public Square[] getFigure() {
-        return figure;
-    }
-    public Square[] getMovingDownObjects(){
-        return null;
-    }
-    public Square[] movingLeftObjects(){
-       return null;
-    }
-    public Square[] movingRightObjects(){
-        return null;
-    }
+    public abstract Square[] getFigure();
+    public abstract Square[] getMovingDownObjects();
+    public abstract Square[] movingLeftObjects();
+    public abstract Square[] movingRightObjects();
 
     public void setDown(int down) {
         this.down = down;
