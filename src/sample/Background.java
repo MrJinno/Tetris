@@ -1,11 +1,12 @@
 package sample;
 
+import javafx.scene.layout.Pane;
 import shape.Square;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 
-public class Background {
+public class Background extends Pane {
     private final int STARTING_X=25;
     private final int STARTING_Y=25;
     private final int BOARD_HEIGH=550;
