@@ -8,7 +8,7 @@ import sample.GameBoard;
 public class L_Shape extends Shape {
     private Square shape;
     private Square[]figure =new Square[4];
-    private Color color=Color.BLUE;
+    private Color color=Shape.randomizeColor();
     private Group bigSquare=new Group();
     private GameBoard gameBoard= GameBoard.getInstance();
     private Square[][] plansza=gameBoard.getPlansza();
@@ -62,13 +62,18 @@ public class L_Shape extends Shape {
         setPosition(right,down);
 
     }
+    public int getPositionX(Square square){
+        return square.getStartingArrayX()+right;
+    }
+    public int getPositionY(Square square){
+        return square.getStartingArrayY()+down;
+    }
 
 
     @Override
     public void moveDown() {
         down++;
             setPosition(right, down);
-            gameBoard.newPositionDown(figure, right, down);
     }
 
     @Override

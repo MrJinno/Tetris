@@ -4,11 +4,14 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import sample.GameBoard;
 
+import java.awt.*;
+import java.util.Random;
+
 public class Square_Shape extends Shape implements Shapes {
      private static final int SQUARE_HEIGH=Square.HEIGHT;
     private Square shape;
     private Square[]figure =new Square[4];
-    private Color color=Color.RED;
+    private Color color=Shape.randomizeColor();
     Group bigSquare=new Group();
     GameBoard gameBoard= GameBoard.getInstance();
     Square[][] plansza=gameBoard.getPlansza();
@@ -16,32 +19,26 @@ public class Square_Shape extends Shape implements Shapes {
     private ShapeType shapeType=ShapeType.l_SHAPE;
 
     public Square_Shape() {
-
-        figure[0]=new Square(Color.RED, SQUARE_HEIGH*2, SQUARE_HEIGH*2,0,0);
+        figure[0]=new Square(color, SQUARE_HEIGH*2, SQUARE_HEIGH*2,0,0);
         figure[0].getRectangle().setX(figure[0].getStartingX()+(SQUARE_HEIGH*right));
         figure[0].getRectangle().setY(figure[0].getStartingY()+(SQUARE_HEIGH*down));
         bigSquare.getChildren().add(figure[0].getRectangle());
-        plansza[0][0]=figure[0];
 
-
-        figure[1]=new Square(Color.RED, SQUARE_HEIGH*3, SQUARE_HEIGH*2,1,0);
+        figure[1]=new Square(color, SQUARE_HEIGH*3, SQUARE_HEIGH*2,1,0);
         figure[1].getRectangle().setX(figure[1].getStartingX()+(SQUARE_HEIGH*right));
         figure[1].getRectangle().setY(figure[1].getStartingY()+(SQUARE_HEIGH*down));
         bigSquare.getChildren().add(figure[1].getRectangle());
-        plansza[1][0]=figure[1];
 
-        figure[2]=new Square(Color.RED,SQUARE_HEIGH*2,SQUARE_HEIGH*3,0,1);
+        figure[2]=new Square(color,SQUARE_HEIGH*2,SQUARE_HEIGH*3,0,1);
         figure[2].getRectangle().setX(figure[2].getStartingX()+(SQUARE_HEIGH*right));
         figure[2].getRectangle().setY(figure[2].getStartingY()+(SQUARE_HEIGH*down));
         bigSquare.getChildren().add(figure[2].getRectangle());
-        plansza[0][1]=figure[2];
 
 
-        figure[3]=new Square(Color.RED, SQUARE_HEIGH*3,SQUARE_HEIGH*3,1,1);
+        figure[3]=new Square(color, SQUARE_HEIGH*3,SQUARE_HEIGH*3,1,1);
         figure[3].getRectangle().setX(figure[3].getStartingX()+(SQUARE_HEIGH*right));
         figure[3].getRectangle().setY(figure[3].getStartingY()+(SQUARE_HEIGH*down));
         bigSquare.getChildren().add(figure[3].getRectangle());
-        plansza[1][1]=figure[3];
     }
 
     public Group getGroup() {
@@ -94,8 +91,13 @@ public class Square_Shape extends Shape implements Shapes {
     public void moveDown() {
         down++;
         setPosition(right, down);
-        gameBoard.newPositionDown(figure, right, down);
-        }
+    }
+    public int getPositionX(Square square){
+        return square.getStartingArrayX()+right;
+    }
+    public int getPositionY(Square square){
+        return square.getStartingArrayY()+down;
+    }
 
 
     @Override

@@ -7,6 +7,7 @@ import shape.*;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Game implements Runnable {
     private Pane gameRoot;
@@ -48,6 +49,8 @@ public class Game implements Runnable {
             if (gameBoard.isMovableDown(falling)) {
                 falling.moveDown();
             } else {
+                gameBoard.newPositionDown(falling);
+                System.out.println("down: " + falling.getDown() + "right" + falling.getRight());
                 spawnNewShape();
             }
         }
@@ -55,8 +58,19 @@ public class Game implements Runnable {
     }
 
     private void spawnNewShape() {
-        falling = new Square_Shape();
-        Platform.runLater(() -> gameRoot.getChildren().add(falling.getGroup()));
+        Random r=new Random();
+        int i=r.nextInt(2);
+    falling= new Square_Shape();
+    switch (i){
+        case 0:
+            falling= new L_Shape();
+            break;
+        case 1:
+            falling= new Square_Shape();
+            break;
+    }
+
+    Platform.runLater(() -> gameRoot.getChildren().add(falling.getGroup()));
     }
 
     //OO0
