@@ -1,4 +1,4 @@
-package Shape;
+package shape;
 
 import javafx.scene.Group;
 import sample.GameBoard;

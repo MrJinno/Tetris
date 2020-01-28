@@ -1,7 +1,7 @@
 package sample;
 
-import Shape.Shape;
-import Shape.Square;
+import shape.Shape;
+import shape.Square;
 
 public class GameBoard {
     public static final int MAX_Y=20;
@@ -19,6 +19,8 @@ public class GameBoard {
         return plansza;
     }
 
+
+    //ogarnac!
     public void newPositionDown(Square[] squares, int x, int y){
 
         for (int i=squares.length-1;i>=0;i--){

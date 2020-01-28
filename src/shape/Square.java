@@ -1,12 +1,7 @@
-package Shape;
+package shape;
 
-import java.awt.*;
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 
 public class Square {
     public static final int HEIGHT=25;

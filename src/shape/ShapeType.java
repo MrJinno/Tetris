@@ -1,4 +1,4 @@
-package Shape;
+package shape;
 
 public enum ShapeType {
     SQUARE,

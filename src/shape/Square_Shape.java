@@ -1,8 +1,7 @@
-package Shape;
+package shape;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import sample.Game;
 import sample.GameBoard;
 
 public class Square_Shape extends Shape implements Shapes {
