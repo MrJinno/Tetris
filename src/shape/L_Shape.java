@@ -84,9 +84,17 @@ public class L_Shape extends Shape {
                 positionBlock3();
                 position=2;
                 break;
+            case 2:
+                positionBlock4();
+                position=3;
+                break;
+            case 3:
+                positionBlock1();
+                position=0;
+                break;
         }
-    setPosition();
-    swapCollicionObjects();
+        swapCollicionObjects();
+        setPosition();
     }
 
     private void positionBlock1(){
@@ -109,6 +117,8 @@ public class L_Shape extends Shape {
         figure[3].setStartingY(SQUARE_HEIGH*3);
         figure[3].setStartingArrayX(2);
         figure[3].setStartingArrayY(1);
+
+        width=3;
     }
     private void positionBlock2(){
     figure[0].setStartingX(SQUARE_HEIGH*3);
@@ -141,12 +151,30 @@ public class L_Shape extends Shape {
 
         figure[0].setStartingX(SQUARE_HEIGH*4);
         figure[0].setStartingY(SQUARE_HEIGH*2);
-        figure[0].setStartingArrayX(1);
+        figure[0].setStartingArrayX(2);
         figure[0].setStartingArrayY(0);
 
         width=3;
     }
-public void swapCollicionObjects(){
+    private void positionBlock4(){
+        figure[3].setStartingX(SQUARE_HEIGH*4);
+        figure[3].setStartingY(SQUARE_HEIGH);
+        figure[3].setStartingArrayX(2);
+        figure[3].setStartingArrayY(-1);
+
+        figure[2].setStartingX(SQUARE_HEIGH*3);
+        figure[2].setStartingY(SQUARE_HEIGH);
+        figure[2].setStartingArrayX(1);
+        figure[2].setStartingArrayY(-1);
+
+        figure[0].setStartingX(SQUARE_HEIGH*3);
+        figure[0].setStartingY(SQUARE_HEIGH*3);
+        figure[0].setStartingArrayX(1);
+        figure[0].setStartingArrayY(1);
+
+        width=2;
+    }
+    public void swapCollicionObjects(){
         ArrayList<Square> temp;
         temp= movingLeftObjects;
         movingLeftObjects=movingDownObjects;
@@ -187,6 +215,7 @@ public void swapCollicionObjects(){
         movingDownObjects.add(figure[1]);
         movingDownObjects.add(figure[3]);
         movingLeftObjects.add(figure[0]);
+        movingLeftObjects.add(figure[3]);
         movingRightObjects.add(figure[2]);
         movingRightObjects.add(figure[3]);
 

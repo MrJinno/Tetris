@@ -68,8 +68,8 @@ public abstract class Shape implements Shapes {
         int right=shape.getRight();
         ArrayList<Square> sqr=shape.getMovingDownObjects();
         down++;
-        if (down+1==GameBoard.MAX_Y) return false;
         for (Square square : sqr) {
+            if (square.getStartingArrayY()+down==GameBoard.MAX_Y) return false;
             if (plansza[square.getStartingArrayX() + right][square.getStartingArrayY() + down] != null) {
                 return false;
             }
