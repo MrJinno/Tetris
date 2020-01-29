@@ -15,9 +15,9 @@ public class L_Shape extends Shape {
     private Group bigSquare=new Group();
     private GameBoard gameBoard= GameBoard.getInstance();
     private Square[][] plansza=gameBoard.getPlansza();
-    private int down=0,right=4, width=3;
+    private int down=0,right=4, width=3, position=0;
     private ShapeType shapeType=ShapeType.L_SHAPE;
-    private ArrayList<Square> movingDownObject, movingLeftObject, movingRightObject;
+    private ArrayList<Square> movingDownObjects, movingLeftObjects, movingRightObjects, movingUpObjects;
     public L_Shape() {
         figure[0]=new Square(color, SQUARE_HEIGH*2, SQUARE_HEIGH*2,0,0);
         bigSquare.getChildren().add(figure[0].getRectangle());
@@ -75,30 +75,20 @@ public class L_Shape extends Shape {
 
     @Override
     public void rotate() {
-    positionBlock2();
+        switch (position){
+            case 0:
+                positionBlock2();
+                position=1;
+                break;
+            case 1:
+                positionBlock3();
+                position=2;
+                break;
+        }
     setPosition();
+    swapCollicionObjects();
     }
 
-
-    private void positionBlock2(){
-    figure[0].setStartingX(SQUARE_HEIGH*3);
-    figure[0].setStartingY(SQUARE_HEIGH);
-    figure[0].setStartingArrayX(1);
-    figure[0].setStartingArrayY(-1);
-
-    figure[2].setStartingX(SQUARE_HEIGH*3);
-    figure[2].setStartingY(SQUARE_HEIGH*3);
-    figure[2].setStartingArrayX(1);
-    figure[2].setStartingArrayY(1);
-
-    figure[3].setStartingX(SQUARE_HEIGH*2);
-    figure[3].setStartingY(SQUARE_HEIGH*3);
-    figure[3].setStartingArrayX(0);
-    figure[3].setStartingArrayY(1);
-
-    width=2;
-
-    }
     private void positionBlock1(){
         figure[0].setStartingX(SQUARE_HEIGH*2);
         figure[0].setStartingY(SQUARE_HEIGH*2);
@@ -120,14 +110,50 @@ public class L_Shape extends Shape {
         figure[3].setStartingArrayX(2);
         figure[3].setStartingArrayY(1);
     }
+    private void positionBlock2(){
+    figure[0].setStartingX(SQUARE_HEIGH*3);
+    figure[0].setStartingY(SQUARE_HEIGH);
+    figure[0].setStartingArrayX(1);
+    figure[0].setStartingArrayY(-1);
 
+    figure[2].setStartingX(SQUARE_HEIGH*3);
+    figure[2].setStartingY(SQUARE_HEIGH*3);
+    figure[2].setStartingArrayX(1);
+    figure[2].setStartingArrayY(1);
+
+    figure[3].setStartingX(SQUARE_HEIGH*2);
+    figure[3].setStartingY(SQUARE_HEIGH*3);
+    figure[3].setStartingArrayX(0);
+    figure[3].setStartingArrayY(1);
+
+    width=2;
+    }
+    private void positionBlock3(){
+        figure[3].setStartingX(SQUARE_HEIGH*2);
+        figure[3].setStartingY(SQUARE_HEIGH);
+        figure[3].setStartingArrayX(0);
+        figure[3].setStartingArrayY(-1);
+
+        figure[2].setStartingX(SQUARE_HEIGH*2);
+        figure[2].setStartingY(SQUARE_HEIGH*2);
+        figure[2].setStartingArrayX(0);
+        figure[2].setStartingArrayY(0);
+
+        figure[0].setStartingX(SQUARE_HEIGH*4);
+        figure[0].setStartingY(SQUARE_HEIGH*2);
+        figure[0].setStartingArrayX(1);
+        figure[0].setStartingArrayY(0);
+
+        width=3;
+    }
 public void swapCollicionObjects(){
-
+        ArrayList<Square> temp;
+        temp= movingLeftObjects;
+        movingLeftObjects=movingDownObjects;
+        movingDownObjects=movingRightObjects;
+        movingRightObjects=movingUpObjects;
+        movingUpObjects=temp;
 }
-
-
-
-
 
     @Override
     public void removeBottom(){
@@ -150,26 +176,33 @@ public void swapCollicionObjects(){
     }
 
     public void setMovingObjects() {
-        movingDownObject.add(figure[0]);
-        movingDownObject.add(figure[1]);
-        movingDownObject.add(figure[3]);
-        movingLeftObject.add(figure[0]);
-        movingRightObject.add(figure[2]);
-        movingRightObject.add(figure[3]);
+        movingUpObjects=new ArrayList<>();
+        movingDownObjects =new ArrayList<>();
+        movingLeftObjects = new ArrayList<>();
+        movingRightObjects =new ArrayList<>();
+        movingUpObjects.add(figure[0]);
+        movingUpObjects.add(figure[1]);
+        movingUpObjects.add(figure[2]);
+        movingDownObjects.add(figure[0]);
+        movingDownObjects.add(figure[1]);
+        movingDownObjects.add(figure[3]);
+        movingLeftObjects.add(figure[0]);
+        movingRightObjects.add(figure[2]);
+        movingRightObjects.add(figure[3]);
 
     }
 
 
     public ArrayList<Square> getMovingDownObjects() {
-        return movingDownObject;
+        return movingDownObjects;
     }
 
     public ArrayList<Square> getMovingLeftObjects() {
-        return movingLeftObject;
+        return movingLeftObjects;
     }
 
     public ArrayList<Square> getMovingRightObjects() {
-        return movingRightObject;
+        return movingRightObjects;
     }
 
     public int getWidth() {

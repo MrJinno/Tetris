@@ -4,6 +4,8 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import sample.GameBoard;
 
+import java.util.ArrayList;
+
 public class Square_Shape extends Shape implements Shapes {
      private static final int SQUARE_HEIGH=Square.getHEIGHT();
     private Square shape;
@@ -14,8 +16,8 @@ public class Square_Shape extends Shape implements Shapes {
     Square[][] plansza=gameBoard.getPlansza();
     private int down=0;
     private int right=4;
-
     private int width=2;
+    private ArrayList<Square> movingDownObject, movingLeftObject, movingRightObject;
 
     private ShapeType shapeType=ShapeType.SQUARE;
     public Square_Shape() {
@@ -67,11 +69,11 @@ public class Square_Shape extends Shape implements Shapes {
         }
 
     }
-    public Square[] getMovingDownObjects(){
-        Square[] sqr=new Square[2];
-        sqr[0]=figure[2];
-        sqr[1]=figure[3];
-        return sqr;
+    public ArrayList<Square> getMovingDownObjects(){
+        movingDownObject=new ArrayList<>();
+        movingDownObject.add(figure[2]);
+        movingDownObject.add(figure[3]);
+        return movingDownObject;
     }
 
 
@@ -80,18 +82,19 @@ public class Square_Shape extends Shape implements Shapes {
         this.down = down;
     }
 
-    public Square[] getMovingLeftObjects(){
-        Square[] sqr=new Square[2];
-        sqr[0]=figure[0];
-        sqr[1]=figure[2];
-        return sqr;
+    public ArrayList<Square> getMovingLeftObjects(){
+        movingLeftObject=new ArrayList<>();
+       movingLeftObject.add(figure[0]);
+       movingLeftObject.add(figure[2]);
+
+        return movingLeftObject;
     }
 
-    public Square[] getMovingRightObjects(){
-        Square[] sqr=new Square[2];
-        sqr[0]=figure[1];
-        sqr[1]=figure[3];
-        return sqr;
+    public ArrayList<Square> getMovingRightObjects(){
+        movingRightObject=new ArrayList<>();
+        movingRightObject.add(figure[1]);
+        movingRightObject.add(figure[3]);
+        return movingRightObject;
     }
     @Override
     public void moveDown() {
