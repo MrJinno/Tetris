@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Square {
-    public static final int HEIGHT=25;
+    private static final int HEIGHT=25;
     public int getStartingX() {
         return startingX;
     }
@@ -49,6 +49,17 @@ public class Square {
         this.startingY=startingY;
         this.startingArrayX=startingArrayX;
         this.startingArrayY=startingArrayY;
+    }
+    public void movebottom(){
+        rectangle.setY(rectangle.getY()+HEIGHT);
+    }
+
+    public void setStartingArrayX(int startingArrayX) {
+        this.startingArrayX = startingArrayX;
+    }
+
+    public void setStartingArrayY(int startingArrayY) {
+        this.startingArrayY = startingArrayY;
     }
 
     public int getStartingArrayX() {

@@ -1,5 +1,8 @@
 package sample;
 
+import javafx.application.Platform;
+import javafx.scene.Group;
+import javafx.scene.layout.Pane;
 import shape.Shape;
 import shape.Square;
 
@@ -28,18 +31,39 @@ public class GameBoard {
         }
 
     }
-    public boolean isMovableDown(Shape shape){
-        int down=shape.getDown();
-        int right=shape.getRight();
-        Square[] sqr=shape.getMovingDownObjects();
-        down++;
-        if (down+1==GameBoard.MAX_Y) return false;
-        for (int i=0;i<sqr.length;i++){
-            if (plansza[sqr[i].getStartingArrayX()+right][sqr[i].getStartingArrayY()+down]!=null) {
-                return false;
+    public void checkWinCondition(Pane root) {
+        Group group=new Group();
+        if (checkBottom()) {
+               Platform.runLater(() -> {
+                    for (int i = 0; i < plansza.length; i++) {
+                        group.getChildren().add(plansza[i][MAX_Y - 1].getRectangle());
+                        plansza[i][MAX_Y-1]=null;
+                    }
+                   moveBottom();
+               });
+               root.getChildren().remove(group);
+            checkWinCondition(root);
+        }
+    }
+    public void moveBottom() {
+        for (int i = plansza[0].length - 1; i >= 0; i--) {
+            for (int j = 0; j < plansza.length; j++) {
+                Square temp;
+                if (plansza[j][i] != null) {
+                    plansza[j][i].movebottom();
+                    temp=plansza[j][i];
+                    plansza[j][i]=null;
+                    plansza[j][i+1]=temp;
+                }
             }
         }
-        return true;
+
     }
+        public boolean checkBottom(){
+            for (int i=0; i<plansza.length;i++){
+                if (plansza[i][MAX_Y-1]==null) return false;
+            }
+            return true;
+        }
 
 }

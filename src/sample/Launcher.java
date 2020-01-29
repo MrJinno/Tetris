@@ -2,6 +2,7 @@ package sample;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -21,9 +22,14 @@ public class Launcher extends Application {
 
         Pane mainRoot = new Pane();
         Scene scene = new Scene(mainRoot);
-        Game game = new Game(mainRoot);
+        Game game = new Game(mainRoot, scene);
         stage.setScene(scene);
 
 
     }
+
+
+
+
+
 }

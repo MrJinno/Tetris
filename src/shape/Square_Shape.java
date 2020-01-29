@@ -4,20 +4,20 @@ import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import sample.GameBoard;
 
-import java.awt.*;
-import java.util.Random;
-
 public class Square_Shape extends Shape implements Shapes {
-     private static final int SQUARE_HEIGH=Square.HEIGHT;
+     private static final int SQUARE_HEIGH=Square.getHEIGHT();
     private Square shape;
     private Square[]figure =new Square[4];
     private Color color=Shape.randomizeColor();
     Group bigSquare=new Group();
     GameBoard gameBoard= GameBoard.getInstance();
     Square[][] plansza=gameBoard.getPlansza();
-    private int down=0,right=4;
-    private ShapeType shapeType=ShapeType.l_SHAPE;
+    private int down=0;
+    private int right=4;
 
+    private int width=2;
+
+    private ShapeType shapeType=ShapeType.SQUARE;
     public Square_Shape() {
         figure[0]=new Square(color, SQUARE_HEIGH*2, SQUARE_HEIGH*2,0,0);
         figure[0].getRectangle().setX(figure[0].getStartingX()+(SQUARE_HEIGH*right));
@@ -47,10 +47,13 @@ public class Square_Shape extends Shape implements Shapes {
 
     @Override
     public void moveLeft() {
-        right--;
-        setPosition(right,down);
+       if (Shape.isMovableLeftRight(this, right-1, getMovingLeftObjects())) {
+           right--;
+           setPosition();
+       }
     }
-    public void setPosition(int right, int down){
+
+    public void setPosition(){
         for (Square square:figure){
             square.getRectangle().setX(square.getStartingX()+(SQUARE_HEIGH*right));
             square.getRectangle().setY(square.getStartingY()+(SQUARE_HEIGH*down));
@@ -58,8 +61,10 @@ public class Square_Shape extends Shape implements Shapes {
     }
     @Override
     public void moveRight() {
-        right++;
-        setPosition(right,down);
+        if (Shape.isMovableLeftRight(this, right+1, getMovingRightObjects())) {
+            right++;
+            setPosition();
+        }
 
     }
     public Square[] getMovingDownObjects(){
@@ -69,29 +74,31 @@ public class Square_Shape extends Shape implements Shapes {
         return sqr;
     }
 
+
     @Override
     public void setDown(int down) {
         this.down = down;
     }
 
-    public Square[] movingLeftObjects(){
+    public Square[] getMovingLeftObjects(){
         Square[] sqr=new Square[2];
         sqr[0]=figure[0];
         sqr[1]=figure[2];
         return sqr;
     }
-    public Square[] movingRightObjects(){
+
+    public Square[] getMovingRightObjects(){
         Square[] sqr=new Square[2];
         sqr[0]=figure[1];
         sqr[1]=figure[3];
         return sqr;
     }
-
     @Override
     public void moveDown() {
         down++;
-        setPosition(right, down);
+        setPosition();
     }
+
     public int getPositionX(Square square){
         return square.getStartingArrayX()+right;
     }
@@ -99,11 +106,11 @@ public class Square_Shape extends Shape implements Shapes {
         return square.getStartingArrayY()+down;
     }
 
-
     @Override
     public void rotate() {
 
     }
+
     @Override
     public void removeBottom(){
     }
@@ -111,7 +118,6 @@ public class Square_Shape extends Shape implements Shapes {
     public boolean isStuck(){
     return true;
     }
-
     public int getDown() {
         return down;
     }
@@ -126,5 +132,9 @@ public class Square_Shape extends Shape implements Shapes {
 
     public void setRight(int right) {
         this.right = right;
+    }
+
+    public int getWidth() {
+        return width;
     }
 }

@@ -1,3 +1,4 @@
+/*
 package shape;
 
 
@@ -35,3 +36,4 @@ public class Point extends Rectangle {
         return myY + down;
     }
 }
+*/
