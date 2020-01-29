@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Shape implements Shapes {
+    private final int SQUARE_HEIGH=25;
     private Square[]figure;
     private int down, right;
     private Color color=Shape.randomizeColor();
@@ -43,19 +44,14 @@ public abstract class Shape implements Shapes {
         return color;
     }
     public abstract Square[] getFigure();
-
-    public abstract ArrayList<Square> getMovingDownObjects();
-    public abstract ArrayList<Square> getMovingLeftObjects();
-    public abstract ArrayList<Square> getMovingRightObjects();
     public abstract int getPositionX(Square square);
     public abstract int getPositionY(Square square);
-    public abstract int getWidth();
     public static boolean isMovableLeftRight(Shape shape, int right, ArrayList<Square> squares){
          Square[][] gameBoard= GameBoard.getInstance().getPlansza();
         int down=shape.getDown();
-        if (right+1==0) return false;
-        if (right+shape.getWidth()-1==GameBoard.MAX_X) return false;
         for (Square sqr:squares){
+            if (sqr.getStartingArrayX()+right+1==0) return false;
+            if (sqr.getStartingArrayX()+right==GameBoard.MAX_X) return false;
             if (gameBoard[sqr.getStartingArrayX() + right][sqr.getStartingArrayY() + down] != null) {
                 return false;
             }
@@ -81,9 +77,6 @@ public abstract class Shape implements Shapes {
         this.down = down;
     }
 
-    public void setPosition(){
-
-    }
     public int getDown() {
         return down;
     }
@@ -118,10 +111,6 @@ public abstract class Shape implements Shapes {
         return null;
     }
 
-    @Override
-    public boolean isStuck() {
-        return false;
-    }
 
     public void removeBottom(){
 
@@ -129,4 +118,10 @@ public abstract class Shape implements Shapes {
     public void addShape(){
 
     }
+    public abstract ArrayList<Square> getMovingDownObjects();
+
+    public  abstract ArrayList<Square> getMovingLeftObjects();
+    public abstract ArrayList<Square> getMovingRightObjects();
+
+
 }

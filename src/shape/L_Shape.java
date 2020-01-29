@@ -15,9 +15,10 @@ public class L_Shape extends Shape {
     private Group bigSquare=new Group();
     private GameBoard gameBoard= GameBoard.getInstance();
     private Square[][] plansza=gameBoard.getPlansza();
-    private int down=0,right=4, width=3, position=0;
+    private int down=0,right=4, position=0;
     private ShapeType shapeType=ShapeType.L_SHAPE;
     private ArrayList<Square> movingDownObjects, movingLeftObjects, movingRightObjects, movingUpObjects;
+
     public L_Shape() {
         figure[0]=new Square(color, SQUARE_HEIGH*2, SQUARE_HEIGH*2,0,0);
         bigSquare.getChildren().add(figure[0].getRectangle());
@@ -31,8 +32,9 @@ public class L_Shape extends Shape {
         figure[3]=new Square(color, SQUARE_HEIGH*4,SQUARE_HEIGH*3,2,1);
         bigSquare.getChildren().add(figure[3].getRectangle());
 
+
         setPosition();
-        setMovingObjects();
+        initMovingObjects();
 
     }
     public Group getGroup() {
@@ -45,7 +47,7 @@ public class L_Shape extends Shape {
             setPosition();
         }
     }
-    public void setPosition(){
+    public void setPosition( ){
         for (Square square:figure){
             square.getRectangle().setX(square.getStartingX()+(SQUARE_HEIGH*right));
             square.getRectangle().setY(square.getStartingY()+(SQUARE_HEIGH*down));
@@ -118,7 +120,6 @@ public class L_Shape extends Shape {
         figure[3].setStartingArrayX(2);
         figure[3].setStartingArrayY(1);
 
-        width=3;
     }
     private void positionBlock2(){
     figure[0].setStartingX(SQUARE_HEIGH*3);
@@ -136,7 +137,6 @@ public class L_Shape extends Shape {
     figure[3].setStartingArrayX(0);
     figure[3].setStartingArrayY(1);
 
-    width=2;
     }
     private void positionBlock3(){
         figure[3].setStartingX(SQUARE_HEIGH*2);
@@ -154,7 +154,6 @@ public class L_Shape extends Shape {
         figure[0].setStartingArrayX(2);
         figure[0].setStartingArrayY(0);
 
-        width=3;
     }
     private void positionBlock4(){
         figure[3].setStartingX(SQUARE_HEIGH*4);
@@ -172,23 +171,11 @@ public class L_Shape extends Shape {
         figure[0].setStartingArrayX(1);
         figure[0].setStartingArrayY(1);
 
-        width=2;
     }
-    public void swapCollicionObjects(){
-        ArrayList<Square> temp;
-        temp= movingLeftObjects;
-        movingLeftObjects=movingDownObjects;
-        movingDownObjects=movingRightObjects;
-        movingRightObjects=movingUpObjects;
-        movingUpObjects=temp;
-}
+
 
     @Override
     public void removeBottom(){
-    }
-    @Override
-    public boolean isStuck(){
-        return true;
     }
 
     public int getDown() {
@@ -203,7 +190,7 @@ public class L_Shape extends Shape {
         return right;
     }
 
-    public void setMovingObjects() {
+    public void initMovingObjects() {
         movingUpObjects=new ArrayList<>();
         movingDownObjects =new ArrayList<>();
         movingLeftObjects = new ArrayList<>();
@@ -220,8 +207,6 @@ public class L_Shape extends Shape {
         movingRightObjects.add(figure[3]);
 
     }
-
-
     public ArrayList<Square> getMovingDownObjects() {
         return movingDownObjects;
     }
@@ -234,7 +219,13 @@ public class L_Shape extends Shape {
         return movingRightObjects;
     }
 
-    public int getWidth() {
-        return width;
+    public void swapCollicionObjects(){
+        ArrayList<Square> temp;
+        temp= movingLeftObjects;
+        movingLeftObjects=movingDownObjects;
+        movingDownObjects=movingRightObjects;
+        movingRightObjects=movingUpObjects;
+        movingUpObjects=temp;
     }
+
 }

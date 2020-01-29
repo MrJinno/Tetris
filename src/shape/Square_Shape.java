@@ -13,7 +13,6 @@ public class Square_Shape extends Shape implements Shapes {
     private Color color=Shape.randomizeColor();
     Group bigSquare=new Group();
     GameBoard gameBoard= GameBoard.getInstance();
-    Square[][] plansza=gameBoard.getPlansza();
     private int down=0;
     private int right=4;
     private int width=2;
@@ -116,10 +115,6 @@ public class Square_Shape extends Shape implements Shapes {
 
     @Override
     public void removeBottom(){
-    }
-    @Override
-    public boolean isStuck(){
-    return true;
     }
     public int getDown() {
         return down;
