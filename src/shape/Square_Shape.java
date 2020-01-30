@@ -47,6 +47,28 @@ public class Square_Shape extends Shape implements Shapes {
     }
 
     @Override
+    protected void initMovingObjects() {
+
+    }
+
+    @Override
+    protected void positionBlock1() {
+        figure[0].getRectangle().setX(figure[0].getStartingX()+(SQUARE_HEIGH*right));
+        figure[0].getRectangle().setY(figure[0].getStartingY()+(SQUARE_HEIGH*down));
+
+        figure[1].getRectangle().setX(figure[1].getStartingX()+(SQUARE_HEIGH*right));
+        figure[1].getRectangle().setY(figure[1].getStartingY()+(SQUARE_HEIGH*down));
+
+        figure[2].getRectangle().setX(figure[2].getStartingX()+(SQUARE_HEIGH*right));
+        figure[2].getRectangle().setY(figure[2].getStartingY()+(SQUARE_HEIGH*down));
+
+        figure[3].getRectangle().setX(figure[3].getStartingX()+(SQUARE_HEIGH*right));
+        figure[3].getRectangle().setY(figure[3].getStartingY()+(SQUARE_HEIGH*down));
+
+
+    }
+
+    @Override
     public void moveLeft() {
        if (Shape.isMovableLeftRight(this, right-1, getMovingLeftObjects())) {
            right--;
@@ -115,9 +137,7 @@ public class Square_Shape extends Shape implements Shapes {
 
     }
 
-    @Override
-    public void removeBottom(){
-    }
+
     public int getDown() {
         return down;
     }

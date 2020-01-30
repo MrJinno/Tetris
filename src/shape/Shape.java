@@ -8,12 +8,33 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Shape implements Shapes {
-    private final int SQUARE_HEIGH=25;
-   protected Square[]figure=new Square[4];
-    private int down, right;
-    private Color color=Shape.randomizeColor();
+    protected final int SQUARE_HEIGH=Square.getHEIGHT();
+    private static final int STARTING_X=4;
+   protected Square[]figure=new Square[4];;
+    protected int down=0, right=STARTING_X, position=0;
+    protected Color color=Shape.randomizeColor();
+    protected Square[][] gameboard=GameBoard.getInstance().getPlansza();
     protected ArrayList<Square> movingDownObjects, movingLeftObjects, movingRightObjects, movingUpObjects;
+    protected Group bigSquare=new Group();
 
+
+    public Shape() {
+        figure[0]=new Square(color);
+        bigSquare.getChildren().add(figure[0].getRectangle());
+
+        figure[1]=new Square(color);
+        bigSquare.getChildren().add(figure[1].getRectangle());
+
+        figure[2]=new Square(color);
+        bigSquare.getChildren().add(figure[2].getRectangle());
+
+        figure[3]=new Square(color);
+        bigSquare.getChildren().add(figure[3].getRectangle());
+
+        positionBlock1();
+        setPosition();
+        initMovingObjects();
+    }
 
     public static Color randomizeColor(){
         Random r=new Random();
@@ -44,9 +65,18 @@ public abstract class Shape implements Shapes {
 
         return color;
     }
-    public abstract Square[] getFigure();
-    public abstract int getPositionX(Square square);
-    public abstract int getPositionY(Square square);
+
+    public Square[] getFigure() {
+        return figure;
+    }
+
+    public int getPositionX(Square square){
+        return square.getStartingArrayX()+right;
+    }
+
+    public int getPositionY(Square square){
+        return square.getStartingArrayY()+down;
+    }
     public static boolean isMovableLeftRight(Shape shape, int right, ArrayList<Square> squares){
          Square[][] gameBoard= GameBoard.getInstance().getPlansza();
         int down=shape.getDown();
@@ -73,7 +103,6 @@ public abstract class Shape implements Shapes {
         }
         return true;
     }
-
     public void setDown(int down) {
         this.down = down;
     }
@@ -87,7 +116,10 @@ public abstract class Shape implements Shapes {
     }
 
     public void moveLeft() {
-
+        if (Shape.isMovableLeftRight(this, right-1, getMovingLeftObjects())) {
+            right--;
+            setPosition();
+        }
     }
 
     public void setRight(int right) {
@@ -109,20 +141,36 @@ public abstract class Shape implements Shapes {
     }
 
     public Group getGroup() {
-        return null;
+        return bigSquare;
     }
 
 
-    public void removeBottom(){
-
-    }
     public void addShape(){
 
     }
-    public abstract ArrayList<Square> getMovingDownObjects();
 
-    public  abstract ArrayList<Square> getMovingLeftObjects();
-    public abstract ArrayList<Square> getMovingRightObjects();
+    protected abstract void initMovingObjects();
+
+    protected abstract void positionBlock1();
+    public ArrayList<Square> getMovingDownObjects() {
+        return movingDownObjects;
+    }
+
+    public ArrayList<Square> getMovingLeftObjects() {
+        return movingLeftObjects;
+    }
+
+    public ArrayList<Square> getMovingRightObjects() {
+        return movingRightObjects;
+    }
+
+    public void setPosition( ){
+        for (Square square:figure){
+            square.getRectangle().setX(square.getStartingX()+(SQUARE_HEIGH*right));
+            square.getRectangle().setY(square.getStartingY()+(SQUARE_HEIGH*down));
+        }
+    }
+
 
 
 }

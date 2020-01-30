@@ -64,13 +64,15 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private void spawnNewShape() {
         Random r=new Random();
         ShapeType shapeType=ShapeType.L_SHAPE;
-        falling= new Square_Shape();
     switch (shapeType){
         case L_SHAPE:
             falling= new L_Shape();
             break;
         case SQUARE:
             falling= new Square_Shape();
+            break;
+        case Z_SHAPE:
+            falling= new Z_Shape();
             break;
     }
 

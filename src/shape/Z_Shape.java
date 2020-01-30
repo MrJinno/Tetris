@@ -97,7 +97,7 @@ public class Z_Shape extends Shape {
         setPosition();
     }
 
-    private void positionBlock1(){
+    protected void positionBlock1(){
         figure[0].setStartingX(MIN_POSITION);
         figure[0].setStartingY(MIN_POSITION+SQUARE_HEIGH);
         figure[0].setStartingArrayX(0);
