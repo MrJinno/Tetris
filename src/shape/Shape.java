@@ -12,6 +12,7 @@ public abstract class Shape implements Shapes {
     private Square[]figure;
     private int down, right;
     private Color color=Shape.randomizeColor();
+    protected ArrayList<Square> movingDownObjects, movingLeftObjects, movingRightObjects, movingUpObjects;
 
 
     public static Color randomizeColor(){

@@ -97,8 +97,10 @@ public class Square_Shape extends Shape implements Shapes {
     }
     @Override
     public void moveDown() {
-        down++;
-        setPosition();
+        if (isMovableDown(this)) {
+            down++;
+            setPosition();
+        }
     }
 
     public int getPositionX(Square square){

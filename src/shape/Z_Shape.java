@@ -2,21 +2,20 @@ package shape;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import sample.GameBoard;
 
 import java.util.ArrayList;
 
-
-public class L_Shape extends Shape {
+public class Z_Shape extends Shape {
     private static final int SQUARE_HEIGH=Square.getHEIGHT();
-    private static final int startingRight=4;
+    private static final int MIN_POSITION=50;
+    private Square[]figure =new Square[4];
     private Color color=Shape.randomizeColor();
-    private Square[]figure=new Square[4];
     private Group bigSquare=new Group();
+    private int startingRight=4;
     private int down=0,right=startingRight, position=0;
-    private Square[][] gameboard=GameBoard.getInstance().getPlansza();
+    private ArrayList<Square> movingDownObjects, movingLeftObjects, movingRightObjects, movingUpObjects;
 
-    public L_Shape() {
+    public Z_Shape() {
         figure[0]=new Square(color);
         bigSquare.getChildren().add(figure[0].getRectangle());
 
@@ -44,7 +43,12 @@ public class L_Shape extends Shape {
             setPosition();
         }
     }
-
+    public void setPosition( ){
+        for (Square square:figure){
+            square.getRectangle().setX(square.getStartingX()+(SQUARE_HEIGH*right));
+            square.getRectangle().setY(square.getStartingY()+(SQUARE_HEIGH*down));
+        }
+    }
     @Override
     public void moveRight() {
         if (Shape.isMovableLeftRight(this, right+1, getMovingRightObjects())) {
@@ -92,112 +96,81 @@ public class L_Shape extends Shape {
         swapCollicionObjects();
         setPosition();
     }
-    public void setPosition( ){
-        for (Square square:figure){
-            square.getRectangle().setX(square.getStartingX()+(SQUARE_HEIGH*right));
-            square.getRectangle().setY(square.getStartingY()+(SQUARE_HEIGH*down));
-        }
-    }
 
     private void positionBlock1(){
-        figure[0].setStartingX(SQUARE_HEIGH*2);
-        figure[0].setStartingY(SQUARE_HEIGH*2);
+        figure[0].setStartingX(MIN_POSITION);
+        figure[0].setStartingY(MIN_POSITION+SQUARE_HEIGH);
         figure[0].setStartingArrayX(0);
-        figure[0].setStartingArrayY(0);
+        figure[0].setStartingArrayY(1);
 
-        figure[1].setStartingX(SQUARE_HEIGH*3);
-        figure[1].setStartingY(SQUARE_HEIGH*2);
+        figure[1].setStartingX(MIN_POSITION+SQUARE_HEIGH);
+        figure[1].setStartingY(MIN_POSITION+SQUARE_HEIGH);
         figure[1].setStartingArrayX(1);
-        figure[1].setStartingArrayY(0);
+        figure[1].setStartingArrayY(1);
 
-        figure[2].setStartingX(SQUARE_HEIGH*4);
-        figure[2].setStartingY(SQUARE_HEIGH*2);
-        figure[2].setStartingArrayX(2);
+        figure[2].setStartingX(MIN_POSITION+SQUARE_HEIGH);
+        figure[2].setStartingY(MIN_POSITION);
+        figure[2].setStartingArrayX(1);
         figure[2].setStartingArrayY(0);
 
-        figure[3].setStartingX(SQUARE_HEIGH*4);
-        figure[3].setStartingY(SQUARE_HEIGH*3);
+        figure[3].setStartingX(MIN_POSITION+SQUARE_HEIGH*2);
+        figure[3].setStartingY(MIN_POSITION);
         figure[3].setStartingArrayX(2);
-        figure[3].setStartingArrayY(1);
-
-        checkCollision(3);
+        figure[3].setStartingArrayY(0);
 
     }
-    private void positionBlock2() {
-        figure[0].setStartingX(SQUARE_HEIGH * 3);
-        figure[0].setStartingY(SQUARE_HEIGH);
-        figure[0].setStartingArrayX(1);
+    private void positionBlock2(){
+        figure[0].setStartingX(MIN_POSITION);
+        figure[0].setStartingY(MIN_POSITION-SQUARE_HEIGH);
+        figure[0].setStartingArrayX(0);
         figure[0].setStartingArrayY(-1);
 
-        figure[2].setStartingX(SQUARE_HEIGH * 3);
-        figure[2].setStartingY(SQUARE_HEIGH * 3);
-        figure[2].setStartingArrayX(1);
-        figure[2].setStartingArrayY(1);
+        figure[1].setStartingX(MIN_POSITION);
+        figure[1].setStartingY(MIN_POSITION);
+        figure[1].setStartingArrayX(0);
+        figure[1].setStartingArrayY(0);
 
-        figure[3].setStartingX(SQUARE_HEIGH * 2);
-        figure[3].setStartingY(SQUARE_HEIGH * 3);
-        figure[3].setStartingArrayX(0);
+        figure[3].setStartingX(MIN_POSITION+SQUARE_HEIGH);
+        figure[3].setStartingY(MIN_POSITION+SQUARE_HEIGH);
+        figure[3].setStartingArrayX(1);
         figure[3].setStartingArrayY(1);
-
-        checkCollision(0);
 
     }
     private void positionBlock3(){
-        figure[0].setStartingX(SQUARE_HEIGH*4);
-        figure[0].setStartingY(SQUARE_HEIGH*2);
+        figure[0].setStartingX(MIN_POSITION+2*SQUARE_HEIGH);
+        figure[0].setStartingY(MIN_POSITION-SQUARE_HEIGH);
         figure[0].setStartingArrayX(2);
-        figure[0].setStartingArrayY(0);
+        figure[0].setStartingArrayY(-1);
 
-        figure[2].setStartingX(SQUARE_HEIGH*2);
-        figure[2].setStartingY(SQUARE_HEIGH*2);
-        figure[2].setStartingArrayX(0);
-        figure[2].setStartingArrayY(0);
+        figure[1].setStartingX(MIN_POSITION+SQUARE_HEIGH);
+        figure[1].setStartingY(MIN_POSITION-SQUARE_HEIGH);
+        figure[1].setStartingArrayX(1);
+        figure[1].setStartingArrayY(-1);
 
 
-        figure[3].setStartingX(SQUARE_HEIGH*2);
-        figure[3].setStartingY(SQUARE_HEIGH);
+        figure[3].setStartingX(MIN_POSITION);
+        figure[3].setStartingY(MIN_POSITION);
         figure[3].setStartingArrayX(0);
-        figure[3].setStartingArrayY(-1);
-
-        checkCollision(1);
+        figure[3].setStartingArrayY(0);
     }
     private void positionBlock4(){
-
-        figure[0].setStartingX(SQUARE_HEIGH*3);
-        figure[0].setStartingY(SQUARE_HEIGH*3);
-        figure[0].setStartingArrayX(1);
+        figure[0].setStartingX(MIN_POSITION+2*SQUARE_HEIGH);
+        figure[0].setStartingY(MIN_POSITION+SQUARE_HEIGH);
+        figure[0].setStartingArrayX(2);
         figure[0].setStartingArrayY(1);
 
-        figure[2].setStartingX(SQUARE_HEIGH*3);
-        figure[2].setStartingY(SQUARE_HEIGH);
-        figure[2].setStartingArrayX(1);
-        figure[2].setStartingArrayY(-1);
+        figure[1].setStartingX(MIN_POSITION+2*SQUARE_HEIGH);
+        figure[1].setStartingY(MIN_POSITION);
+        figure[1].setStartingArrayX(2);
+        figure[1].setStartingArrayY(0);
 
-        figure[3].setStartingX(SQUARE_HEIGH*4);
-        figure[3].setStartingY(SQUARE_HEIGH);
-        figure[3].setStartingArrayX(2);
+
+        figure[3].setStartingX(MIN_POSITION+SQUARE_HEIGH);
+        figure[3].setStartingY(MIN_POSITION-SQUARE_HEIGH);
+        figure[3].setStartingArrayX(1);
         figure[3].setStartingArrayY(-1);
-
-        checkCollision(2);
-
     }
 
-    public void checkCollision(int position){
-        if (checkRotateCollision()){
-            this.position=position;
-            rotate();
-        }
-
-    }
-    public boolean checkRotateCollision() {
-        for (Square square : figure) {
-            if (gameboard[square.getStartingArrayX() + right][square.getStartingArrayY() + down] != null) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 
     public int getDown() {
         return down;
@@ -217,14 +190,14 @@ public class L_Shape extends Shape {
         movingLeftObjects = new ArrayList<>();
         movingRightObjects =new ArrayList<>();
         movingUpObjects.add(figure[0]);
-        movingUpObjects.add(figure[1]);
         movingUpObjects.add(figure[2]);
+        movingUpObjects.add(figure[3]);
         movingDownObjects.add(figure[0]);
         movingDownObjects.add(figure[1]);
         movingDownObjects.add(figure[3]);
         movingLeftObjects.add(figure[0]);
-        movingLeftObjects.add(figure[3]);
-        movingRightObjects.add(figure[2]);
+        movingLeftObjects.add(figure[2]);
+        movingRightObjects.add(figure[1]);
         movingRightObjects.add(figure[3]);
 
     }

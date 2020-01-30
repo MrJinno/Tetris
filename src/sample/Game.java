@@ -83,6 +83,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
         case LEFT: falling.moveLeft(); break;
         case RIGHT:falling.moveRight(); break;
         case UP: falling.rotate(); break;
+        case DOWN: falling.moveDown(); break;
     }
     }
 
