@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 
 public class Background extends Pane {
-    private static final int SQUARE_HEIGH=Square.getHEIGHT();
+    private static final int SQUARE_HEIGH=25;
     private final int STARTING_X=25;
     private final int STARTING_Y=25;
     private final int BOARD_HEIGH=550;

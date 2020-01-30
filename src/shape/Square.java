@@ -70,9 +70,7 @@ public class Square {
         return startingArrayY;
     }
 
-    public static int getHEIGHT() {
-        return HEIGHT;
-    }
+
 
     public Color getColor() {
         return color;
