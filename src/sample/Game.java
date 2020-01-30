@@ -4,11 +4,8 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
-import shape.AllShapes.L_Shape;
-import shape.AllShapes.L_Shape2;
-import shape.AllShapes.Z_Shape;
+import shape.AllShapes.*;
 import shape.Shape;
-import shape.AllShapes.Square_Shape;
 import shape.*;
 import javafx.scene.layout.Pane;
 
@@ -66,7 +63,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private void spawnNewShape() {
         Random r=new Random();
        // ShapeType shapeType=ShapeType.values()[r.nextInt(ShapeType.values().length-1)];
-        ShapeType shapeType=ShapeType.L_Shape2;
+        ShapeType shapeType=ShapeType._I_SHAPE;
         falling=new Square_Shape();
         switch (shapeType){
         case L_SHAPE:
@@ -82,7 +79,15 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
                 falling=new L_Shape2();
                 break;
             case Z_Shape2:
-    }
+                falling=new Z_Shape2();
+                break;
+            case I_SHAPE:
+                falling=new I_Shape();
+                break;
+            case _I_SHAPE:
+                falling=new _I_Shape();
+                break;
+        }
 
     Platform.runLater(() -> gameRoot.getChildren().add(falling.getGroup()));
     }

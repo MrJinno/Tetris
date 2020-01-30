@@ -5,11 +5,11 @@ import javafx.scene.shape.Rectangle;
 
 public class Square {
     private static final int HEIGHT=25;
+    private int startingX, startingY, startingArrayX, startingArrayY;
+
     public int getStartingX() {
         return startingX;
     }
-
-    private int startingX, startingY, startingArrayX, startingArrayY;
 
     public void setStartingX(int startingX) {
         this.startingX = startingX;
@@ -36,29 +36,18 @@ public class Square {
         this.color=color;
         rectangle.setFill(this.color);
     }
-    public Square(Color color, int startingX, int startingY, int startingArrayX, int startingArrayY){
-        rectangle=new Rectangle();
-        rectangle.setWidth(HEIGHT);
-        rectangle.setHeight(HEIGHT);
-        rectangle.setArcHeight(5);
-        rectangle.setArcWidth(5);
-        rectangle.setStroke(Color.BLACK);
-        this.color=color;
-        rectangle.setFill(this.color);
-        this.startingX=startingX;
-        this.startingY=startingY;
-        this.startingArrayX=startingArrayX;
-        this.startingArrayY=startingArrayY;
-    }
+
     public void movebottom(){
         rectangle.setY(rectangle.getY()+HEIGHT);
     }
 
-    public void setStartingArrayX(int startingArrayX) {
+    public void setPositionXArray(int startingArrayX) {
+        startingX=HEIGHT*2+HEIGHT*startingArrayX;
         this.startingArrayX = startingArrayX;
     }
 
-    public void setStartingArrayY(int startingArrayY) {
+    public void setPositionYArray(int startingArrayY) {
+        startingY=HEIGHT*2+HEIGHT*startingArrayY;
         this.startingArrayY = startingArrayY;
     }
 
@@ -71,10 +60,6 @@ public class Square {
     }
 
 
-
-    public Color getColor() {
-        return color;
-    }
 
     public Rectangle getRectangle() {
         return rectangle;
