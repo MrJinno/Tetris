@@ -9,7 +9,7 @@ import java.util.Random;
 
 public abstract class Shape implements Shapes {
     private final int SQUARE_HEIGH=25;
-    private Square[]figure;
+   protected Square[]figure=new Square[4];
     private int down, right;
     private Color color=Shape.randomizeColor();
     protected ArrayList<Square> movingDownObjects, movingLeftObjects, movingRightObjects, movingUpObjects;

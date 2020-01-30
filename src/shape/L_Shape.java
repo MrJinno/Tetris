@@ -11,7 +11,6 @@ public class L_Shape extends Shape {
     private static final int SQUARE_HEIGH=Square.getHEIGHT();
     private static final int startingRight=4;
     private Color color=Shape.randomizeColor();
-    private Square[]figure=new Square[4];
     private Group bigSquare=new Group();
     private int down=0,right=startingRight, position=0;
     private Square[][] gameboard=GameBoard.getInstance().getPlansza();
