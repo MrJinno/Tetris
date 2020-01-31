@@ -26,12 +26,14 @@ public class I_Shape extends Shape {
         figure[3].setPositionXArray(3);
         figure[3].setPositionYArray(0);
 
-        checkCollision(3);
+
+        nextX= new int[]{2, 2, 2};
+        nextY= new int[]{-2, -1, 1};
 
     }
 
     protected void positionBlock2() {
-        if (checkBoardCollision(new int[] {2,2,2}, new int[]{-2, -1, 1})) {
+
 
             figure[0].setPositionXArray(2);
             figure[0].setPositionYArray(-2);
@@ -44,12 +46,13 @@ public class I_Shape extends Shape {
             figure[3].setPositionXArray(2);
             figure[3].setPositionYArray(1);
 
-            checkCollision(0);
-        }
+
+        nextX= new int[]{1, 3, 4};
+        nextY= new int[]{0, 0, 0};
 
     }
     protected void positionBlock3(){
-        if (checkBoardCollision(new int[] {1,3,4}, new int[]{0, 0, 0})) {
+
 
             figure[3].setPositionXArray(1);
             figure[3].setPositionYArray(0);
@@ -62,12 +65,15 @@ public class I_Shape extends Shape {
             figure[0].setPositionXArray(4);
             figure[0].setPositionYArray(0);
 
-            checkCollision(1);
-        }
+
+
+        nextX= new int[]{2, 2, 2};
+        nextY= new int[]{2, 1, -1};
+
     }
     protected void positionBlock4(){
 
-        if (checkBoardCollision(new int[] {2,2,2}, new int[]{2, 1, -1})) {
+
 
             figure[0].setPositionXArray(2);
             figure[0].setPositionYArray(2);
@@ -80,8 +86,9 @@ public class I_Shape extends Shape {
             figure[3].setPositionXArray(2);
             figure[3].setPositionYArray(-1);
 
-            checkCollision(2);
-        }
+
+        nextX= new int[]{0, 1, 3};
+        nextY= new int[]{0, 0, 0};
     }
     public void initMovingObjects() {
         movingUpObjects=new ArrayList<>();

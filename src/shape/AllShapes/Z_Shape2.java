@@ -25,6 +25,9 @@ public class Z_Shape2 extends Shape {
         figure[3].setPositionXArray(2);
         figure[3].setPositionYArray(1);
 
+        nextX= new int[]{1, 0, 0};
+        nextY= new int[]{-1, 0, 1};
+
     }
     protected void positionBlock2(){
 
@@ -38,6 +41,9 @@ public class Z_Shape2 extends Shape {
 
         figure[3].setPositionXArray(0);
         figure[3].setPositionYArray(1);
+
+        nextX= new int[]{2, 1, 0};
+        nextY= new int[]{0, -1, -1};
 
     }
     protected void positionBlock3(){
@@ -53,6 +59,9 @@ public class Z_Shape2 extends Shape {
 
         figure[3].setPositionXArray(0);
         figure[3].setPositionYArray(-1);
+
+        nextX= new int[]{1, 2, 2};
+        nextY= new int[]{1, 0, -1};
     }
     protected void positionBlock4(){
 
@@ -67,6 +76,9 @@ public class Z_Shape2 extends Shape {
 
         figure[3].setPositionXArray(2);
         figure[3].setPositionYArray(-1);
+
+        nextX= new int[]{0, 1, 2};
+        nextY= new int[]{0, 1, 1};
     }
 
 

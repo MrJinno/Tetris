@@ -80,7 +80,7 @@ public class Square_Shape extends Shape implements Shapes {
 
 
     @Override
-    public void rotate() {
+    public  void rotate(){
 
     }
 

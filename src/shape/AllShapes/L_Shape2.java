@@ -28,7 +28,8 @@ public class L_Shape2 extends Shape {
         figure[3].setPositionXArray(1);
         figure[3].setPositionYArray(2);
 
-        checkCollision(3);
+        nextX= new int[]{2, 2, 0};
+        nextY= new int[]{0, 1, 1};
 
     }
 
@@ -45,7 +46,8 @@ public class L_Shape2 extends Shape {
         figure[3].setPositionXArray(0);
         figure[3].setPositionYArray(1);
 
-        checkCollision(0);
+        nextX= new int[]{2, 1, 1};
+        nextY= new int[]{2, 2, 0};
 
     }
     protected void positionBlock3(){
@@ -62,7 +64,9 @@ public class L_Shape2 extends Shape {
         figure[3].setPositionXArray(1);
         figure[3].setPositionYArray(0);
 
-        checkCollision(1);
+        nextX= new int[]{0, 0, 2};
+        nextY= new int[]{2, 1, 1};
+
     }
     protected void positionBlock4(){
 
@@ -78,7 +82,8 @@ public class L_Shape2 extends Shape {
         figure[3].setPositionXArray(2);
         figure[3].setPositionYArray(1);
 
-        checkCollision(2);
+        nextX= new int[]{0, 1, 1};
+        nextY= new int[]{0, 0, 2};
 
     }
     public void initMovingObjects() {

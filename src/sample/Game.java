@@ -26,6 +26,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
         spawnNewShape();
         this.scene.setOnKeyPressed(this);
         mainRoot.getChildren().addAll(background.getGroup(), gameRoot);
+
         new Thread(this).start();
     }
 
@@ -52,7 +53,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
                 falling.moveDown();
             } else {
                 gameBoard.newPositionDown(falling);
-                gameBoard.checkWinCondition(gameRoot);
+                checkWinCondition();
                 System.out.println("down: " + falling.getDown() + "right" + falling.getRight());
                 spawnNewShape();
             }
@@ -60,10 +61,15 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
 
     }
 
+    public void checkWinCondition()
+    {
+        Platform.runLater(()->{
+            gameBoard.checkWinCondition(gameRoot);
+        });
+    }
     private void spawnNewShape() {
         Random r=new Random();
-       // ShapeType shapeType=ShapeType.values()[r.nextInt(ShapeType.values().length-1)];
-        ShapeType shapeType=ShapeType.L_SHAPE;
+        ShapeType shapeType=ShapeType.values()[r.nextInt(ShapeType.values().length-1)];
         falling=new Square_Shape();
         switch (shapeType){
         case L_SHAPE:

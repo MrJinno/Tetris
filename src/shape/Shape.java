@@ -16,6 +16,7 @@ public abstract class Shape implements Shapes {
     protected Square[][] gameboard=GameBoard.getInstance().getPlansza();
     protected ArrayList<Square> movingDownObjects, movingLeftObjects, movingRightObjects, movingUpObjects;
     protected Group bigSquare=new Group();
+    protected int[] nextX, nextY;
 
 
     public Shape() {
@@ -86,26 +87,28 @@ public abstract class Shape implements Shapes {
 
     @Override
     public void rotate() {
-        switch (position){
-            case 0:
-                positionBlock2();
-                position=1;
-                break;
-            case 1:
-                positionBlock3();
-                position=2;
-                break;
-            case 2:
-                positionBlock4();
-                position=3;
-                break;
-            case 3:
-                positionBlock1();
-                position=0;
-                break;
+        if (checkBoardCollision(nextX, nextY)) {
+            switch (position) {
+                case 0:
+                    positionBlock2();
+                    position = 1;
+                    break;
+                case 1:
+                    positionBlock3();
+                    position = 2;
+                    break;
+                case 2:
+                    positionBlock4();
+                    position = 3;
+                    break;
+                case 3:
+                    positionBlock1();
+                    position = 0;
+                    break;
+            }
+            swapCollicionObjects();
+            setPosition();
         }
-        swapCollicionObjects();
-        setPosition();
     }
     public Square[] getFigure() {
         return figure;
@@ -146,24 +149,7 @@ public abstract class Shape implements Shapes {
         }
         return true;
     }
-    public void checkCollision(int position){
-        if (checkRotateCollision()){
-            this.position=position;
-            revertCollisionObjects();
-            setPosition();
-            rotate();
-        }
 
-    }
-    public boolean checkRotateCollision() {
-        for (Square square : figure) {
-            if (gameboard[square.getStartingArrayX() + right][square.getStartingArrayY() + down] != null) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 
     public void setPosition( ){
         for (Square square:figure){
@@ -194,14 +180,6 @@ public abstract class Shape implements Shapes {
         movingUpObjects=temp;
     }
 
-    public void revertCollisionObjects(){
-        ArrayList<Square> temp;
-        temp=movingLeftObjects;
-        movingLeftObjects=movingUpObjects;
-        movingUpObjects=movingRightObjects;
-        movingRightObjects=movingDownObjects;
-        movingDownObjects=temp;
-    }
     public int getDown() {
         return down;
     }
