@@ -2,9 +2,11 @@ package shape;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import sample.Background;
 
 public class Square {
-    private static final int HEIGHT=25;
+    private static final int HEIGHT= Background.SQUARE_HEIGH;
+    private static final int MIN_POSITION=HEIGHT*2;
     private int startingX, startingY, startingArrayX, startingArrayY;
 
     public int getStartingX() {
@@ -36,12 +38,12 @@ public class Square {
     }
 
     public void setPositionXArray(int startingArrayX) {
-        startingX=HEIGHT*2+HEIGHT*startingArrayX;
+        startingX=MIN_POSITION+HEIGHT*startingArrayX;
         this.startingArrayX = startingArrayX;
     }
 
     public void setPositionYArray(int startingArrayY) {
-        startingY=HEIGHT*2+HEIGHT*startingArrayY;
+        startingY=MIN_POSITION+HEIGHT*startingArrayY;
         this.startingArrayY = startingArrayY;
     }
 

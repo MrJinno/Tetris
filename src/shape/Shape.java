@@ -2,13 +2,14 @@ package shape;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
+import sample.Background;
 import sample.GameBoard;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Shape implements Shapes {
-    protected final int SQUARE_HEIGH=25;
+    protected final int SQUARE_HEIGH= Background.SQUARE_HEIGH;
     private static final int STARTING_X=4;
    protected Square[]figure=new Square[4];
     protected int down=0, right=STARTING_X, position=0;
@@ -43,7 +44,7 @@ public abstract class Shape implements Shapes {
         Color color=Color.RED;
         switch (colorInt){
             case 0:
-                color= Color.AQUA;
+                color= Color.YELLOW;
                 break;
 
             case 1:
@@ -51,15 +52,15 @@ public abstract class Shape implements Shapes {
                 break;
 
             case 2:
-                color= Color.CORAL;
+                color= Color.GREEN;
                 break;
 
             case 3:
-                color= Color.BROWN;
+                color= Color.BLUE;
                 break;
 
             case 4:
-                color= Color.AZURE;
+                color= Color.PURPLE;
                 break;
 
         }
@@ -73,6 +74,12 @@ public abstract class Shape implements Shapes {
             right++;
             setPosition();
         }
+
+    }
+    public void positionNextBlock(){
+        right=12;
+        down=7;
+        setPosition();
 
     }
 
@@ -210,6 +217,18 @@ public abstract class Shape implements Shapes {
 
     public ArrayList<Square> getMovingRightObjects() {
         return movingRightObjects;
+    }
+
+    public void setDown(int down) {
+        this.down = down;
+    }
+
+    public void setRight(int right) {
+        this.right = right;
+    }
+
+    public static int getStartingX() {
+        return STARTING_X;
     }
 
     protected abstract void initMovingObjects();

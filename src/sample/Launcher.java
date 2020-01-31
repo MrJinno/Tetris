@@ -22,8 +22,8 @@ public class Launcher extends Application {
     public void start(Stage stage) throws Exception {
         stage.setTitle("Tetris!");
         stage.show();
-        stage.setWidth(500);
-        stage.setHeight(700);
+        stage.setWidth(515);
+        stage.setHeight(635);
 
 
         Pane mainRoot = new Pane();

@@ -14,7 +14,7 @@ import java.util.Random;
 public class Game implements Runnable, EventHandler<KeyEvent> {
     private Pane gameRoot;
     private GameBoard gameBoard = GameBoard.getInstance();
-    private Shape falling;
+    private Shape falling, nextBlock;
     private boolean playing = true;
     private Scene scene;
 
@@ -23,9 +23,9 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
         this.scene=scene;
         Background background = new Background(); //todo background extends pane/group
         gameRoot = new Pane();
-        spawnNewShape();
+        initialBlockSpawn();
         this.scene.setOnKeyPressed(this);
-        mainRoot.getChildren().addAll(background.getGroup(), gameRoot);
+        mainRoot.getChildren().addAll(background.getGroup(), gameRoot, ScoreBoard.getInstance().getT());
 
         new Thread(this).start();
     }
@@ -50,12 +50,12 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
         while (playing) {
             Thread.sleep(250);
             if (Shape.isMovableDown(falling)) {
-                falling.moveDown();
+               falling.moveDown();
             } else {
                 gameBoard.newPositionDown(falling);
                 checkWinCondition();
                 System.out.println("down: " + falling.getDown() + "right" + falling.getRight());
-                spawnNewShape();
+                 swapblocks();
             }
         }
 
@@ -67,36 +67,32 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
             gameBoard.checkWinCondition(gameRoot);
         });
     }
-    private void spawnNewShape() {
+    private Shape spawnNewShape() {
         Random r=new Random();
-        ShapeType shapeType=ShapeType.values()[r.nextInt(ShapeType.values().length-1)];
-        falling=new Square_Shape();
+       ShapeType shapeType=ShapeType.values()[r.nextInt(ShapeType.values().length-1)];
+       // ShapeType shapeType=ShapeType.I_SHAPE;
         switch (shapeType){
         case L_SHAPE:
-            falling= new L_Shape();
-            break;
+            return new L_Shape();
         case SQUARE:
-            falling= new Square_Shape();
-            break;
+            return new Square_Shape();
         case Z_SHAPE:
-            falling= new Z_Shape();
-            break;
+            return new Z_Shape();
             case L_Shape2:
-                falling=new L_Shape2();
-                break;
+                return new L_Shape2();
             case Z_Shape2:
-                falling=new Z_Shape2();
-                break;
+                return new Z_Shape2();
             case I_SHAPE:
-                falling=new I_Shape();
-                break;
+                return new I_Shape();
             case _I_SHAPE:
-                falling=new _I_Shape();
-                break;
+                return new _I_Shape();
         }
 
-    Platform.runLater(() -> gameRoot.getChildren().add(falling.getGroup()));
+        return new Square_Shape();
     }
+public void addShape(Shape shape){
+    Platform.runLater(() -> gameRoot.getChildren().add(shape.getGroup()));
+}
 
     @Override
     public void handle(KeyEvent keyEvent) {
@@ -106,6 +102,25 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
         case UP: falling.rotate(); break;
         case DOWN: falling.moveDown(); break;
     }
+
+    }
+    public void initialBlockSpawn(){
+        falling=spawnNewShape();
+        addShape(falling);
+        nextBlock=spawnNewShape();
+        nextBlock.positionNextBlock();
+        addShape(nextBlock);
+    }
+
+
+    public void swapblocks(){
+        falling=nextBlock;
+        falling.setDown(0);
+        falling.setRight(Shape.getStartingX());
+        falling.setPosition();
+        nextBlock=spawnNewShape();
+        nextBlock.positionNextBlock();
+        addShape(nextBlock);
     }
 
     //OO0
