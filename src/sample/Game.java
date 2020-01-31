@@ -76,7 +76,6 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private Shape spawnNewShape() {
         Random r=new Random();
        ShapeType shapeType=ShapeType.values()[r.nextInt(ShapeType.values().length-1)];
-       // ShapeType shapeType=ShapeType.I_SHAPE;
         switch (shapeType){
         case L_SHAPE:
             return new L_Shape();

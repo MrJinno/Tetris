@@ -9,18 +9,9 @@ public class Square {
     private static final int MIN_POSITION=HEIGHT*2;
     private int startingX, startingY, startingArrayX, startingArrayY;
 
-    public int getStartingX() {
-        return startingX;
-    }
-
-
-    public int getStartingY() {
-        return startingY;
-    }
-
+    private Rectangle rectangle;
 
     private Color color;
-    Rectangle rectangle;
 
     public Square(Color color) {
         rectangle=new Rectangle();
@@ -65,6 +56,15 @@ public class Square {
     public String toString() {
         return "Square{" +
                 "color=" + color + " X=" + rectangle.getX() + " Y=" + rectangle.getY();
+    }
+
+    public int getStartingX() {
+        return startingX;
+    }
+
+
+    public int getStartingY() {
+        return startingY;
     }
 }
 
