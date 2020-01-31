@@ -8,7 +8,6 @@ import shape.Shape;
 import shape.Square;
 
 public class GameBoard {
-    private static final int SQUARE_HEIGH=Background.SQUARE_HEIGH;
     public static final int MAX_Y=Background.Y_GAMEBOARD_SIZE;
     public static final int MAX_X=Background.X_GAMEBOARD_SIZE;
     private static final Square[][] board = new Square[MAX_X][MAX_Y];
@@ -31,7 +30,7 @@ public class GameBoard {
     public void newPositionDown(Shape shape){
         for (Square square:shape.getFigure()){
             board[shape.getPositionX(square)][shape.getPositionY(square)]=square;
-            System.out.println("X: " + shape.getPositionX(square) + " Y:" + shape.getPositionY(square));
+
         }
 
     }
@@ -46,6 +45,7 @@ public class GameBoard {
                 moveBlocks();
                 root.getChildren().remove(group);
                 scoreBoard.setScore(scoreBoard.getScore()+100);
+                new Music("sparkle.mp3");
                 checkWinCondition(root);
         }
     }

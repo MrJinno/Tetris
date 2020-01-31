@@ -17,7 +17,6 @@ public class _I_Shape extends Shape {
         figure[1].setPositionXArray(1);
         figure[1].setPositionYArray(0);
 
-
         figure[2].setPositionXArray(2);
         figure[2].setPositionYArray(0);
 

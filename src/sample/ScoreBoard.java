@@ -34,4 +34,8 @@ public class ScoreBoard {
         this.score = score;
         t.setText(Integer.toString(score));
     }
+    public void setLost(){
+        t.setY(Background.SQUARE_HEIGH*4);
+        t.setText("LOST! \n" + Integer.toString(score));
+    }
 }

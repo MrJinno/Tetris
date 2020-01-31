@@ -54,7 +54,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
             } else {
                 gameBoard.newPositionDown(falling);
                 checkWinCondition();
-                System.out.println("down: " + falling.getDown() + "right" + falling.getRight());
+                checkLoseCondition();
                  swapblocks();
             }
         }
@@ -66,6 +66,12 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
         Platform.runLater(()->{
             gameBoard.checkWinCondition(gameRoot);
         });
+    }
+    public void checkLoseCondition(){
+        if (falling.getDown()<3){
+            playing=false;
+            ScoreBoard.getInstance().setLost();
+        }
     }
     private Shape spawnNewShape() {
         Random r=new Random();
@@ -96,12 +102,22 @@ public void addShape(Shape shape){
 
     @Override
     public void handle(KeyEvent keyEvent) {
-    switch (keyEvent.getCode()){
-        case LEFT: falling.moveLeft(); break;
-        case RIGHT:falling.moveRight(); break;
-        case UP: falling.rotate(); break;
-        case DOWN: falling.moveDown(); break;
-    }
+        if (playing) {
+            switch (keyEvent.getCode()) {
+                case LEFT:
+                    falling.moveLeft();
+                    break;
+                case RIGHT:
+                    falling.moveRight();
+                    break;
+                case UP:
+                    falling.rotate();
+                    break;
+                case DOWN:
+                    falling.moveDown();
+                    break;
+            }
+        }
 
     }
     public void initialBlockSpawn(){

@@ -2,21 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Created Z_Shape2">
-      <change afterPath="$PROJECT_DIR$/src/sample/ScoreBoard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Music.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tetris/Shape/Shape.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tetris/Shape/Shape.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tetris/Shape/Square.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tetris/Shape/Square.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Tetris/sample/Background.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tetris/sample/Background.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tetris/sample/Game$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tetris/sample/Game$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tetris/sample/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tetris/sample/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tetris/sample/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tetris/sample/GameBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Tetris/sample/Launcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Tetris/sample/Launcher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Background.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shape/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/shape/Shape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shape/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/shape/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/ScoreBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ScoreBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shape/AllShapes/_I_Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/shape/AllShapes/_I_Shape.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -169,7 +165,7 @@
     <configuration name="Launcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="sample.Launcher" />
       <module name="Tetris" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="--module-path C:\java\javafx-sdk-13.0.2\lib --add-modules javafx.controls,javafx.fxml --add-modules=javafx.swing,javafx.graphics,javafx.fxml,javafx.media,javafx.web --add-reads javafx.graphics=ALL-UNNAMED --add-opens javafx.controls/com.sun.javafx.charts=ALL-UNNAMED --add-opens javafx.graphics/com.sun.javafx.iio=ALL-UNNAMED --add-opens javafx.graphics/com.sun.javafx.iio.common=ALL-UNNAMED --add-opens javafx.graphics/com.sun.javafx.css=ALL-UNNAMED --add-opens javafx.base/com.sun.javafx.runtime=ALL-UNNAMED" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="sample.*" />
@@ -504,7 +500,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580470008486</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Created Z_Shape2">
+      <created>1580481157483</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1580481157483</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
