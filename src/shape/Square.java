@@ -11,17 +11,11 @@ public class Square {
         return startingX;
     }
 
-    public void setStartingX(int startingX) {
-        this.startingX = startingX;
-    }
 
     public int getStartingY() {
         return startingY;
     }
 
-    public void setStartingY(int startingY) {
-        this.startingY = startingY;
-    }
 
     private Color color;
     Rectangle rectangle;

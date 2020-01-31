@@ -63,7 +63,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private void spawnNewShape() {
         Random r=new Random();
        // ShapeType shapeType=ShapeType.values()[r.nextInt(ShapeType.values().length-1)];
-        ShapeType shapeType=ShapeType._I_SHAPE;
+        ShapeType shapeType=ShapeType.L_SHAPE;
         falling=new Square_Shape();
         switch (shapeType){
         case L_SHAPE:

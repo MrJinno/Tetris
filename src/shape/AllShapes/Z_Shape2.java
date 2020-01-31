@@ -45,30 +45,26 @@ public class Z_Shape2 extends Shape {
         figure[0].setPositionXArray(2);
         figure[0].setPositionYArray(0);
 
-       
+
         figure[1].setPositionXArray(1);
         figure[1].setPositionYArray(-1);
 
 
-        figure[3].setStartingX(MIN_POSITION);
-        figure[3].setStartingY(MIN_POSITION-SQUARE_HEIGH);
+
         figure[3].setPositionXArray(0);
         figure[3].setPositionYArray(-1);
     }
     protected void positionBlock4(){
-        figure[0].setStartingX(MIN_POSITION+SQUARE_HEIGH);
-        figure[0].setStartingY(MIN_POSITION+SQUARE_HEIGH);
+
         figure[0].setPositionXArray(1);
         figure[0].setPositionYArray(1);
 
-        figure[1].setStartingX(MIN_POSITION+2*SQUARE_HEIGH);
-        figure[1].setStartingY(MIN_POSITION);
+
         figure[1].setPositionXArray(2);
         figure[1].setPositionYArray(0);
 
 
-        figure[3].setStartingX(MIN_POSITION+SQUARE_HEIGH*2);
-        figure[3].setStartingY(MIN_POSITION-SQUARE_HEIGH);
+
         figure[3].setPositionXArray(2);
         figure[3].setPositionYArray(-1);
     }

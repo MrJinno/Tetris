@@ -22,23 +22,19 @@ public class Square_Shape extends Shape implements Shapes {
 
     @Override
     protected void positionBlock1() {
-        figure[0].setStartingX(MIN_POSITION);
-        figure[0].setStartingY(MIN_POSITION);
+
         figure[0].setPositionXArray(0);
         figure[0].setPositionYArray(0);
 
-        figure[1].setStartingX(MIN_POSITION+SQUARE_HEIGH);
-        figure[1].setStartingY(MIN_POSITION);
+
         figure[1].setPositionXArray(1);
         figure[1].setPositionYArray(0);
 
-        figure[2].setStartingX(MIN_POSITION);
-        figure[2].setStartingY(MIN_POSITION+SQUARE_HEIGH);
+
         figure[2].setPositionXArray(0);
         figure[2].setPositionYArray(1);
 
-          figure[3].setStartingX(MIN_POSITION+SQUARE_HEIGH);
-        figure[3].setStartingY(MIN_POSITION+SQUARE_HEIGH);
+
         figure[3].setPositionXArray(1);
         figure[3].setPositionYArray(1);
 

@@ -10,8 +10,7 @@ import java.util.Random;
 public abstract class Shape implements Shapes {
     protected final int SQUARE_HEIGH=25;
     private static final int STARTING_X=4;
-    protected static final int MIN_POSITION=50;
-   protected Square[]figure=new Square[4];;
+   protected Square[]figure=new Square[4];
     protected int down=0, right=STARTING_X, position=0;
     protected Color color=Shape.randomizeColor();
     protected Square[][] gameboard=GameBoard.getInstance().getPlansza();
@@ -140,7 +139,7 @@ public abstract class Shape implements Shapes {
         ArrayList<Square> sqr=shape.getMovingDownObjects();
         down++;
         for (Square square : sqr) {
-            if (square.getStartingArrayY()+down==GameBoard.MAX_Y) return false;
+            if (square.getStartingArrayY()+down>=GameBoard.MAX_Y) return false;
             if (plansza[square.getStartingArrayX() + right][square.getStartingArrayY() + down] != null) {
                 return false;
             }
@@ -172,6 +171,17 @@ public abstract class Shape implements Shapes {
             square.getRectangle().setY(square.getStartingY()+(SQUARE_HEIGH*down));
         }
     }
+    public boolean checkBoardCollision(int[] x, int[] y){
+        for (int i=0;i<x.length;i++){
+            if (x[i] + right<0 || x[i]+right>=GameBoard.MAX_X) return false;
+            if (y[i] + down<0 || y[i]+down>=GameBoard.MAX_Y) return false;
+            if (gameboard[x[i] + right][y[i] + down] != null) {
+                return false;
+        }
+
+        }
+        return true;
+    }
 
 
 
@@ -192,9 +202,6 @@ public abstract class Shape implements Shapes {
         movingRightObjects=movingDownObjects;
         movingDownObjects=temp;
     }
-    public void setDown(int down) {
-        this.down = down;
-    }
     public int getDown() {
         return down;
     }
@@ -210,9 +217,6 @@ public abstract class Shape implements Shapes {
         }
     }
 
-    public void setRight(int right) {
-        this.right = right;
-    }
 
     public Group getGroup() {
         return bigSquare;
