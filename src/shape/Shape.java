@@ -9,18 +9,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Shape implements Shapes {
-    protected final int SQUARE_HEIGH= Background.SQUARE_HEIGH;
     private static final int STARTING_X=4;
    protected Square[]figure=new Square[4];
-    protected int down=0, right=STARTING_X, position=0;
-    protected Color color=Shape.randomizeColor();
-    protected Square[][] gameboard=GameBoard.getInstance().getPlansza();
+    private int down=0, right=STARTING_X, position=0;
+    private Square[][] gameBoard =GameBoard.getInstance().getBoard();
     protected ArrayList<Square> movingDownObjects, movingLeftObjects, movingRightObjects, movingUpObjects;
     protected Group bigSquare=new Group();
     protected int[] nextX, nextY;
 
 
     public Shape() {
+        Color color = Shape.randomizeColor();
         figure[0]=new Square(color);
         bigSquare.getChildren().add(figure[0].getRectangle());
 
@@ -38,7 +37,7 @@ public abstract class Shape implements Shapes {
         initMovingObjects();
     }
 
-    public static Color randomizeColor(){
+    private static Color randomizeColor(){
         Random r=new Random();
         int colorInt=r.nextInt(5);
         Color color=Color.RED;
@@ -129,8 +128,8 @@ public abstract class Shape implements Shapes {
         return square.getStartingArrayY()+down;
     }
 
-    public static boolean isMovableLeftRight(Shape shape, int right, ArrayList<Square> squares){
-         Square[][] gameBoard= GameBoard.getInstance().getPlansza();
+    private static boolean isMovableLeftRight(Shape shape, int right, ArrayList<Square> squares){
+         Square[][] gameBoard= GameBoard.getInstance().getBoard();
         int down=shape.getDown();
         for (Square sqr:squares){
             if (sqr.getStartingArrayX()+right+1==0) return false;
@@ -143,7 +142,7 @@ public abstract class Shape implements Shapes {
         }
 
     public static boolean isMovableDown(Shape shape){
-        Square[][] plansza=GameBoard.getInstance().getPlansza();
+        Square[][] plansza=GameBoard.getInstance().getBoard();
         int down=shape.getDown();
         int right=shape.getRight();
         ArrayList<Square> sqr=shape.getMovingDownObjects();
@@ -160,15 +159,16 @@ public abstract class Shape implements Shapes {
 
     public void setPosition( ){
         for (Square square:figure){
-            square.getRectangle().setX(square.getStartingX()+(SQUARE_HEIGH*right));
-            square.getRectangle().setY(square.getStartingY()+(SQUARE_HEIGH*down));
+            int SQUARE_HEIGH = Background.SQUARE_HEIGH;
+            square.getRectangle().setX(square.getStartingX()+(SQUARE_HEIGH *right));
+            square.getRectangle().setY(square.getStartingY()+(SQUARE_HEIGH *down));
         }
     }
-    public boolean checkBoardCollision(int[] x, int[] y){
+    private boolean checkBoardCollision(int[] x, int[] y){
         for (int i=0;i<x.length;i++){
             if (x[i] + right<0 || x[i]+right>=GameBoard.MAX_X) return false;
             if (y[i] + down<0 || y[i]+down>=GameBoard.MAX_Y) return false;
-            if (gameboard[x[i] + right][y[i] + down] != null) {
+            if (gameBoard[x[i] + right][y[i] + down] != null) {
                 return false;
         }
 
@@ -178,7 +178,7 @@ public abstract class Shape implements Shapes {
 
 
 
-    public void swapCollicionObjects(){
+    private void swapCollicionObjects(){
         ArrayList<Square> temp;
         temp= movingLeftObjects;
         movingLeftObjects=movingDownObjects;

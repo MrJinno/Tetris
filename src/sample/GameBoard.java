@@ -18,7 +18,7 @@ public class GameBoard {
         return gameBoard;
     }
 
-    public Square[][] getPlansza() {
+    public Square[][] getBoard() {
         return board;
     }
 
@@ -57,8 +57,8 @@ public class GameBoard {
         else return checkRows(n-1);
     }
     private boolean checkRow(int n){
-        for (int i = 0; i< board.length; i++){
-            if (board[i][n]==null) return false;
+        for (Square[] squares : board) {
+            if (squares[n] == null) return false;
         }
         return true;
     }

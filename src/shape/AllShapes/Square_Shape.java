@@ -10,13 +10,8 @@ import java.util.ArrayList;
 public class Square_Shape extends Shape implements Shapes {
 
 
-    private ShapeType shapeType=ShapeType.SQUARE;
     public Square_Shape() {
         super();
-    }
-
-    public Group getGroup() {
-        return bigSquare;
     }
 
 

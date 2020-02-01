@@ -16,16 +16,14 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private GameBoard gameBoard = GameBoard.getInstance();
     private Shape falling, nextBlock;
     private boolean playing = true;
-    private Scene scene;
     private static int moveSpeed=500;
 
 
     public Game(Pane mainRoot, Scene scene) {
-        this.scene=scene;
         Background background = new Background(); //todo background extends pane/group
         gameRoot = new Pane();
         initialBlockSpawn();
-        this.scene.setOnKeyPressed(this);
+        scene.setOnKeyPressed(this);
         mainRoot.getChildren().addAll(background.getGroup(), gameRoot, ScoreBoard.getInstance().getT());
 
         new Thread(this).start();
@@ -34,7 +32,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
 
     @Override
     public void run() {
-        while (true) {
+        while (playing) {
             try {
                 tickGame();
             } catch (Exception e) {
@@ -48,7 +46,6 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     }
 
     private void tickGame() throws InterruptedException {
-        while (playing) {
             Thread.sleep(moveSpeed);
             if (Shape.isMovableDown(falling)) {
                falling.moveDown();
@@ -60,15 +57,15 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
             }
         }
 
-    }
 
-    public void checkWinCondition()
+
+    private void checkWinCondition()
     {
         Platform.runLater(()->{
             gameBoard.checkWinCondition(gameRoot);
         });
     }
-    public void checkLoseCondition(){
+    private void checkLoseCondition(){
         if (falling.getDown()<3){
             playing=false;
             ScoreBoard.getInstance().setLost();
@@ -96,7 +93,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
 
         return new Square_Shape();
     }
-public void addShape(Shape shape){
+private void addShape(Shape shape){
     Platform.runLater(() -> gameRoot.getChildren().add(shape.getGroup()));
 }
 
@@ -116,6 +113,8 @@ public void addShape(Shape shape){
                 case DOWN:
                     falling.moveDown();
                     break;
+                case ESCAPE:
+                    System.exit(0);
             }
         }
 

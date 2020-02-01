@@ -9,11 +9,11 @@ import java.io.File;
 public class Music {
     private AudioClip mediaPlayer;
     String s;
-    public Music(String name) {
+   public Music(String name) {
         s="resources//" + name;
         music();
     }
-    public void music(){
+    private void music(){
         Media h=new Media(new File(s).toURI().toString());
         mediaPlayer= new AudioClip(h.getSource());
         mediaPlayer.play();

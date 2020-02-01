@@ -10,6 +10,7 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 
 import java.io.File;
@@ -29,8 +30,9 @@ public class Launcher extends Application {
         stage.show();
         stage.setWidth(515);
         stage.setHeight(635);
-
-
+        stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, event ->{
+            System.exit(0);
+        });
         Pane mainRoot = new Pane();
         Scene scene = new Scene(mainRoot);
         Game game = new Game(mainRoot, scene);

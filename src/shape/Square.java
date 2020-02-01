@@ -35,11 +35,11 @@ public class Square {
         this.startingArrayY = startingArrayY;
     }
 
-    public int getStartingArrayX() {
+    int getStartingArrayX() {
         return startingArrayX;
     }
 
-    public int getStartingArrayY() {
+    int getStartingArrayY() {
         return startingArrayY;
     }
 
@@ -50,12 +50,12 @@ public class Square {
     }
 
 
-    public int getStartingX() {
+    int getStartingX() {
         return startingX;
     }
 
 
-    public int getStartingY() {
+    int getStartingY() {
         return startingY;
     }
 }
