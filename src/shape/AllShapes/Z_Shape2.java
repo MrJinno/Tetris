@@ -10,20 +10,20 @@ public class Z_Shape2 extends Shape {
     }
     protected void positionBlock1(){
 
-        figure[0].setPositionXArray(0);
-        figure[0].setPositionYArray(0);
+        figure[0].setPositionX(0);
+        figure[0].setPositionY(0);
 
 
-        figure[1].setPositionXArray(1);
-        figure[1].setPositionYArray(1);
+        figure[1].setPositionX(1);
+        figure[1].setPositionY(1);
 
 
-        figure[2].setPositionXArray(1);
-        figure[2].setPositionYArray(0);
+        figure[2].setPositionX(1);
+        figure[2].setPositionY(0);
 
 
-        figure[3].setPositionXArray(2);
-        figure[3].setPositionYArray(1);
+        figure[3].setPositionX(2);
+        figure[3].setPositionY(1);
 
         nextX= new int[]{1, 0, 0};
         nextY= new int[]{-1, 0, 1};
@@ -31,16 +31,16 @@ public class Z_Shape2 extends Shape {
     }
     protected void positionBlock2(){
 
-        figure[0].setPositionXArray(1);
-        figure[0].setPositionYArray(-1);
+        figure[0].setPositionX(1);
+        figure[0].setPositionY(-1);
 
 
-        figure[1].setPositionXArray(0);
-        figure[1].setPositionYArray(0);
+        figure[1].setPositionX(0);
+        figure[1].setPositionY(0);
 
 
-        figure[3].setPositionXArray(0);
-        figure[3].setPositionYArray(1);
+        figure[3].setPositionX(0);
+        figure[3].setPositionY(1);
 
         nextX= new int[]{2, 1, 0};
         nextY= new int[]{0, -1, -1};
@@ -48,34 +48,34 @@ public class Z_Shape2 extends Shape {
     }
     protected void positionBlock3(){
 
-        figure[0].setPositionXArray(2);
-        figure[0].setPositionYArray(0);
+        figure[0].setPositionX(2);
+        figure[0].setPositionY(0);
 
 
-        figure[1].setPositionXArray(1);
-        figure[1].setPositionYArray(-1);
+        figure[1].setPositionX(1);
+        figure[1].setPositionY(-1);
 
 
 
-        figure[3].setPositionXArray(0);
-        figure[3].setPositionYArray(-1);
+        figure[3].setPositionX(0);
+        figure[3].setPositionY(-1);
 
         nextX= new int[]{1, 2, 2};
         nextY= new int[]{1, 0, -1};
     }
     protected void positionBlock4(){
 
-        figure[0].setPositionXArray(1);
-        figure[0].setPositionYArray(1);
+        figure[0].setPositionX(1);
+        figure[0].setPositionY(1);
 
 
-        figure[1].setPositionXArray(2);
-        figure[1].setPositionYArray(0);
+        figure[1].setPositionX(2);
+        figure[1].setPositionY(0);
 
 
 
-        figure[3].setPositionXArray(2);
-        figure[3].setPositionYArray(-1);
+        figure[3].setPositionX(2);
+        figure[3].setPositionY(-1);
 
         nextX= new int[]{0, 1, 2};
         nextY= new int[]{0, 1, 1};

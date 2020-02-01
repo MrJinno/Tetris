@@ -11,8 +11,6 @@ public class Square {
 
     private Rectangle rectangle;
 
-    private Color color;
-
     public Square(Color color) {
         rectangle=new Rectangle();
         rectangle.setWidth(HEIGHT);
@@ -20,20 +18,19 @@ public class Square {
         rectangle.setArcHeight(5);
         rectangle.setArcWidth(5);
         rectangle.setStroke(Color.BLACK);
-        this.color=color;
-        rectangle.setFill(this.color);
+        rectangle.setFill(color);
     }
 
-    public void movebottom(){
+    public void moveBottom(){
         rectangle.setY(rectangle.getY()+HEIGHT);
     }
 
-    public void setPositionXArray(int startingArrayX) {
+    public void setPositionX(int startingArrayX) {
         startingX=MIN_POSITION+HEIGHT*startingArrayX;
         this.startingArrayX = startingArrayX;
     }
 
-    public void setPositionYArray(int startingArrayY) {
+    public void setPositionY(int startingArrayY) {
         startingY=MIN_POSITION+HEIGHT*startingArrayY;
         this.startingArrayY = startingArrayY;
     }
@@ -52,11 +49,6 @@ public class Square {
         return rectangle;
     }
 
-    @Override
-    public String toString() {
-        return "Square{" +
-                "color=" + color + " X=" + rectangle.getX() + " Y=" + rectangle.getY();
-    }
 
     public int getStartingX() {
         return startingX;

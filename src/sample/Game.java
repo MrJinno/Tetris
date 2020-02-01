@@ -17,6 +17,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private Shape falling, nextBlock;
     private boolean playing = true;
     private Scene scene;
+    private static int moveSpeed=500;
 
 
     public Game(Pane mainRoot, Scene scene) {
@@ -48,7 +49,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
 
     private void tickGame() throws InterruptedException {
         while (playing) {
-            Thread.sleep(250);
+            Thread.sleep(moveSpeed);
             if (Shape.isMovableDown(falling)) {
                falling.moveDown();
             } else {
@@ -136,6 +137,12 @@ public void addShape(Shape shape){
         nextBlock=spawnNewShape();
         nextBlock.positionNextBlock();
         addShape(nextBlock);
+    }
+    public static void setMoveSpeed(){
+        if (moveSpeed!=100){
+            moveSpeed=moveSpeed-20;
+        }
+
     }
 
     //OO0

@@ -2,8 +2,6 @@ package sample;
 
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
-import shape.AllShapes.Square_Shape;
 import shape.Shape;
 import shape.Square;
 
@@ -38,13 +36,13 @@ public class GameBoard {
         Group group=new Group();
         if (checkRows(GameBoard.MAX_Y-1)) {
                 for (int i = 0; i < 10; i++) {
-                    System.out.println(i);
                     group.getChildren().add(board[i][row].getRectangle());
                     board[i][row] = null;
                 }
                 moveBlocks();
                 root.getChildren().remove(group);
                 scoreBoard.setScore(scoreBoard.getScore()+100);
+                Game.setMoveSpeed();
                 new Music("sparkle.mp3");
                 checkWinCondition(root);
         }
@@ -69,7 +67,7 @@ public class GameBoard {
             for (int j = 0; j < board.length; j++) {
                 Square temp;
                 if (board[j][i] != null) {
-                    board[j][i].movebottom();
+                    board[j][i].moveBottom();
                     temp= board[j][i];
                     board[j][i]=null;
                     board[j][i+1]=temp;
