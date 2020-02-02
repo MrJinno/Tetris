@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Shape implements Shapes {
-    private static final int STARTING_X=4;
-   protected Square[]figure=new Square[4];
+    private static final int STARTING_X=4, NEXT_BLOCK_X=12, NEXT_BLOCK_Y=7;
+    protected Square[]figure=new Square[4];
     private int down=0, right=STARTING_X, position=0;
     private Square[][] gameBoard =GameBoard.getInstance().getBoard();
     protected ArrayList<Square> movingDownObjects, movingLeftObjects, movingRightObjects, movingUpObjects;
@@ -39,34 +39,22 @@ public abstract class Shape implements Shapes {
 
     private static Color randomizeColor(){
         Random r=new Random();
+        Color[] colors=new Color[5];
+        colors[0]=Color.BLUE;
+        colors[1]=Color.RED;
+        colors[2]=Color.YELLOW;
+        colors[3]=Color.GREEN;
+        colors[4]=Color.PURPLE;
         int colorInt=r.nextInt(5);
-        Color color=Color.RED;
-        switch (colorInt){
-            case 0:
-                color= Color.YELLOW;
-                break;
-
-            case 1:
-                color= Color.RED;
-                break;
-
-            case 2:
-                color= Color.GREEN;
-                break;
-
-            case 3:
-                color= Color.BLUE;
-                break;
-
-            case 4:
-                color= Color.PURPLE;
-                break;
-
-        }
-
-        return color;
+        return colors[colorInt];
     }
 
+    public void positionNextBlock(){
+        right=NEXT_BLOCK_X;
+        down=NEXT_BLOCK_Y;
+        setPosition();
+
+    }
     @Override
     public void moveRight() {
         if (Shape.isMovableLeftRight(this, right+1, getMovingRightObjects())) {
@@ -75,14 +63,6 @@ public abstract class Shape implements Shapes {
         }
 
     }
-    public void positionNextBlock(){
-        right=12;
-        down=7;
-        setPosition();
-
-    }
-
-
     @Override
     public void moveDown() {
         if (isMovableDown(this)) {
@@ -90,7 +70,12 @@ public abstract class Shape implements Shapes {
             setPosition();
         }
     }
-
+    public void moveLeft() {
+        if (Shape.isMovableLeftRight(this, right-1, getMovingLeftObjects())) {
+            right--;
+            setPosition();
+        }
+    }
     @Override
     public void rotate() {
         if (checkBoardCollision(nextX, nextY)) {
@@ -115,17 +100,6 @@ public abstract class Shape implements Shapes {
             swapCollicionObjects();
             setPosition();
         }
-    }
-    public Square[] getFigure() {
-        return figure;
-    }
-
-    public int getPositionX(Square square){
-        return square.getStartingArrayX()+right;
-    }
-
-    public int getPositionY(Square square){
-        return square.getStartingArrayY()+down;
     }
 
     private static boolean isMovableLeftRight(Shape shape, int right, ArrayList<Square> squares){
@@ -164,6 +138,7 @@ public abstract class Shape implements Shapes {
             square.getRectangle().setY(square.getStartingY()+(SQUARE_HEIGH *down));
         }
     }
+
     private boolean checkBoardCollision(int[] x, int[] y){
         for (int i=0;i<x.length;i++){
             if (x[i] + right<0 || x[i]+right>=GameBoard.MAX_X) return false;
@@ -175,7 +150,6 @@ public abstract class Shape implements Shapes {
         }
         return true;
     }
-
 
 
     private void swapCollicionObjects(){
@@ -195,26 +169,19 @@ public abstract class Shape implements Shapes {
         return right;
     }
 
-    public void moveLeft() {
-        if (Shape.isMovableLeftRight(this, right-1, getMovingLeftObjects())) {
-            right--;
-            setPosition();
-        }
-    }
-
 
     public Group getGroup() {
         return bigSquare;
     }
 
     protected abstract void positionBlock1();
+
     public ArrayList<Square> getMovingDownObjects() {
         return movingDownObjects;
     }
     public ArrayList<Square> getMovingLeftObjects() {
         return movingLeftObjects;
     }
-
     public ArrayList<Square> getMovingRightObjects() {
         return movingRightObjects;
     }
@@ -232,7 +199,19 @@ public abstract class Shape implements Shapes {
     }
 
     protected abstract void initMovingObjects();
+
     protected abstract void positionBlock4();
     protected abstract void positionBlock2();
     protected abstract void positionBlock3();
+    public Square[] getFigure() {
+        return figure;
+    }
+
+    public int getPositionX(Square square){
+        return square.getStartingArrayX()+right;
+    }
+
+    public int getPositionY(Square square){
+        return square.getStartingArrayY()+down;
+    }
 }

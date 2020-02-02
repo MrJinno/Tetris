@@ -27,7 +27,6 @@ public class Launcher extends Application {
             Music music= new Music("beat.mp3");
 
         stage.setTitle("Tetris!");
-        stage.show();
         stage.setWidth(515);
         stage.setHeight(635);
         stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, event ->{
@@ -37,6 +36,7 @@ public class Launcher extends Application {
         Scene scene = new Scene(mainRoot);
         Game game = new Game(mainRoot, scene);
         stage.setScene(scene);
+        stage.show();
 
 
 

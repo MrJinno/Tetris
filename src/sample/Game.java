@@ -16,7 +16,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private GameBoard gameBoard = GameBoard.getInstance();
     private Shape falling, nextBlock;
     private boolean playing = true;
-    private static int moveSpeed=500;
+    private static int moveSpeed=400;
 
 
     public Game(Pane mainRoot, Scene scene) {
@@ -53,7 +53,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
                 gameBoard.newPositionDown(falling);
                 checkWinCondition();
                 checkLoseCondition();
-                 swapblocks();
+                 swapBlocks();
             }
         }
 
@@ -128,7 +128,7 @@ private void addShape(Shape shape){
     }
 
 
-    public void swapblocks(){
+    public void swapBlocks(){
         falling=nextBlock;
         falling.setDown(0);
         falling.setRight(Shape.getStartingX());
@@ -138,8 +138,8 @@ private void addShape(Shape shape){
         addShape(nextBlock);
     }
     public static void setMoveSpeed(){
-        if (moveSpeed!=100){
-            moveSpeed=moveSpeed-20;
+        if (moveSpeed!=200){
+            moveSpeed=moveSpeed-10;
         }
 
     }

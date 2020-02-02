@@ -20,6 +20,12 @@ public class Square {
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(color);
     }
+    public Square(){
+        rectangle=new Rectangle();
+        rectangle.setWidth(HEIGHT);
+        rectangle.setHeight(HEIGHT);
+
+    }
 
     public void moveBottom(){
         rectangle.setY(rectangle.getY()+HEIGHT);
