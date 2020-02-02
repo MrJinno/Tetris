@@ -16,14 +16,14 @@ public class Background extends Pane {
     private static final int MAX_BOARD_ARRAY=25;
     private Square[][] background = new Square[MAX_BOARD_ARRAY][MAX_BOARD_ARRAY];
     private Square[][] board=new Square[(BOARD_HEIGH/ SQUARE_HEIGH)][(BOARD_WIDHT/ SQUARE_HEIGH)];
-    public static final int Y_GAMEBOARD_SIZE=BOARD_HEIGH/SQUARE_HEIGH-2;
-    public static final int X_GAMEBOARD_SIZE=BOARD_WIDHT/SQUARE_HEIGH-2;
+    static final int Y_GAMEBOARD_SIZE=BOARD_HEIGH/SQUARE_HEIGH-2;
+    static final int X_GAMEBOARD_SIZE=BOARD_WIDHT/SQUARE_HEIGH-2;
     private Group group;
-    public static final int NEXT_BLOCK_BOARD_MIN_Y =7;
-    public static final int NEXT_BLOCK_BOARD_MIN_X =maxX;
+    private static final int NEXT_BLOCK_BOARD_MIN_Y =7;
+    private static final int NEXT_BLOCK_BOARD_MIN_X =maxX;
     private static final int NEXT_BOARD_MAX_Y=12;
 
-    public Background() {
+    Background() {
         group=new Group();
         createBackGround();
         fillTheBoard();
@@ -33,7 +33,7 @@ public class Background extends Pane {
     }
 
 
-    public void createBackGround(){
+    private void createBackGround(){
         for (int i=0;i<25;i++){
             for (int j=0;j<24;j++){
                 background[i][j]= new Square(Color.GRAY);
@@ -44,7 +44,7 @@ public class Background extends Pane {
             }
         }
     }
-    public void fillTheBoard(){
+    private void fillTheBoard(){
         for (int i=minY+1;i<maxY-1;i++){
             for (int j=minX+1;j<maxX-1;j++){
                 board[i][j]=new GameBoardSquare();
@@ -57,7 +57,7 @@ public class Background extends Pane {
             }
         }
     }
-    public void scoreBoard(){
+    private void scoreBoard(){
         for (int i=minY+2;i<5;i++){
             for (int j=maxX;j<maxX+6;j++){
                 background[i][j]=new GameBoardSquare();
@@ -69,7 +69,7 @@ public class Background extends Pane {
             }
         }
     }
-    public void nextBlockBoard(){
+    private void nextBlockBoard(){
         for (int i = NEXT_BLOCK_BOARD_MIN_Y; i<NEXT_BOARD_MAX_Y; i++){
             for (int j = NEXT_BLOCK_BOARD_MIN_X; j<maxX+6; j++){
                 background[i][j]=new GameBoardSquare();
@@ -82,11 +82,11 @@ public class Background extends Pane {
             }
         }
     }
-    public void addToGroup(Square square){
+    private void addToGroup(Square square){
         group.getChildren().add(square.getRectangle());
     }
 
-    public Group getGroup() {
+    Group getGroup() {
         return group;
     }
 }

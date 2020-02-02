@@ -19,7 +19,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private static int moveSpeed=400;
 
 
-    public Game(Pane mainRoot, Scene scene) {
+    Game(Pane mainRoot, Scene scene) {
         Background background = new Background(); //todo background extends pane/group
         gameRoot = new Pane();
         initialBlockSpawn();
@@ -56,8 +56,6 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
                  swapBlocks();
             }
         }
-
-
 
     private void checkWinCondition()
     {
@@ -96,7 +94,6 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
 private void addShape(Shape shape){
     Platform.runLater(() -> gameRoot.getChildren().add(shape.getGroup()));
 }
-
     @Override
     public void handle(KeyEvent keyEvent) {
         if (playing) {
@@ -119,7 +116,7 @@ private void addShape(Shape shape){
         }
 
     }
-    public void initialBlockSpawn(){
+    private void initialBlockSpawn(){
         falling=spawnNewShape();
         addShape(falling);
         nextBlock=spawnNewShape();
@@ -128,7 +125,7 @@ private void addShape(Shape shape){
     }
 
 
-    public void swapBlocks(){
+    private void swapBlocks(){
         falling=nextBlock;
         falling.setDown(0);
         falling.setRight(Shape.getStartingX());
@@ -137,35 +134,9 @@ private void addShape(Shape shape){
         nextBlock.positionNextBlock();
         addShape(nextBlock);
     }
-    public static void setMoveSpeed(){
+    static void setMoveSpeed(){
         if (moveSpeed!=200){
             moveSpeed=moveSpeed-10;
         }
-
     }
-
-    //OO0
-    //O**
-    //*
-
-    //XY
-    // shape -> kosta ma punkty
-    // 0,0,
-    // 1,0,
-    //0,1
-    //1,1
-    /*
-    * Shape collisionPoins = new Shape();
-    * shape.addPoint(0,2);
-    * shape.addPoint (1,2);
-    * if(boardShape.hasCollision(shape)){
-    * boardShape.merge(falling);
-    * spawnNew();
-    * }else{
-    * move();
-    * }
-    * */
-    //  hasCollision
-
-
 }

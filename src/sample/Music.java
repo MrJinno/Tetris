@@ -6,10 +6,10 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 
-public class Music {
+class Music {
     private AudioClip mediaPlayer;
-    String s;
-   public Music(String name) {
+    private String s;
+   Music(String name) {
         s="resources//" + name;
         music();
     }

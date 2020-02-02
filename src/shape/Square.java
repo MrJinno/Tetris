@@ -20,7 +20,7 @@ public class Square {
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(color);
     }
-    public Square(){
+    Square(){
         rectangle=new Rectangle();
         rectangle.setWidth(HEIGHT);
         rectangle.setHeight(HEIGHT);

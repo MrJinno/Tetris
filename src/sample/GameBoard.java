@@ -25,14 +25,14 @@ public class GameBoard {
 
 
 
-    public void newPositionDown(Shape shape){
+    void newPositionDown(Shape shape){
         for (Square square:shape.getFigure()){
             board[shape.getPositionX(square)][shape.getPositionY(square)]=square;
 
         }
 
     }
-    public void checkWinCondition(Pane root) {
+    void checkWinCondition(Pane root) {
         Group group=new Group();
         if (checkRows(GameBoard.MAX_Y-1)) {
                 for (int i = 0; i < 10; i++) {

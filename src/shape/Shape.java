@@ -14,7 +14,7 @@ public abstract class Shape implements Shapes {
     private int down=0, right=STARTING_X, position=0;
     private Square[][] gameBoard =GameBoard.getInstance().getBoard();
     protected ArrayList<Square> movingDownObjects, movingLeftObjects, movingRightObjects, movingUpObjects;
-    protected Group bigSquare=new Group();
+    private Group bigSquare=new Group();
     protected int[] nextX, nextY;
 
 
@@ -161,7 +161,7 @@ public abstract class Shape implements Shapes {
         return down;
     }
 
-    public int getRight() {
+    private int getRight() {
         return right;
     }
 
@@ -172,13 +172,13 @@ public abstract class Shape implements Shapes {
 
     protected abstract void positionBlock1();
 
-    public ArrayList<Square> getMovingDownObjects() {
+    private ArrayList<Square> getMovingDownObjects() {
         return movingDownObjects;
     }
-    public ArrayList<Square> getMovingLeftObjects() {
+    private ArrayList<Square> getMovingLeftObjects() {
         return movingLeftObjects;
     }
-    public ArrayList<Square> getMovingRightObjects() {
+    private ArrayList<Square> getMovingRightObjects() {
         return movingRightObjects;
     }
 
