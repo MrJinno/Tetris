@@ -4,8 +4,10 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import sample.UserInteraction.Player;
 import sample.UserInteraction.RankingManager;
+import sample.UserInteraction.RankingWindow;
 import shape.AllShapes.*;
 import shape.Shape;
 import shape.*;
@@ -19,13 +21,16 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private Shape falling, nextBlock;
     private boolean playing = true;
     private static int moveSpeed=400;
+    private Stage stage2;
+    private RankingWindow rw;
+    private RankingManager rankingManager;
 
 
   public  Game(Pane mainRoot, Scene scene) {
         Background background = new Background(); //todo background extends pane/group
         gameRoot = new Pane();
         initialBlockSpawn();
-        scene.setOnKeyPressed(this);
+         scene.setOnKeyPressed(this);
         mainRoot.getChildren().addAll(background.getGroup(), gameRoot, ScoreBoard.getInstance().getText());
         new Thread(this).start();
     }
@@ -42,9 +47,15 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
 
 
         }
-        Player player=new Player();
-        RankingManager rankingManager=new RankingManager();
-        rankingManager.saveScore(player);
+        Platform.runLater(()->{
+            stage2=new Stage();
+            rw=new RankingWindow(stage2);
+            stage2.show();
+        });
+        rankingManager=new RankingManager();
+
+
+
 
     }
 
@@ -115,6 +126,11 @@ private void addShape(Shape shape){
                     break;
                 case ESCAPE:
                     System.exit(0);
+                    break;
+                case ENTER:
+                    savePlayer();
+                    stage2.close();
+
             }
         }
 
@@ -141,5 +157,10 @@ private void addShape(Shape shape){
         if (moveSpeed!=200){
             moveSpeed=moveSpeed-10;
         }
+    }
+
+    private void savePlayer(){
+        Player player=new Player(rw.getName());
+        rankingManager.saveScore(player);
     }
 }

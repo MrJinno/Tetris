@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class RankingManager {
-    private static final String RANKING_FILENAME = "ranking.txt";
+    private static final String RANKING_FILENAME = "ranking.bin";
     private ArrayList<Player> ranking;
 
     public RankingManager() {
@@ -23,7 +23,7 @@ public class RankingManager {
             ois.close();
             System.out.println(ranking);
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
     }
     private void saveRanking(){

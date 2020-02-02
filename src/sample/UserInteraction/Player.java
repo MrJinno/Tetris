@@ -6,15 +6,14 @@ import java.io.Serializable;
 
 public class Player implements Serializable {
     private int score= ScoreBoard.getInstance().getScore();
-    private String imie="Player";
+    private String imie;
 
-    public int getScore() {
-        return score;
+    public Player(String imie) {
+        this.imie = imie;
     }
 
-    public String getImie() {
-        return imie;
-    }
+
+
 
     @Override
     public String toString() {

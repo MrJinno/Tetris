@@ -11,9 +11,11 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.UserInteraction.Menu;
 import sample.UserInteraction.Music;
+import sample.UserInteraction.RankingWindow;
 
 
 public class Launcher extends Application {
+    private Game game;
     private Menu menu;
     public static void main(String[] args) {
         Application.launch(Launcher.class, args);
@@ -48,7 +50,7 @@ public class Launcher extends Application {
         stage.setY(200);
         Pane mainRoot = new Pane();
         Scene gameScene = new Scene(mainRoot);
-        new Game(mainRoot, gameScene);
+         game=new Game(mainRoot, gameScene);
         stage.setScene(gameScene);
     }
 }
