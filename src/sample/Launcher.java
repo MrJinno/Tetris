@@ -2,6 +2,8 @@ package sample;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 
 import javafx.scene.layout.Pane;
@@ -18,34 +20,42 @@ import java.nio.file.Paths;
 
 
 public class Launcher extends Application {
+    private Scene  scene2;
+    private Menu menu;
     public static void main(String[] args) {
         Application.launch(Launcher.class, args);
     }
-
     @Override
-    public void start(Stage stage) throws Exception {
-            Music music= new Music("beat.mp3");
-
-        stage.setTitle("Tetris!");
-        stage.setWidth(515);
-        stage.setHeight(635);
-        stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, event ->{
+    public void start(Stage stage) {
+        stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, event -> {
             System.exit(0);
         });
-        Pane mainRoot = new Pane();
-        Scene scene = new Scene(mainRoot);
-        Game game = new Game(mainRoot, scene);
-        stage.setScene(scene);
+        menu=new Menu(stage);
+        stage.setScene(menu.getScene());
+        menuEventHandler(stage);
         stage.show();
-
-
-
 
     }
 
 
-
-
-
-
+    private void menuEventHandler(Stage stage){
+        menu.getButtonPlay().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                setGameScene(stage);
+            }
+        });
+    }
+    private void setGameScene(Stage stage){
+        new Music("beat.mp3");
+        stage.setWidth(515);
+        stage.setHeight(635);
+        stage.setTitle("Tetris!");
+        stage.setX(600);
+        stage.setY(200);
+        Pane mainRoot = new Pane();
+        scene2 = new Scene(mainRoot);
+        new Game(mainRoot, scene2);
+        stage.setScene(scene2);
+    }
 }

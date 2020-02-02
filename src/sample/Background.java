@@ -18,13 +18,12 @@ public class Background extends Pane {
     private Square[][] board=new Square[(BOARD_HEIGH/ SQUARE_HEIGH)][(BOARD_WIDHT/ SQUARE_HEIGH)];
     static final int Y_GAMEBOARD_SIZE=BOARD_HEIGH/SQUARE_HEIGH-2;
     static final int X_GAMEBOARD_SIZE=BOARD_WIDHT/SQUARE_HEIGH-2;
-    private Group group;
+    private Group group=new Group();
     private static final int NEXT_BLOCK_BOARD_MIN_Y =7;
     private static final int NEXT_BLOCK_BOARD_MIN_X =maxX;
     private static final int NEXT_BOARD_MAX_Y=12;
 
     Background() {
-        group=new Group();
         createBackGround();
         fillTheBoard();
         scoreBoard();
