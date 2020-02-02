@@ -21,17 +21,13 @@ public abstract class Shape implements Shapes {
     public Shape() {
         Color color = Shape.randomizeColor();
         figure[0]=new Square(color);
-        bigSquare.getChildren().add(figure[0].getRectangle());
-
         figure[1]=new Square(color);
-        bigSquare.getChildren().add(figure[1].getRectangle());
-
         figure[2]=new Square(color);
-        bigSquare.getChildren().add(figure[2].getRectangle());
-
         figure[3]=new Square(color);
-        bigSquare.getChildren().add(figure[3].getRectangle());
 
+        for (Square square:figure){
+            bigSquare.getChildren().add(square.getRectangle());
+        }
         positionBlock1();
         setPosition();
         initMovingObjects();
@@ -97,7 +93,7 @@ public abstract class Shape implements Shapes {
                     position = 0;
                     break;
             }
-            swapCollicionObjects();
+            swapCollisionObjects();
             setPosition();
         }
     }
@@ -152,7 +148,7 @@ public abstract class Shape implements Shapes {
     }
 
 
-    private void swapCollicionObjects(){
+    private void swapCollisionObjects(){
         ArrayList<Square> temp;
         temp= movingLeftObjects;
         movingLeftObjects=movingDownObjects;
