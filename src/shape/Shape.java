@@ -13,9 +13,9 @@ public abstract class Shape implements Shapes {
     protected Square[]figure=new Square[4];
     private int down=0, right=STARTING_X, position=0;
     private Square[][] gameBoard =GameBoard.getInstance().getBoard();
-    protected ArrayList<Square> movingDownObjects, movingLeftObjects, movingRightObjects, movingUpObjects;
     private Group bigSquare=new Group();
     protected int[] nextX, nextY;
+    protected ArrayList<Square> movingDownObjects, movingLeftObjects, movingRightObjects, movingUpObjects;
 
 
     public Shape() {

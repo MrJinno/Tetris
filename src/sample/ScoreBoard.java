@@ -7,16 +7,16 @@ import javafx.scene.text.Text;
 
 class ScoreBoard {
     private static final ScoreBoard scoreBoard=new ScoreBoard();
-    private Text t=new Text();
+    private Text text =new Text();
     private int score=0;
 
     private ScoreBoard() {
-        t.setText(Integer.toString(score));
-        t.setX(Background.SQUARE_HEIGH*14);
-        t.setY(Background.SQUARE_HEIGH*5);
-        t.setFont(Font.font("Verdana", 33));
-        t.setFill(Color.WHITE);
-        t.setStroke(Color.GOLD);
+        text.setText(Integer.toString(score));
+        text.setX(Background.SQUARE_HEIGH*14);
+        text.setY(Background.SQUARE_HEIGH*5);
+        text.setFont(Font.font("Verdana", 33));
+        text.setFill(Color.WHITE);
+        text.setStroke(Color.GOLD);
     }
     static ScoreBoard getInstance(){
         return scoreBoard;
@@ -26,17 +26,17 @@ class ScoreBoard {
         return score;
     }
 
-    Text getT() {
-        return t;
+    Text getText() {
+        return text;
     }
 
     void setScore(int score) {
         this.score = score;
-        t.setText(Integer.toString(score));
+        text.setText(Integer.toString(score));
     }
     void setLost(){
-        t.setY(Background.SQUARE_HEIGH*4);
-        t.setText("LOST! \n" + score);
+        text.setY(Background.SQUARE_HEIGH*4);
+        text.setText("LOST! \n" + score);
     }
 
 }
