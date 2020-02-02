@@ -1,4 +1,4 @@
-package sample;
+package sample.UserInteraction;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -14,7 +14,7 @@ public class Menu  {
     private Button buttonExit=addButton();
         private Scene scene;
 
-    Menu(Stage stage) {
+    public Menu(Stage stage) {
         stage.setTitle("MENU");
         stage.setWidth(200);
         stage.setHeight(200);
@@ -25,7 +25,7 @@ public class Menu  {
         scene=new Scene(pane);
     }
 
-    Button getButtonPlay() {
+   public Button getButtonPlay() {
         return buttonPlay;
     }
 

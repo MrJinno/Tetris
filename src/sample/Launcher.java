@@ -1,22 +1,16 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 
 import javafx.scene.layout.Pane;
 
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
-
-import java.io.File;
-import java.nio.file.Paths;
+import sample.UserInteraction.Menu;
+import sample.UserInteraction.Music;
 
 
 public class Launcher extends Application {
@@ -40,6 +34,7 @@ public class Launcher extends Application {
         menu.getButtonPlay().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+
                 setGameScene(stage);
             }
         });

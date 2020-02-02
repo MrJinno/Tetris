@@ -4,6 +4,8 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
+import sample.UserInteraction.Player;
+import sample.UserInteraction.RankingManager;
 import shape.AllShapes.*;
 import shape.Shape;
 import shape.*;
@@ -19,7 +21,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private static int moveSpeed=400;
 
 
-    Game(Pane mainRoot, Scene scene) {
+  public  Game(Pane mainRoot, Scene scene) {
         Background background = new Background(); //todo background extends pane/group
         gameRoot = new Pane();
         initialBlockSpawn();
@@ -40,7 +42,9 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
 
 
         }
-
+        Player player=new Player();
+        RankingManager rankingManager=new RankingManager();
+        rankingManager.saveScore(player);
 
     }
 

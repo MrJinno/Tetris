@@ -2,6 +2,7 @@ package sample;
 
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
+import sample.UserInteraction.Music;
 import shape.Shape;
 import shape.Square;
 

@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-class ScoreBoard {
+public class ScoreBoard {
     private static final ScoreBoard scoreBoard=new ScoreBoard();
     private Text text =new Text();
     private int score=0;
@@ -18,11 +18,11 @@ class ScoreBoard {
         text.setFill(Color.WHITE);
         text.setStroke(Color.GOLD);
     }
-    static ScoreBoard getInstance(){
+   public static ScoreBoard getInstance(){
         return scoreBoard;
     }
 
-    int getScore() {
+    public int getScore() {
         return score;
     }
 

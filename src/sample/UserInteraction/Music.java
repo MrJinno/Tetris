@@ -1,4 +1,4 @@
-package sample;
+package sample.UserInteraction;
 
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
@@ -6,10 +6,10 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 
-class Music {
+public class Music {
     private AudioClip mediaPlayer;
     private String s;
-   Music(String name) {
+  public Music(String name) {
         s="resources//" + name;
         music();
     }
