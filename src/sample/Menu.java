@@ -32,9 +32,9 @@ public class Menu  {
     private void manageButtons(){
         buttonPlay.setLayoutX(40);
         buttonPlay.setLayoutY(10);
-        buttonPlay.setText("Graj");
+        buttonPlay.setText("Play");
 
-        buttonExit.setText("Wyjdź");
+        buttonExit.setText("Exit");
         buttonExit.setLayoutX(40);
         buttonExit.setLayoutY(90);
         buttonExit.setOnAction(new EventHandler<ActionEvent>() {

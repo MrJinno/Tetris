@@ -20,7 +20,6 @@ import java.nio.file.Paths;
 
 
 public class Launcher extends Application {
-    private Scene  scene2;
     private Menu menu;
     public static void main(String[] args) {
         Application.launch(Launcher.class, args);
@@ -36,7 +35,6 @@ public class Launcher extends Application {
         stage.show();
 
     }
-
 
     private void menuEventHandler(Stage stage){
         menu.getButtonPlay().setOnAction(new EventHandler<ActionEvent>() {
@@ -54,8 +52,8 @@ public class Launcher extends Application {
         stage.setX(600);
         stage.setY(200);
         Pane mainRoot = new Pane();
-        scene2 = new Scene(mainRoot);
-        new Game(mainRoot, scene2);
-        stage.setScene(scene2);
+        Scene gameScene = new Scene(mainRoot);
+        new Game(mainRoot, gameScene);
+        stage.setScene(gameScene);
     }
 }
