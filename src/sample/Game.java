@@ -19,7 +19,6 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private Shape falling, nextBlock;
     private boolean playing = true;
     private static int moveSpeed=400;
-    private SaveScoreWindow rw;
     private RankingManager rankingManager;
 
   public  Game(Pane mainRoot, Scene scene, RankingManager rankingManager) {
@@ -91,9 +90,11 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
 
         return new Square_Shape();
     }
+
 private void addShape(Shape shape){
     Platform.runLater(() -> gameRoot.getChildren().add(shape.getGroup()));
 }
+
     @Override
     public void handle(KeyEvent keyEvent) {
         if (playing) {
@@ -118,6 +119,7 @@ private void addShape(Shape shape){
         }
 
     }
+
     private void initialBlockSpawn(){
         falling=spawnNewShape();
         addShape(falling);
@@ -125,7 +127,6 @@ private void addShape(Shape shape){
         nextBlock.positionNextBlock();
         addShape(nextBlock);
     }
-
 
     private void swapBlocks(){
         falling=nextBlock;
@@ -143,7 +144,7 @@ private void addShape(Shape shape){
     }
 
     private void saveScoreWindow(){
-            rw=new SaveScoreWindow(rankingManager);
+        SaveScoreWindow rw = new SaveScoreWindow(rankingManager);
             rw.addTextField();
     }
 

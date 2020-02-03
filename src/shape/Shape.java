@@ -45,12 +45,6 @@ public abstract class Shape implements Shapes {
         return colors[colorInt];
     }
 
-    public void positionNextBlock(){
-        right=NEXT_BLOCK_X;
-        down=NEXT_BLOCK_Y;
-        setPosition();
-
-    }
     @Override
     public void moveRight() {
         if (Shape.isMovableLeftRight(this, right+1, getMovingRightObjects())) {
@@ -97,7 +91,6 @@ public abstract class Shape implements Shapes {
             setPosition();
         }
     }
-
     private static boolean isMovableLeftRight(Shape shape, int right, ArrayList<Square> squares){
          Square[][] gameBoard= GameBoard.getInstance().getBoard();
         int down=shape.getDown();
@@ -135,18 +128,12 @@ public abstract class Shape implements Shapes {
         }
     }
 
-    private boolean checkBoardCollision(int[] x, int[] y){
-        for (int i=0;i<x.length;i++){
-            if (x[i] + right<0 || x[i]+right>=GameBoard.MAX_X) return false;
-            if (y[i] + down<0 || y[i]+down>=GameBoard.MAX_Y) return false;
-            if (gameBoard[x[i] + right][y[i] + down] != null) {
-                return false;
-        }
+    public void positionNextBlock(){
+        right=NEXT_BLOCK_X;
+        down=NEXT_BLOCK_Y;
+        setPosition();
 
-        }
-        return true;
     }
-
 
     private void swapCollisionObjects(){
         ArrayList<Square> temp;
@@ -157,21 +144,36 @@ public abstract class Shape implements Shapes {
         movingUpObjects=temp;
     }
 
+    private boolean checkBoardCollision(int[] x, int[] y){
+        for (int i=0;i<x.length;i++){
+            if (x[i] + right<0 || x[i]+right>=GameBoard.MAX_X) return false;
+            if (y[i] + down<0 || y[i]+down>=GameBoard.MAX_Y) return false;
+            if (gameBoard[x[i] + right][y[i] + down] != null) {
+                return false;
+            }
+
+        }
+        return true;
+    }
+
     public int getDown() {
         return down;
     }
-
     private int getRight() {
         return right;
     }
-
+    public void setDown(int down) {
+        this.down = down;
+    }
+    public void setRight(int right) {
+        this.right = right;
+    }
 
     public Group getGroup() {
         return bigSquare;
     }
 
-    protected abstract void positionBlock1();
-
+    protected abstract void initMovingObjects();
     private ArrayList<Square> getMovingDownObjects() {
         return movingDownObjects;
     }
@@ -182,23 +184,10 @@ public abstract class Shape implements Shapes {
         return movingRightObjects;
     }
 
-    public void setDown(int down) {
-        this.down = down;
-    }
-
-    public void setRight(int right) {
-        this.right = right;
-    }
-
-    public static int getStartingX() {
-        return STARTING_X;
-    }
-
-    protected abstract void initMovingObjects();
-
-    protected abstract void positionBlock4();
+    protected abstract void positionBlock1();
     protected abstract void positionBlock2();
     protected abstract void positionBlock3();
+    protected abstract void positionBlock4();
     public Square[] getFigure() {
         return figure;
     }
@@ -206,7 +195,9 @@ public abstract class Shape implements Shapes {
     public int getPositionX(Square square){
         return square.getStartingArrayX()+right;
     }
-
+    public static int getStartingX() {
+        return STARTING_X;
+    }
     public int getPositionY(Square square){
         return square.getStartingArrayY()+down;
     }
