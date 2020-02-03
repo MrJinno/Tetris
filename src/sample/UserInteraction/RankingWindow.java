@@ -8,13 +8,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class RankingWindow {
-    private Stage stage=new Stage();
+    private Stage stage = new Stage();
+
     public RankingWindow(RankingManager rankingManager) {
-        VBox vBox=new VBox(5);
+        VBox vBox = new VBox(5);
         vBox.setAlignment(Pos.CENTER);
         vBox.setPadding(new Insets(25));
-        Scene scene=new Scene(vBox);
-        ListView<Player> playerListView=new ListView<>();
+        Scene scene = new Scene(vBox);
+        ListView<Player> playerListView = new ListView<>();
         playerListView.getItems().addAll(rankingManager.getPlayers());
         vBox.getChildren().add(playerListView);
         stage.setWidth(300);

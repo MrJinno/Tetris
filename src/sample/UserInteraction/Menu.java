@@ -7,24 +7,24 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Menu  {
-    private Button buttonPlay=addButton();
-    private Button buttonExit=addButton();
-    private Button buttonScore=addButton();
+public class Menu {
+    private Button buttonPlay = createButton();
+    private Button buttonExit = createButton();
+    private Button buttonScore = createButton();
     private RankingManager rankingManager;
-   private Stage stage;
+    private Stage stage;
 
     public Menu(Stage stage, RankingManager rankingManager) {
-        this.rankingManager=rankingManager;
+        this.rankingManager = rankingManager;
 
-        this.stage=stage;
+        this.stage = stage;
         stage.setTitle("MENU");
         stage.setWidth(200);
         stage.setHeight(300);
         stage.setX(850);
         stage.setY(400);
         stage.setResizable(false);
-        Pane pane=new Pane(buttonPlay, buttonExit, buttonScore);
+        Pane pane = new Pane(buttonPlay, buttonExit, buttonScore);
         manageButtons();
         Scene scene = new Scene(pane);
         stage.setScene(scene);
@@ -32,11 +32,11 @@ public class Menu  {
 
     }
 
-   public Button getButtonPlay() {
+    public Button getButtonPlay() {
         return buttonPlay;
     }
 
-    private void manageButtons(){
+    private void manageButtons() {
         buttonPlay.setText("Play");
         buttonPlay.setLayoutX(40);
         buttonPlay.setLayoutY(10);
@@ -62,8 +62,9 @@ public class Menu  {
         });
 
     }
-    private Button addButton(){
-        Button button=new Button();
+
+    private Button createButton() {
+        Button button = new Button();
         button.setPrefSize(100, 50);
         return button;
     }

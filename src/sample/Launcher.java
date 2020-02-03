@@ -16,7 +16,8 @@ import sample.UserInteraction.RankingManager;
 
 public class Launcher extends Application {
     private Menu menu;
-    private RankingManager rankingManager= new RankingManager();
+    private RankingManager rankingManager = new RankingManager();
+
     public static void main(String[] args) {
         Application.launch(Launcher.class, args);
     }
@@ -27,12 +28,12 @@ public class Launcher extends Application {
         stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, event -> {
             System.exit(0);
         });
-        menu=new Menu(stage, rankingManager);
+        menu = new Menu(stage, rankingManager);
         menuEventHandler(stage);
 
     }
 
-    private void menuEventHandler(Stage stage){
+    private void menuEventHandler(Stage stage) {
         menu.getButtonPlay().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -42,7 +43,8 @@ public class Launcher extends Application {
             }
         });
     }
-    private void setGameScene(Stage stage){
+
+    private void setGameScene(Stage stage) {
         new Music("beat.mp3");
         stage.setWidth(515);
         stage.setHeight(635);

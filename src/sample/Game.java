@@ -18,15 +18,15 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private GameBoard gameBoard = GameBoard.getInstance();
     private Shape falling, nextBlock;
     private boolean playing = true;
-    private static int moveSpeed=400;
+    private static int moveSpeed = 400;
     private RankingManager rankingManager;
 
-  public  Game(Pane mainRoot, Scene scene, RankingManager rankingManager) {
-      this.rankingManager=rankingManager;
+    public Game(Pane mainRoot, Scene scene, RankingManager rankingManager) {
+        this.rankingManager = rankingManager;
         Background background = new Background(); //todo background extends pane/group
         gameRoot = new Pane();
         initialBlockSpawn();
-         scene.setOnKeyPressed(this);
+        scene.setOnKeyPressed(this);
         mainRoot.getChildren().addAll(background.getGroup(), gameRoot, ScoreBoard.getInstance().getText());
         new Thread(this).start();
     }
@@ -44,40 +44,40 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     }
 
     private void tickGame() throws InterruptedException {
-            Thread.sleep(moveSpeed);
-            if (Shape.isMovableDown(falling)) {
-               falling.moveDown();
-            } else {
-                gameBoard.newPositionDown(falling);
-                checkWinCondition();
-                checkLoseCondition();
-                 swapBlocks();
-            }
+        Thread.sleep(moveSpeed);
+        if (Shape.isMovableDown(falling)) {
+            falling.moveDown();
+        } else {
+            gameBoard.newPositionDown(falling);
+            checkWinCondition();
+            checkLoseCondition();
+            swapBlocks();
         }
+    }
 
-    private void checkWinCondition()
-    {
-        Platform.runLater(()->{
+    private void checkWinCondition() {
+        Platform.runLater(() -> {
             gameBoard.checkWinCondition(gameRoot);
         });
     }
-    private void checkLoseCondition(){
-        if (falling.getDown()<3){
-            playing=false;
+
+    private void checkLoseCondition() {
+        if (falling.getDown() < 3) {
+            playing = false;
             ScoreBoard.getInstance().setLost();
         }
     }
 
     private Shape spawnNewShape() {
-        Random r=new Random();
-       ShapeType shapeType=ShapeType.values()[r.nextInt(ShapeType.values().length-1)];
-        switch (shapeType){
-        case L_SHAPE:
-            return new L_Shape();
-        case SQUARE:
-            return new Square_Shape();
-        case Z_SHAPE:
-            return new Z_Shape();
+        Random r = new Random();
+        ShapeType shapeType = ShapeType.values()[r.nextInt(ShapeType.values().length - 1)];
+        switch (shapeType) {
+            case L_SHAPE:
+                return new L_Shape();
+            case SQUARE:
+                return new Square_Shape();
+            case Z_SHAPE:
+                return new Z_Shape();
             case L_Shape2:
                 return new L_Shape2();
             case Z_Shape2:
@@ -91,9 +91,9 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
         return new Square_Shape();
     }
 
-private void addShape(Shape shape){
-    Platform.runLater(() -> gameRoot.getChildren().add(shape.getGroup()));
-}
+    private void addShape(Shape shape) {
+        Platform.runLater(() -> gameRoot.getChildren().add(shape.getGroup()));
+    }
 
     @Override
     public void handle(KeyEvent keyEvent) {
@@ -120,32 +120,33 @@ private void addShape(Shape shape){
 
     }
 
-    private void initialBlockSpawn(){
-        falling=spawnNewShape();
+    private void initialBlockSpawn() {
+        falling = spawnNewShape();
         addShape(falling);
-        nextBlock=spawnNewShape();
+        nextBlock = spawnNewShape();
         nextBlock.positionNextBlock();
         addShape(nextBlock);
     }
 
-    private void swapBlocks(){
-        falling=nextBlock;
+    private void swapBlocks() {
+        falling = nextBlock;
         falling.setDown(0);
         falling.setRight(Shape.getStartingX());
-        falling.setPosition();
-        nextBlock=spawnNewShape();
+        falling.updatePosition();
+        nextBlock = spawnNewShape();
         nextBlock.positionNextBlock();
         addShape(nextBlock);
     }
-    static void setMoveSpeed(){
-        if (moveSpeed!=200){
-            moveSpeed=moveSpeed-10;
+
+    static void setMoveSpeed() {
+        if (moveSpeed != 200) {
+            moveSpeed = moveSpeed - 10;
         }
     }
 
-    private void saveScoreWindow(){
+    private void saveScoreWindow() {
         SaveScoreWindow rw = new SaveScoreWindow(rankingManager);
-            rw.addTextField();
+        rw.addTextField();
     }
 
 }

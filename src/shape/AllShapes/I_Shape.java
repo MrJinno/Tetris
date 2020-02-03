@@ -9,7 +9,7 @@ public class I_Shape extends Shape {
         super();
     }
 
-    protected void positionBlock1(){
+    protected void positionBlock1() {
 
         figure[0].setPositionX(0);
         figure[0].setPositionY(0);
@@ -27,74 +27,75 @@ public class I_Shape extends Shape {
         figure[3].setPositionY(0);
 
 
-        nextX= new int[]{2, 2, 2};
-        nextY= new int[]{-2, -1, 1};
+        nextX = new int[]{2, 2, 2};
+        nextY = new int[]{-2, -1, 1};
 
     }
 
     protected void positionBlock2() {
 
 
-            figure[0].setPositionX(2);
-            figure[0].setPositionY(-2);
+        figure[0].setPositionX(2);
+        figure[0].setPositionY(-2);
 
 
-            figure[1].setPositionX(2);
-            figure[1].setPositionY(-1);
+        figure[1].setPositionX(2);
+        figure[1].setPositionY(-1);
 
 
-            figure[3].setPositionX(2);
-            figure[3].setPositionY(1);
+        figure[3].setPositionX(2);
+        figure[3].setPositionY(1);
 
 
-        nextX= new int[]{1, 3, 4};
-        nextY= new int[]{0, 0, 0};
-
-    }
-    protected void positionBlock3(){
-
-
-            figure[3].setPositionX(1);
-            figure[3].setPositionY(0);
-
-
-            figure[1].setPositionX(3);
-            figure[1].setPositionY(0);
-
-
-            figure[0].setPositionX(4);
-            figure[0].setPositionY(0);
-
-
-
-        nextX= new int[]{2, 2, 2};
-        nextY= new int[]{2, 1, -1};
+        nextX = new int[]{1, 3, 4};
+        nextY = new int[]{0, 0, 0};
 
     }
-    protected void positionBlock4(){
+
+    protected void positionBlock3() {
 
 
-
-            figure[0].setPositionX(2);
-            figure[0].setPositionY(2);
-
-
-            figure[1].setPositionX(2);
-            figure[1].setPositionY(1);
+        figure[3].setPositionX(1);
+        figure[3].setPositionY(0);
 
 
-            figure[3].setPositionX(2);
-            figure[3].setPositionY(-1);
+        figure[1].setPositionX(3);
+        figure[1].setPositionY(0);
 
 
-        nextX= new int[]{0, 1, 3};
-        nextY= new int[]{0, 0, 0};
+        figure[0].setPositionX(4);
+        figure[0].setPositionY(0);
+
+
+        nextX = new int[]{2, 2, 2};
+        nextY = new int[]{2, 1, -1};
+
     }
+
+    protected void positionBlock4() {
+
+
+        figure[0].setPositionX(2);
+        figure[0].setPositionY(2);
+
+
+        figure[1].setPositionX(2);
+        figure[1].setPositionY(1);
+
+
+        figure[3].setPositionX(2);
+        figure[3].setPositionY(-1);
+
+
+        nextX = new int[]{0, 1, 3};
+        nextY = new int[]{0, 0, 0};
+    }
+
     public void initMovingObjects() {
-        movingUpObjects=new ArrayList<>();
-        movingDownObjects =new ArrayList<>();
+        movingUpObjects = new ArrayList<>();
+        movingDownObjects = new ArrayList<>();
         movingLeftObjects = new ArrayList<>();
-        movingRightObjects =new ArrayList<>();
+        movingRightObjects = new ArrayList<>();
         movingUpObjects.add(figure[0]);
         movingUpObjects.add(figure[1]);
         movingUpObjects.add(figure[2]);

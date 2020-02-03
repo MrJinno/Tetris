@@ -7,16 +7,16 @@ import javafx.scene.control.TextInputDialog;
 
 public class SaveScoreWindow {
     private TextInputDialog textInput;
-    private Player player=new Player();
+    private Player player = new Player();
     private RankingManager rankingManager;
 
     public SaveScoreWindow(RankingManager rankingManager) {
         this.rankingManager = rankingManager;
     }
 
-    public void addTextField(){
-        Platform.runLater(()->{
-            textInput=new TextInputDialog();
+    public void addTextField() {
+        Platform.runLater(() -> {
+            textInput = new TextInputDialog();
             textInput.setY(50);
             textInput.setX(50);
             textInput.setTitle("Game OVER");
@@ -28,13 +28,13 @@ public class SaveScoreWindow {
         });
     }
 
-   public void savePlayer(){
-        String name=textInput.resultProperty().get();
-       if (!name.isEmpty()){
-           player.setName(name);
-           rankingManager.saveScore(player);
-       }
-   }
+    public void savePlayer() {
+        String name = textInput.resultProperty().get();
+        if (!name.isEmpty()) {
+            player.setName(name);
+            rankingManager.saveScore(player);
+        }
+    }
 
 
 }

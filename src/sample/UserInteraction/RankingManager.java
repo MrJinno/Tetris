@@ -11,14 +11,14 @@ public class RankingManager {
     private List<Player> ranking;
 
     public RankingManager() {
-        ranking=new ArrayList<>();
+        ranking = new ArrayList<>();
         loadRanking();
     }
 
     @SuppressWarnings("unchecked")
-    private void loadRanking(){
+    private void loadRanking() {
         try {
-            ObjectInputStream ois=new ObjectInputStream(new FileInputStream(RANKING_FILENAME));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(RANKING_FILENAME));
             ranking = (List<Player>) ois.readObject();
             ois.close();
             System.out.println(ranking);
@@ -26,9 +26,10 @@ public class RankingManager {
 
         }
     }
-    private void saveRanking(){
+
+    private void saveRanking() {
         try {
-            ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(RANKING_FILENAME));
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(RANKING_FILENAME));
             oos.writeObject(ranking);
             oos.flush();
             oos.close();
@@ -42,11 +43,10 @@ public class RankingManager {
         return ranking;
     }
 
-    public void saveScore(Player player){
+    public void saveScore(Player player) {
         ranking.add(player);
         saveRanking();
     }
-
 
 
 }

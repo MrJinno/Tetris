@@ -34,18 +34,14 @@ public class Square_Shape extends Shape implements Shapes {
         figure[3].setPositionY(1);
 
 
-
-
     }
 
 
-
-
     public void initMovingObjects() {
-        movingUpObjects=new ArrayList<>();
-        movingDownObjects =new ArrayList<>();
+        movingUpObjects = new ArrayList<>();
+        movingDownObjects = new ArrayList<>();
         movingLeftObjects = new ArrayList<>();
-        movingRightObjects =new ArrayList<>();
+        movingRightObjects = new ArrayList<>();
         movingUpObjects.add(figure[0]);
         movingUpObjects.add(figure[1]);
         movingDownObjects.add(figure[3]);
@@ -73,12 +69,10 @@ public class Square_Shape extends Shape implements Shapes {
     }
 
 
-
     @Override
-    public  void rotate(){
+    public void rotate() {
 
     }
-
 
 
 }
