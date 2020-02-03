@@ -2,13 +2,7 @@ package sample.UserInteraction;
 
 import javafx.application.Platform;
 
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 
 public class RankingWindow {
@@ -36,8 +30,8 @@ public class RankingWindow {
 
    public void savePlayer(){
         String name=textInput.resultProperty().get();
-       if (!name.isBlank()){
-           player.setImie(name);
+       if (!name.isEmpty()){
+           player.setName(name);
            rankingManager.saveScore(player);
        }
    }

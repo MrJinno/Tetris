@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -21,15 +20,15 @@ public class Launcher extends Application {
     public static void main(String[] args) {
         Application.launch(Launcher.class, args);
     }
+
+
     @Override
     public void start(Stage stage) {
         stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, event -> {
             System.exit(0);
         });
         menu=new Menu(stage, rankingManager);
-        stage.setScene(menu.getScene());
         menuEventHandler(stage);
-        stage.show();
 
     }
 

@@ -2,6 +2,7 @@ package sample.UserInteraction;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RankingManager {
@@ -24,7 +25,7 @@ public class RankingManager {
             ois.close();
             System.out.println(ranking);
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
     }
     private void saveRanking(){
@@ -35,6 +36,7 @@ public class RankingManager {
             oos.flush();
             oos.close();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -47,6 +49,9 @@ public class RankingManager {
         saveRanking();
     }
 
+    public void sortPlayerScores(){
+        Collections.sort(ranking);
+    }
 
 
 

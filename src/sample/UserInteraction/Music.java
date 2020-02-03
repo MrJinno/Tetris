@@ -7,7 +7,6 @@ import javafx.scene.media.MediaPlayer;
 import java.io.File;
 
 public class Music {
-    private AudioClip mediaPlayer;
     private String s;
   public Music(String name) {
         s="resources//" + name;
@@ -15,7 +14,7 @@ public class Music {
     }
     private void music(){
         Media h=new Media(new File(s).toURI().toString());
-        mediaPlayer= new AudioClip(h.getSource());
+        AudioClip mediaPlayer = new AudioClip(h.getSource());
         mediaPlayer.play();
 
 

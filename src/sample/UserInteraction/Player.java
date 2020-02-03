@@ -4,27 +4,27 @@ import sample.ScoreBoard;
 
 import java.io.Serializable;
 
-public class Player implements Serializable {
+public class Player implements Serializable, Comparable<Player> {
     private int score= ScoreBoard.getInstance().getScore();
-    private String imie;
+    private String name;
 
-    public String getImie() {
-        return imie;
-    }
+
 
     public int getScore() {
         return score;
     }
 
-    public void setImie(String imie) {
-        this.imie = imie;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return "Player{" +
-                "score=" + score +
-                ", imie='" + imie + '\'' +
-                '}';
+        return "Name: " + name + " Score: " + score;
+    }
+
+    @Override
+    public int compareTo(Player o) {
+        return Integer.compare(o.score,score);
     }
 }

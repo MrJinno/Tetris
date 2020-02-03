@@ -17,7 +17,6 @@ public class Menu  {
     private Button buttonScore=addButton();
     private RankingManager rankingManager;
    private Stage stage;
-        private Scene scene;
 
     public Menu(Stage stage, RankingManager rankingManager) {
         this.rankingManager=rankingManager;
@@ -30,7 +29,9 @@ public class Menu  {
         stage.setY(400);
         Pane pane=new Pane(buttonPlay, buttonExit, buttonScore);
         manageButtons();
-        scene=new Scene(pane);
+        Scene scene = new Scene(pane);
+        stage.setScene(scene);
+        stage.show();
     }
 
    public Button getButtonPlay() {
@@ -63,18 +64,11 @@ public class Menu  {
         });
 
     }
-
-
-    public Scene getScene() {
-        return scene;
-    }
-
     private Button addButton(){
         Button button=new Button();
         button.setPrefSize(100, 50);
         return button;
     }
-
     public void showScoresWindow(){
         VBox vBox=new VBox(5);
         vBox.setAlignment(Pos.CENTER);
@@ -82,6 +76,7 @@ public class Menu  {
         Scene scene=new Scene(vBox);
         ListView<Player> playerListView=new ListView<>();
         playerListView.getItems().addAll(rankingManager.getPlayers());
+        rankingManager.sortPlayerScores();
         vBox.getChildren().add(playerListView);
         stage.setWidth(300);
         stage.setHeight(500);
@@ -89,6 +84,5 @@ public class Menu  {
         stage.setTitle("Scores: ");
         stage.setResizable(false);
     }
-
 
 }
