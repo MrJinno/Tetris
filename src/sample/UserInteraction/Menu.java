@@ -47,7 +47,7 @@ public class Menu  {
         buttonScore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                new RankingWindow(stage, rankingManager);
+                new RankingWindow(rankingManager);
             }
         });
 

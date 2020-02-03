@@ -68,7 +68,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
             ScoreBoard.getInstance().setLost();
         }
     }
-    
+
     private Shape spawnNewShape() {
         Random r=new Random();
        ShapeType shapeType=ShapeType.values()[r.nextInt(ShapeType.values().length-1)];
