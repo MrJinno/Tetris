@@ -10,54 +10,42 @@ public class Z_Shape2 extends Shape {
     }
 
     protected void positionBlock1() {
-
         figure[0].setPositionX(0);
         figure[0].setPositionY(0);
-
 
         figure[1].setPositionX(1);
         figure[1].setPositionY(1);
 
-
         figure[2].setPositionX(1);
         figure[2].setPositionY(0);
-
 
         figure[3].setPositionX(2);
         figure[3].setPositionY(1);
 
         nextX = new int[]{1, 0, 0};
         nextY = new int[]{-1, 0, 1};
-
     }
 
     protected void positionBlock2() {
-
         figure[0].setPositionX(1);
         figure[0].setPositionY(-1);
 
-
         figure[1].setPositionX(0);
         figure[1].setPositionY(0);
-
 
         figure[3].setPositionX(0);
         figure[3].setPositionY(1);
 
         nextX = new int[]{2, 1, 0};
         nextY = new int[]{0, -1, -1};
-
     }
 
     protected void positionBlock3() {
-
         figure[0].setPositionX(2);
         figure[0].setPositionY(0);
 
-
         figure[1].setPositionX(1);
         figure[1].setPositionY(-1);
-
 
         figure[3].setPositionX(0);
         figure[3].setPositionY(-1);
@@ -67,14 +55,11 @@ public class Z_Shape2 extends Shape {
     }
 
     protected void positionBlock4() {
-
         figure[0].setPositionX(1);
         figure[0].setPositionY(1);
 
-
         figure[1].setPositionX(2);
         figure[1].setPositionY(0);
-
 
         figure[3].setPositionX(2);
         figure[3].setPositionY(-1);
@@ -99,6 +84,5 @@ public class Z_Shape2 extends Shape {
         movingLeftObjects.add(figure[1]);
         movingRightObjects.add(figure[2]);
         movingRightObjects.add(figure[3]);
-
     }
 }

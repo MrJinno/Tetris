@@ -12,5 +12,4 @@ public interface Shapes {
     void rotate();
 
     Group getGroup();
-
 }

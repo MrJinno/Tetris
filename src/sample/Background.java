@@ -28,9 +28,7 @@ public class Background extends Pane {
         fillTheBoard();
         scoreBoard();
         nextBlockBoard();
-
     }
-
 
     private void createBackGround() {
         for (int i = 0; i < 25; i++) {
@@ -39,7 +37,6 @@ public class Background extends Pane {
                 background[i][j].getRectangle().setX(SQUARE_HEIGH * i);
                 background[i][j].getRectangle().setY(SQUARE_HEIGH * j);
                 addToGroup(background[i][j]);
-
             }
         }
     }
@@ -51,8 +48,6 @@ public class Background extends Pane {
                 board[i][j].getRectangle().setY(minY + (SQUARE_HEIGH * i) + SQUARE_HEIGH);
                 board[i][j].getRectangle().setX(minX + (SQUARE_HEIGH * j) + SQUARE_HEIGH);
                 addToGroup(board[i][j]);
-
-
             }
         }
     }
@@ -64,8 +59,6 @@ public class Background extends Pane {
                 background[i][j].getRectangle().setY(minY + (SQUARE_HEIGH * i) + SQUARE_HEIGH);
                 background[i][j].getRectangle().setX(minX + (SQUARE_HEIGH * j) + SQUARE_HEIGH);
                 addToGroup(background[i][j]);
-
-
             }
         }
     }
@@ -77,8 +70,6 @@ public class Background extends Pane {
                 background[i][j].getRectangle().setY(minY + (SQUARE_HEIGH * i) + SQUARE_HEIGH);
                 background[i][j].getRectangle().setX(minX + (SQUARE_HEIGH * j) + SQUARE_HEIGH);
                 addToGroup(background[i][j]);
-
-
             }
         }
     }

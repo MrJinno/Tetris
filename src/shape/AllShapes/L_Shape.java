@@ -12,83 +12,61 @@ public class L_Shape extends Shape {
 
     }
 
-
     protected void positionBlock1() {
-
         figure[0].setPositionX(0);
         figure[0].setPositionY(0);
-
 
         figure[1].setPositionX(1);
         figure[1].setPositionY(0);
 
-
         figure[2].setPositionX(2);
         figure[2].setPositionY(0);
 
-
         figure[3].setPositionX(2);
         figure[3].setPositionY(1);
-
 
         nextX = new int[]{1, 1, 0};
         nextY = new int[]{-1, 1, 1};
     }
 
     protected void positionBlock2() {
-
         figure[0].setPositionX(1);
         figure[0].setPositionY(-1);
-
 
         figure[2].setPositionX(1);
         figure[2].setPositionY(1);
 
-
         figure[3].setPositionX(0);
         figure[3].setPositionY(1);
 
-
         nextX = new int[]{2, 0, 0};
         nextY = new int[]{0, 0, -1};
-
     }
 
     protected void positionBlock3() {
-
         figure[0].setPositionX(2);
         figure[0].setPositionY(0);
-
 
         figure[2].setPositionX(0);
         figure[2].setPositionY(0);
 
-
         figure[3].setPositionX(0);
         figure[3].setPositionY(-1);
 
-
         nextX = new int[]{1, 1, 2};
         nextY = new int[]{1, -1, -1};
-
     }
 
     protected void positionBlock4() {
-
-
         figure[0].setPositionX(1);
         figure[0].setPositionY(1);
-
 
         figure[2].setPositionX(1);
         figure[2].setPositionY(-1);
 
-
         figure[3].setPositionX(2);
         figure[3].setPositionY(-1);
 
-
-        ;
         nextX = new int[]{0, 2, 2};
         nextY = new int[]{0, 0, 1};
     }
@@ -109,6 +87,5 @@ public class L_Shape extends Shape {
         movingLeftObjects.add(figure[3]);
         movingRightObjects.add(figure[2]);
         movingRightObjects.add(figure[3]);
-
     }
 }

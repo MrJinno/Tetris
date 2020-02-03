@@ -29,9 +29,7 @@ public class GameBoard {
     void newPositionDown(Shape shape) {
         for (Square square : shape.getFigure()) {
             board[shape.getPositionX(square)][shape.getPositionY(square)] = square;
-
         }
-
     }
 
     void checkWinCondition(Pane root) {
@@ -77,8 +75,5 @@ public class GameBoard {
                 }
             }
         }
-
     }
-
-
 }

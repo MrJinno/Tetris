@@ -24,7 +24,6 @@ public class SaveScoreWindow {
             textInput.setContentText("Enter your name...");
             textInput.show();
             textInput.setOnHidden(e -> savePlayer());
-
         });
     }
 
@@ -35,6 +34,4 @@ public class SaveScoreWindow {
             rankingManager.saveScore(player);
         }
     }
-
-
 }

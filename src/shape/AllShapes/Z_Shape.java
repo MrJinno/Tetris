@@ -42,7 +42,6 @@ public class Z_Shape extends Shape {
     }
 
     protected void positionBlock3() {
-
         figure[0].setPositionX(2);
         figure[0].setPositionY(-1);
 

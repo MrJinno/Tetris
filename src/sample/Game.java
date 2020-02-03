@@ -62,7 +62,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     }
 
     private void checkLoseCondition() {
-        if (falling.getDown() < 3) {
+        if (falling.getDownIndex() < 3) {
             playing = false;
             ScoreBoard.getInstance().setLost();
         }
@@ -87,7 +87,6 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
             case _I_SHAPE:
                 return new _I_Shape();
         }
-
         return new Square_Shape();
     }
 
@@ -114,10 +113,8 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
                 case ESCAPE:
                     System.exit(0);
                     break;
-
             }
         }
-
     }
 
     private void initialBlockSpawn() {
@@ -130,8 +127,8 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
 
     private void swapBlocks() {
         falling = nextBlock;
-        falling.setDown(0);
-        falling.setRight(Shape.getStartingX());
+        falling.setDownIndex(0);
+        falling.setRightIndex(Shape.getStartingX());
         falling.updatePosition();
         nextBlock = spawnNewShape();
         nextBlock.positionNextBlock();
@@ -148,5 +145,4 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
         SaveScoreWindow rw = new SaveScoreWindow(rankingManager);
         rw.addTextField();
     }
-
 }

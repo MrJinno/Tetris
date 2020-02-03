@@ -30,7 +30,6 @@ public class Launcher extends Application {
         });
         menu = new Menu(stage, rankingManager);
         menuEventHandler(stage);
-
     }
 
     private void menuEventHandler(Stage stage) {

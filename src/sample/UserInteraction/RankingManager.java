@@ -23,7 +23,6 @@ public class RankingManager {
             ois.close();
             System.out.println(ranking);
         } catch (Exception e) {
-
         }
     }
 
@@ -47,6 +46,4 @@ public class RankingManager {
         ranking.add(player);
         saveRanking();
     }
-
-
 }

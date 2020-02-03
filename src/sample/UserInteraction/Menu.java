@@ -29,7 +29,6 @@ public class Menu {
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.show();
-
     }
 
     public Button getButtonPlay() {
@@ -60,7 +59,6 @@ public class Menu {
                 System.exit(0);
             }
         });
-
     }
 
     private Button createButton() {
@@ -68,6 +66,4 @@ public class Menu {
         button.setPrefSize(100, 50);
         return button;
     }
-
-
 }

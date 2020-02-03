@@ -18,8 +18,5 @@ public class Music {
         Media h = new Media(new File(s).toURI().toString());
         AudioClip mediaPlayer = new AudioClip(h.getSource());
         mediaPlayer.play();
-
-
     }
-
 }

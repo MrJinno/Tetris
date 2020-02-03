@@ -11,5 +11,4 @@ public enum ShapeType {
     _I_SHAPE,
     L_Shape2,
     Z_Shape2;
-
 }
