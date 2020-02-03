@@ -8,12 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class RankingWindow {
-    private Stage stage;
-    private RankingManager rankingManager;
-
     public RankingWindow(Stage stage, RankingManager rankingManager) {
-        this.stage=stage;
-        this.rankingManager=rankingManager;
         VBox vBox=new VBox(5);
         vBox.setAlignment(Pos.CENTER);
         vBox.setPadding(new Insets(25));
