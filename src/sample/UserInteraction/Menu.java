@@ -2,13 +2,9 @@ package sample.UserInteraction;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Menu  {
@@ -51,7 +47,7 @@ public class Menu  {
         buttonScore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                new ScoreWindow(stage, rankingManager);
+                new RankingWindow(stage, rankingManager);
             }
         });
 

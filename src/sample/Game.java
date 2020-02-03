@@ -3,12 +3,9 @@ package sample;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
-import sample.UserInteraction.Player;
 import sample.UserInteraction.RankingManager;
-import sample.UserInteraction.RankingWindow;
+import sample.UserInteraction.SaveScoreWindow;
 import shape.AllShapes.*;
 import shape.Shape;
 import shape.*;
@@ -22,7 +19,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private Shape falling, nextBlock;
     private boolean playing = true;
     private static int moveSpeed=400;
-    private RankingWindow rw;
+    private SaveScoreWindow rw;
     private RankingManager rankingManager;
 
 
@@ -153,7 +150,7 @@ private void addShape(Shape shape){
     }
 
     private void saveScoreWindow(){
-            rw=new RankingWindow(rankingManager);
+            rw=new SaveScoreWindow(rankingManager);
             rw.addTextField();
     }
 

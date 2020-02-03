@@ -1,40 +1,30 @@
 package sample.UserInteraction;
 
-import javafx.application.Platform;
-
-import javafx.scene.control.TextInputDialog;
-
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class RankingWindow {
-    private TextInputDialog textInput;
-    private Player player=new Player();
+    private Stage stage;
     private RankingManager rankingManager;
 
-    public RankingWindow(RankingManager rankingManager) {
-        this.rankingManager = rankingManager;
+    public RankingWindow(Stage stage, RankingManager rankingManager) {
+        this.stage = stage;
+        VBox vBox=new VBox(5);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setPadding(new Insets(25));
+        Scene scene=new Scene(vBox);
+        ListView<Player> playerListView=new ListView<>();
+        playerListView.getItems().addAll(rankingManager.getPlayers());
+        rankingManager.sortPlayerScores();
+        vBox.getChildren().add(playerListView);
+        stage.setWidth(300);
+        stage.setHeight(500);
+        stage.setScene(scene);
+        stage.setTitle("Scores: ");
+        stage.setResizable(false);
     }
-
-    public void addTextField(){
-        Platform.runLater(()->{
-            textInput=new TextInputDialog();
-            textInput.setY(50);
-            textInput.setX(50);
-            textInput.setTitle("Game OVER");
-            textInput.setHeaderText("You got: " + player.getScore() + "Points!");
-            textInput.setContentText("Enter your name...");
-            textInput.show();
-            textInput.setOnHidden(e -> savePlayer());
-
-        });
-    }
-
-   public void savePlayer(){
-        String name=textInput.resultProperty().get();
-       if (!name.isEmpty()){
-           player.setName(name);
-           rankingManager.saveScore(player);
-       }
-   }
-
-
 }
