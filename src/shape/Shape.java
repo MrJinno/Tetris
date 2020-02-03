@@ -20,14 +20,11 @@ public abstract class Shape implements Shapes {
 
     public Shape() {
         Color color = Shape.randomizeColor();
-        figure[0]=new Square(color);
-        figure[1]=new Square(color);
-        figure[2]=new Square(color);
-        figure[3]=new Square(color);
+     for (int i=0;i<figure.length;i++){
+         figure[i]=new Square(color);
+         bigSquare.getChildren().add(figure[i].getRectangle());
+     }
 
-        for (Square square:figure){
-            bigSquare.getChildren().add(square.getRectangle());
-        }
         positionBlock1();
         setPosition();
         initMovingObjects();

@@ -16,7 +16,6 @@ public class RankingWindow {
         Scene scene=new Scene(vBox);
         ListView<Player> playerListView=new ListView<>();
         playerListView.getItems().addAll(rankingManager.getPlayers());
-        rankingManager.sortPlayerScores();
         vBox.getChildren().add(playerListView);
         stage.setWidth(300);
         stage.setHeight(500);

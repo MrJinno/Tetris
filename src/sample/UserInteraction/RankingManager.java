@@ -1,5 +1,6 @@
 package sample.UserInteraction;
 
+import javax.swing.text.html.ListView;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,8 +28,7 @@ public class RankingManager {
     }
     private void saveRanking(){
         try {
-            FileOutputStream fos= new FileOutputStream(RANKING_FILENAME);
-            ObjectOutputStream oos=new ObjectOutputStream(fos);
+            ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(RANKING_FILENAME));
             oos.writeObject(ranking);
             oos.flush();
             oos.close();
@@ -38,6 +38,7 @@ public class RankingManager {
     }
 
     public List<Player> getPlayers() {
+        Collections.sort(ranking);
         return ranking;
     }
 
@@ -46,8 +47,6 @@ public class RankingManager {
         saveRanking();
     }
 
-    public void sortPlayerScores(){
-        Collections.sort(ranking);
-    }
+
 
 }
