@@ -22,7 +22,6 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private Shape falling, nextBlock;
     private boolean playing = true;
     private static int moveSpeed=400;
-    private Stage stage2;
     private RankingWindow rw;
     private RankingManager rankingManager;
 
