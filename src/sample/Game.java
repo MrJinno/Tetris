@@ -22,7 +22,6 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private SaveScoreWindow rw;
     private RankingManager rankingManager;
 
-
   public  Game(Pane mainRoot, Scene scene, RankingManager rankingManager) {
       this.rankingManager=rankingManager;
         Background background = new Background(); //todo background extends pane/group
@@ -33,7 +32,6 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
         new Thread(this).start();
     }
 
-
     @Override
     public void run() {
         while (playing) {
@@ -42,14 +40,8 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
         }
         saveScoreWindow();
-
-
-
-
     }
 
     private void tickGame() throws InterruptedException {
@@ -76,6 +68,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
             ScoreBoard.getInstance().setLost();
         }
     }
+    
     private Shape spawnNewShape() {
         Random r=new Random();
        ShapeType shapeType=ShapeType.values()[r.nextInt(ShapeType.values().length-1)];
