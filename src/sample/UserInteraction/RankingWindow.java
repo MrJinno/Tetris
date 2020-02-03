@@ -12,7 +12,8 @@ public class RankingWindow {
     private RankingManager rankingManager;
 
     public RankingWindow(Stage stage, RankingManager rankingManager) {
-        this.stage = stage;
+        this.stage=stage;
+        this.rankingManager=rankingManager;
         VBox vBox=new VBox(5);
         vBox.setAlignment(Pos.CENTER);
         vBox.setPadding(new Insets(25));
