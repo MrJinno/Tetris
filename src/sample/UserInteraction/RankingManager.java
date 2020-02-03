@@ -14,9 +14,6 @@ public class RankingManager {
         loadRanking();
     }
 
-
-
-
     @SuppressWarnings("unchecked")
     private void loadRanking(){
         try {
@@ -52,8 +49,5 @@ public class RankingManager {
     public void sortPlayerScores(){
         Collections.sort(ranking);
     }
-
-
-
 
 }

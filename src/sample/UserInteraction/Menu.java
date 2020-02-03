@@ -27,11 +27,13 @@ public class Menu  {
         stage.setHeight(300);
         stage.setX(850);
         stage.setY(400);
+        stage.setResizable(false);
         Pane pane=new Pane(buttonPlay, buttonExit, buttonScore);
         manageButtons();
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.show();
+
     }
 
    public Button getButtonPlay() {
@@ -49,7 +51,7 @@ public class Menu  {
         buttonScore.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                showScoresWindow();
+                new ScoreWindow(stage, rankingManager);
             }
         });
 
@@ -69,20 +71,6 @@ public class Menu  {
         button.setPrefSize(100, 50);
         return button;
     }
-    public void showScoresWindow(){
-        VBox vBox=new VBox(5);
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setPadding(new Insets(25));
-        Scene scene=new Scene(vBox);
-        ListView<Player> playerListView=new ListView<>();
-        playerListView.getItems().addAll(rankingManager.getPlayers());
-        rankingManager.sortPlayerScores();
-        vBox.getChildren().add(playerListView);
-        stage.setWidth(300);
-        stage.setHeight(500);
-        stage.setScene(scene);
-        stage.setTitle("Scores: ");
-        stage.setResizable(false);
-    }
+
 
 }
