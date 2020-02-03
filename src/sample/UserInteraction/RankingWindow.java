@@ -1,41 +1,46 @@
 package sample.UserInteraction;
 
-import javafx.event.EventHandler;
+import javafx.application.Platform;
+
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.Scanner;
 
 public class RankingWindow {
-    private Scene scene;
-    private TextField textField=addTextField();
-    public RankingWindow(Stage stage) {
-    stage.setTitle("MENU");
-        stage.setWidth(400);
-        stage.setHeight(200);
-        stage.setX(850);
-        stage.setY(400);
-        Pane pane=new Pane(textField);
-        scene=new Scene(pane);
-        stage.setScene(scene);
+    private TextInputDialog textInput;
+    private Player player=new Player();
+    private RankingManager rankingManager;
 
-}
-    public TextField addTextField(){
-        TextField textField=new TextField();
-        textField.setLayoutY(50);
-        textField.setLayoutX(50);
-        return textField;
+    public RankingWindow(RankingManager rankingManager) {
+        this.rankingManager = rankingManager;
     }
 
-    public Scene getScene() {
-        return scene;
+    public void addTextField(){
+        Platform.runLater(()->{
+            textInput=new TextInputDialog();
+            textInput.setY(50);
+            textInput.setX(50);
+            textInput.setTitle("Game OVER");
+            textInput.setHeaderText("You got: " + player.getScore() + "Points!");
+            textInput.setContentText("Enter your name...");
+            textInput.show();
+            textInput.setOnHidden(e -> savePlayer());
+
+        });
     }
 
-    public String getName(){
-        return textField.toString();
-    }
+   public void savePlayer(){
+        String name=textInput.resultProperty().get();
+       if (!name.isBlank()){
+           player.setImie(name);
+           rankingManager.saveScore(player);
+       }
+   }
+
 
 }

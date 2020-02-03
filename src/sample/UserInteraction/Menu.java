@@ -1,26 +1,34 @@
 package sample.UserInteraction;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Parent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Menu  {
     private Button buttonPlay=addButton();
     private Button buttonExit=addButton();
+    private Button buttonScore=addButton();
+    private RankingManager rankingManager;
+   private Stage stage;
         private Scene scene;
 
-    public Menu(Stage stage) {
+    public Menu(Stage stage, RankingManager rankingManager) {
+        this.rankingManager=rankingManager;
+
+        this.stage=stage;
         stage.setTitle("MENU");
         stage.setWidth(200);
-        stage.setHeight(200);
+        stage.setHeight(300);
         stage.setX(850);
         stage.setY(400);
-        Pane pane=new Pane(buttonPlay, buttonExit);
+        Pane pane=new Pane(buttonPlay, buttonExit, buttonScore);
         manageButtons();
         scene=new Scene(pane);
     }
@@ -30,13 +38,23 @@ public class Menu  {
     }
 
     private void manageButtons(){
+        buttonPlay.setText("Play");
         buttonPlay.setLayoutX(40);
         buttonPlay.setLayoutY(10);
-        buttonPlay.setText("Play");
+
+        buttonScore.setText("Score");
+        buttonScore.setLayoutX(40);
+        buttonScore.setLayoutY(90);
+        buttonScore.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                showScoresWindow();
+            }
+        });
 
         buttonExit.setText("Exit");
         buttonExit.setLayoutX(40);
-        buttonExit.setLayoutY(90);
+        buttonExit.setLayoutY(180);
         buttonExit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -46,6 +64,7 @@ public class Menu  {
 
     }
 
+
     public Scene getScene() {
         return scene;
     }
@@ -54,6 +73,21 @@ public class Menu  {
         Button button=new Button();
         button.setPrefSize(100, 50);
         return button;
+    }
+
+    public void showScoresWindow(){
+        VBox vBox=new VBox(5);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setPadding(new Insets(25));
+        Scene scene=new Scene(vBox);
+        ListView<Player> playerListView=new ListView<>();
+        playerListView.getItems().addAll(rankingManager.getPlayers());
+        vBox.getChildren().add(playerListView);
+        stage.setWidth(300);
+        stage.setHeight(500);
+        stage.setScene(scene);
+        stage.setTitle("Scores: ");
+        stage.setResizable(false);
     }
 
 

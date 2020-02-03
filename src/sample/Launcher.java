@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -11,12 +12,12 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.UserInteraction.Menu;
 import sample.UserInteraction.Music;
-import sample.UserInteraction.RankingWindow;
+import sample.UserInteraction.RankingManager;
 
 
 public class Launcher extends Application {
-    private Game game;
     private Menu menu;
+    private RankingManager rankingManager= new RankingManager();
     public static void main(String[] args) {
         Application.launch(Launcher.class, args);
     }
@@ -25,7 +26,7 @@ public class Launcher extends Application {
         stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, event -> {
             System.exit(0);
         });
-        menu=new Menu(stage);
+        menu=new Menu(stage, rankingManager);
         stage.setScene(menu.getScene());
         menuEventHandler(stage);
         stage.show();
@@ -36,8 +37,9 @@ public class Launcher extends Application {
         menu.getButtonPlay().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-
+                stage.hide();
                 setGameScene(stage);
+                stage.show();
             }
         });
     }
@@ -48,9 +50,10 @@ public class Launcher extends Application {
         stage.setTitle("Tetris!");
         stage.setX(600);
         stage.setY(200);
+        stage.setResizable(false);
         Pane mainRoot = new Pane();
         Scene gameScene = new Scene(mainRoot);
-         game=new Game(mainRoot, gameScene);
+        Game game = new Game(mainRoot, gameScene, rankingManager);
         stage.setScene(gameScene);
     }
 }

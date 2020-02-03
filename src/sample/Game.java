@@ -3,6 +3,7 @@ package sample;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import sample.UserInteraction.Player;
@@ -26,7 +27,8 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private RankingManager rankingManager;
 
 
-  public  Game(Pane mainRoot, Scene scene) {
+  public  Game(Pane mainRoot, Scene scene, RankingManager rankingManager) {
+      this.rankingManager=rankingManager;
         Background background = new Background(); //todo background extends pane/group
         gameRoot = new Pane();
         initialBlockSpawn();
@@ -47,12 +49,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
 
 
         }
-        Platform.runLater(()->{
-            stage2=new Stage();
-            rw=new RankingWindow(stage2);
-            stage2.show();
-        });
-        rankingManager=new RankingManager();
+        saveScoreWindow();
 
 
 
@@ -127,9 +124,6 @@ private void addShape(Shape shape){
                 case ESCAPE:
                     System.exit(0);
                     break;
-                case ENTER:
-                    savePlayer();
-                    stage2.close();
 
             }
         }
@@ -159,8 +153,9 @@ private void addShape(Shape shape){
         }
     }
 
-    private void savePlayer(){
-        Player player=new Player(rw.getName());
-        rankingManager.saveScore(player);
+    private void saveScoreWindow(){
+            rw=new RankingWindow(rankingManager);
+            rw.addTextField();
     }
+
 }

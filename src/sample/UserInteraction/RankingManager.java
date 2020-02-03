@@ -2,10 +2,11 @@ package sample.UserInteraction;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RankingManager {
     private static final String RANKING_FILENAME = "ranking.bin";
-    private ArrayList<Player> ranking;
+    private List<Player> ranking;
 
     public RankingManager() {
         ranking=new ArrayList<>();
@@ -19,11 +20,11 @@ public class RankingManager {
     private void loadRanking(){
         try {
             ObjectInputStream ois=new ObjectInputStream(new FileInputStream(RANKING_FILENAME));
-            ranking = (ArrayList<Player>) ois.readObject();
+            ranking = (List<Player>) ois.readObject();
             ois.close();
             System.out.println(ranking);
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
     private void saveRanking(){
@@ -34,10 +35,12 @@ public class RankingManager {
             oos.flush();
             oos.close();
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
+    public List<Player> getPlayers() {
+        return ranking;
+    }
 
     public void saveScore(Player player){
         ranking.add(player);
