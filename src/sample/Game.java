@@ -27,7 +27,7 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
         gameRoot = new Pane();
         initialBlockSpawn();
         scene.setOnKeyPressed(this);
-        mainRoot.getChildren().addAll(background.getGroup(), gameRoot, ScoreBoard.getInstance().getText());
+        mainRoot.getChildren().addAll(background, gameRoot, ScoreBoard.getInstance().getText());
         new Thread(this).start();
     }
 

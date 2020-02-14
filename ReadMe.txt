@@ -1,1 +1,0 @@
-Add to the VM OPTIONS: --module-path "path/to/javafx/lib" --add-modules javafx.controls,javafx.fxml,javafx.media

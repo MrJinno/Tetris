@@ -178,7 +178,7 @@ public abstract class Shape implements Shapes {
         return bigSquare;
     }
 
-    private ArrayList<Square> getMovingDownObjects() {
+    private List<Square> getMovingDownObjects() {
         return movingDownObjects;
     }
 

@@ -1,8 +1,4 @@
 package shape;
-
-import shape.AllShapes.L_Shape;
-import shape.AllShapes.Z_Shape;
-
 public enum ShapeType {
     SQUARE,
     L_SHAPE,
