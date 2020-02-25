@@ -1,8 +1,6 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 
 import javafx.scene.layout.Pane;
@@ -22,32 +20,32 @@ public class Launcher extends Application {
         Application.launch(Launcher.class, args);
     }
 
-
     @Override
     public void start(Stage stage) {
         stage.addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, event -> {
             System.exit(0);
         });
+        initializeMenuStage(stage);
+    }
+
+    private void initializeMenuStage(Stage stage) {
         menu = new Menu(stage, rankingManager);
         menuEventHandler(stage);
     }
 
     private void menuEventHandler(Stage stage) {
-        menu.getButtonPlay().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                stage.hide();
-                setGameScene(stage);
-                stage.show();
-            }
+        menu.getButtonPlay().setOnAction(e -> {
+            stage.hide();
+            initializeGameScene(stage);
+            stage.show();
         });
     }
 
-    private void setGameScene(Stage stage) {
+    private void initializeGameScene(Stage stage) {
         new Music("beat.mp3");
+        stage.setTitle("Tetris!");
         stage.setWidth(515);
         stage.setHeight(635);
-        stage.setTitle("Tetris!");
         stage.setX(600);
         stage.setY(200);
         stage.setResizable(false);

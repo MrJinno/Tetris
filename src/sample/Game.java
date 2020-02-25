@@ -22,8 +22,9 @@ public class Game implements Runnable, EventHandler<KeyEvent> {
     private RankingManager rankingManager;
 
     public Game(Pane mainRoot, Scene scene, RankingManager rankingManager) {
+
         this.rankingManager = rankingManager;
-        Background background = new Background(); //todo background extends pane/group
+        Background background = new Background();
         gameRoot = new Pane();
         initialBlockSpawn();
         scene.setOnKeyPressed(this);

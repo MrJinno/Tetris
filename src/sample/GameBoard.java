@@ -7,11 +7,11 @@ import shape.Shape;
 import shape.Square;
 
 public class GameBoard {
-    public static final int MAX_Y = Background.Y_GAMEBOARD_SIZE;
-    public static final int MAX_X = Background.X_GAMEBOARD_SIZE;
-    private static final Square[][] board = new Square[MAX_X][MAX_Y];
+    public static final int MAX_Y_BOARD_INDEX = Background.Y_BOARD_SIZE;
+    public static final int MAX_X_BOARD_INDEX = Background.X_BOARD_SIZE;
+    private static final Square[][] board = new Square[MAX_X_BOARD_INDEX][MAX_Y_BOARD_INDEX];
     private static final GameBoard gameBoard = new GameBoard();
-    private int row;
+    private int gameBoardRow;
     private ScoreBoard scoreBoard = ScoreBoard.getInstance();
 
     private GameBoard() {
@@ -25,7 +25,6 @@ public class GameBoard {
         return board;
     }
 
-
     void newPositionDown(Shape shape) {
         for (Square square : shape.getFigure()) {
             board[shape.getPositionX(square)][shape.getPositionY(square)] = square;
@@ -34,10 +33,10 @@ public class GameBoard {
 
     void checkWinCondition(Pane root) {
         Group group = new Group();
-        if (checkRows(GameBoard.MAX_Y - 1)) {
+        if (checkRows(GameBoard.MAX_Y_BOARD_INDEX - 1)) {
             for (int i = 0; i < 10; i++) {
-                group.getChildren().add(board[i][row].getRectangle());
-                board[i][row] = null;
+                group.getChildren().add(board[i][gameBoardRow].getRectangle());
+                board[i][gameBoardRow] = null;
             }
             moveBlocks();
             root.getChildren().remove(group);
@@ -51,7 +50,7 @@ public class GameBoard {
     private boolean checkRows(int n) {
         if (n == 1) return false;
         if (checkRow(n)) {
-            row = n;
+            gameBoardRow = n;
             return true;
         } else return checkRows(n - 1);
     }
@@ -64,7 +63,7 @@ public class GameBoard {
     }
 
     private void moveBlocks() {
-        for (int i = row - 1; i >= 0; i--) {
+        for (int i = gameBoardRow - 1; i >= 0; i--) {
             for (int j = 0; j < board.length; j++) {
                 Square temp;
                 if (board[j][i] != null) {

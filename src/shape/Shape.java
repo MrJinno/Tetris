@@ -91,7 +91,7 @@ public abstract class Shape implements Shapes {
         List<Square> sqr = shape.getMovingDownObjects();
         down++;
         for (Square square : sqr) {
-            if (square.getStartingArrayY() + down >= GameBoard.MAX_Y) return false;
+            if (square.getStartingArrayY() + down >= GameBoard.MAX_Y_BOARD_INDEX) return false;
             if (plansza[square.getStartingArrayX() + right][square.getStartingArrayY() + down] != null) {
                 return false;
             }
@@ -101,7 +101,7 @@ public abstract class Shape implements Shapes {
 
     public void updatePosition() {
         for (Square square : figure) {
-            int SQUARE_HEIGH = Background.SQUARE_HEIGH;
+            int SQUARE_HEIGH = Background.SQUARE_HEIGHT;
             square.getRectangle().setX(square.getStartingX() + (SQUARE_HEIGH * rightIndex));
             square.getRectangle().setY(square.getStartingY() + (SQUARE_HEIGH * downIndex));
         }
@@ -130,7 +130,7 @@ public abstract class Shape implements Shapes {
         int down = shape.getDownIndex();
         for (Square sqr : squares) {
             if (sqr.getStartingArrayX() + right + 1 == 0) return false;
-            if (sqr.getStartingArrayX() + right == GameBoard.MAX_X) return false;
+            if (sqr.getStartingArrayX() + right == GameBoard.MAX_X_BOARD_INDEX) return false;
             if (gameBoard[sqr.getStartingArrayX() + right][sqr.getStartingArrayY() + down] != null) {
                 return false;
             }
@@ -149,8 +149,8 @@ public abstract class Shape implements Shapes {
 
     private boolean checkBoardCollision(int[] x, int[] y) {
         for (int i = 0; i < x.length; i++) {
-            if (x[i] + rightIndex < 0 || x[i] + rightIndex >= GameBoard.MAX_X) return false;
-            if (y[i] + downIndex < 0 || y[i] + downIndex >= GameBoard.MAX_Y) return false;
+            if (x[i] + rightIndex < 0 || x[i] + rightIndex >= GameBoard.MAX_X_BOARD_INDEX) return false;
+            if (y[i] + downIndex < 0 || y[i] + downIndex >= GameBoard.MAX_Y_BOARD_INDEX) return false;
             if (gameBoard[x[i] + rightIndex][y[i] + downIndex] != null) {
                 return false;
             }

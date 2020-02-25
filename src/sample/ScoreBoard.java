@@ -12,8 +12,8 @@ public class ScoreBoard {
 
     private ScoreBoard() {
         text.setText(Integer.toString(score));
-        text.setX(Background.SQUARE_HEIGH * 14);
-        text.setY(Background.SQUARE_HEIGH * 5);
+        text.setX(Background.SQUARE_HEIGHT * 14);
+        text.setY(Background.SQUARE_HEIGHT * 5);
         text.setFont(Font.font("Verdana", 33));
         text.setFill(Color.WHITE);
         text.setStroke(Color.GOLD);
@@ -37,7 +37,7 @@ public class ScoreBoard {
     }
 
     void setLost() {
-        text.setY(Background.SQUARE_HEIGH * 4);
+        text.setY(Background.SQUARE_HEIGHT * 4);
         text.setText("LOST! \n" + score);
     }
 

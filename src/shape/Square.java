@@ -5,7 +5,7 @@ import javafx.scene.shape.Rectangle;
 import sample.Background;
 
 public class Square {
-    private static final int HEIGHT = Background.SQUARE_HEIGH;
+    private static final int HEIGHT = Background.SQUARE_HEIGHT;
     private static final int MIN_POSITION = HEIGHT * 2;
     private int startingX, startingY, startingArrayX, startingArrayY;
     private Rectangle rectangle;
