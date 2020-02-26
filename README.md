@@ -31,4 +31,4 @@ Project is: _finished_
 Based on popular Game Tetris made by Aleksiej Pażytnow.
 
 ## Contact
-Created by MrJinno.
+Created by MrJinno. Email: wojtczakbartek7@gmail.com
