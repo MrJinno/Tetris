@@ -1,32 +1,24 @@
-# Project Name
-> Here goes your awesome project description!
+# TETRIS
+> The Tetris game.
 
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
-* [Setup](#setup)
 * [Features](#features)
 * [Status](#status)
 * [Inspiration](#inspiration)
 * [Contact](#contact)
 
 ## General info
-The purpose of the project is to show how I managed to do complete Project.
+The purpose of the project is to show how I managed to do a complete Project.
 
 ## Screenshot
 ![Example screenshot](./resources/TetrisPNG.png)
 
 ## Technologies
-Java 13 - version 13.0.1
-JavaFX - version 13.0.2
-
-## Setup
-Describe how to install / setup your local environement / add link to demo version.
-
-## Code Examples
-Show examples of usage:
-`put-your-code-here`
+*Java 13 - version 13.0.1
+*JavaFX - version 13.0.2
 
 ## Features
 List of features ready and TODOs for future development
@@ -34,15 +26,11 @@ List of features ready and TODOs for future development
 * Awesome feature 2
 * Awesome feature 3
 
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
-
 ## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
+Project is: _finished_
 
 ## Inspiration
-Add here credits. Project inspired by..., based on...
+Based on popular Game Tetris
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by [@MrJinno]
