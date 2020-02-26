@@ -17,20 +17,18 @@ The purpose of the project is to show how I managed to do a complete Project.
 ![Example screenshot](./resources/TetrisPNG.png)
 
 ## Technologies
-*Java 13 - version 13.0.1
-*JavaFX - version 13.0.2
+* Java 13 - version 13.0.1
+* JavaFX - version 13.0.2
 
 ## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+* Awesome 8-bit music playing in the Background
+* Ability to save Scores and Load them locally
 
 ## Status
 Project is: _finished_
 
 ## Inspiration
-Based on popular Game Tetris
+Based on popular Game Tetris made by Aleksiej Pażytnow.
 
 ## Contact
-Created by [@MrJinno]
+Created by MrJinno.
