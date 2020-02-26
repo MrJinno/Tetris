@@ -1,13 +1,11 @@
 package sample.UserInteraction;
 
 import sample.ScoreBoard;
-
 import java.io.Serializable;
 
 public class Player implements Serializable, Comparable<Player> {
     private int score = ScoreBoard.getInstance().getScore();
     private String name;
-
 
     public int getScore() {
         return score;

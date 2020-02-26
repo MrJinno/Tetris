@@ -1,6 +1,5 @@
 package sample;
 
-
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -23,6 +22,16 @@ public class ScoreBoard {
         return scoreBoard;
     }
 
+   public void increaseScore() {
+        score=score+100;
+        text.setText(Integer.toString(score));
+    }
+
+    public void setLost() {
+        text.setY(Background.SQUARE_HEIGHT * 4);
+        text.setText("LOST! \n" + score);
+    }
+
     public int getScore() {
         return score;
     }
@@ -30,15 +39,4 @@ public class ScoreBoard {
     Text getText() {
         return text;
     }
-
-    void setScore(int score) {
-        this.score = score;
-        text.setText(Integer.toString(score));
-    }
-
-    void setLost() {
-        text.setY(Background.SQUARE_HEIGHT * 4);
-        text.setText("LOST! \n" + score);
-    }
-
 }

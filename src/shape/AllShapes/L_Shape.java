@@ -1,7 +1,8 @@
 package shape.AllShapes;
 
-import shape.Shape;
 
+
+import shape.Shape;
 import java.util.ArrayList;
 
 
@@ -9,7 +10,6 @@ public class L_Shape extends Shape {
 
     public L_Shape() {
         super();
-
     }
 
     protected void positionBlock1() {
@@ -25,8 +25,8 @@ public class L_Shape extends Shape {
         figure[3].setPositionX(2);
         figure[3].setPositionY(1);
 
-        nextX = new int[]{1, 1, 0};
-        nextY = new int[]{-1, 1, 1};
+        index_X_After_Rotation = new int[]{1, 1, 0};
+        index_Y_After_Rotation = new int[]{-1, 1, 1};
     }
 
     protected void positionBlock2() {
@@ -39,8 +39,8 @@ public class L_Shape extends Shape {
         figure[3].setPositionX(0);
         figure[3].setPositionY(1);
 
-        nextX = new int[]{2, 0, 0};
-        nextY = new int[]{0, 0, -1};
+        index_X_After_Rotation = new int[]{2, 0, 0};
+        index_Y_After_Rotation = new int[]{0, 0, -1};
     }
 
     protected void positionBlock3() {
@@ -53,8 +53,8 @@ public class L_Shape extends Shape {
         figure[3].setPositionX(0);
         figure[3].setPositionY(-1);
 
-        nextX = new int[]{1, 1, 2};
-        nextY = new int[]{1, -1, -1};
+        index_X_After_Rotation = new int[]{1, 1, 2};
+        index_Y_After_Rotation = new int[]{1, -1, -1};
     }
 
     protected void positionBlock4() {
@@ -67,8 +67,8 @@ public class L_Shape extends Shape {
         figure[3].setPositionX(2);
         figure[3].setPositionY(-1);
 
-        nextX = new int[]{0, 2, 2};
-        nextY = new int[]{0, 0, 1};
+        index_X_After_Rotation = new int[]{0, 2, 2};
+        index_Y_After_Rotation = new int[]{0, 0, 1};
     }
 
 

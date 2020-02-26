@@ -1,7 +1,5 @@
 package sample.UserInteraction;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
@@ -12,12 +10,9 @@ public class Menu {
     private Button buttonExit = createButton();
     private Button buttonScore = createButton();
     private RankingManager rankingManager;
-    private Stage stage;
 
     public Menu(Stage stage, RankingManager rankingManager) {
         this.rankingManager = rankingManager;
-
-        this.stage = stage;
         stage.setTitle("MENU");
         stage.setWidth(200);
         stage.setHeight(300);
@@ -31,8 +26,10 @@ public class Menu {
         stage.show();
     }
 
-    public Button getButtonPlay() {
-        return buttonPlay;
+    private Button createButton() {
+        Button button = new Button();
+        button.setPrefSize(100, 50);
+        return button;
     }
 
     private void manageButtons() {
@@ -43,27 +40,15 @@ public class Menu {
         buttonScore.setText("Score");
         buttonScore.setLayoutX(40);
         buttonScore.setLayoutY(90);
-        buttonScore.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                new RankingWindow(rankingManager);
-            }
-        });
+        buttonScore.setOnAction(e -> new RankingWindow(rankingManager));
 
         buttonExit.setText("Exit");
         buttonExit.setLayoutX(40);
         buttonExit.setLayoutY(180);
-        buttonExit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.exit(0);
-            }
-        });
+        buttonExit.setOnAction(e -> System.exit(0));
     }
 
-    private Button createButton() {
-        Button button = new Button();
-        button.setPrefSize(100, 50);
-        return button;
+    public Button getButtonPlay() {
+        return buttonPlay;
     }
 }

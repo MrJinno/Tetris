@@ -1,6 +1,5 @@
 package sample.UserInteraction;
 
-import javax.swing.text.html.ListView;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,7 +32,7 @@ public class RankingManager {
             oos.flush();
             oos.close();
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
     }
 

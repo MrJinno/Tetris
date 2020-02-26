@@ -1,19 +1,14 @@
 package shape.AllShapes;
 
-import javafx.scene.Group;
 import shape.Shape;
-import shape.ShapeType;
 import shape.Shapes;
-
 import java.util.ArrayList;
 
 public class Square_Shape extends Shape implements Shapes {
 
-
     public Square_Shape() {
         super();
     }
-
 
     @Override
     protected void positionBlock1() {
@@ -58,10 +53,7 @@ public class Square_Shape extends Shape implements Shapes {
     protected void positionBlock3() {
     }
 
-
     @Override
     public void rotate() {
     }
-
-
 }

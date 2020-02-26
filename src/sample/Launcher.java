@@ -2,9 +2,7 @@ package sample;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-
 import javafx.scene.layout.Pane;
-
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import sample.UserInteraction.Menu;
@@ -51,7 +49,8 @@ public class Launcher extends Application {
         stage.setResizable(false);
         Pane mainRoot = new Pane();
         Scene gameScene = new Scene(mainRoot);
-        Game game = new Game(mainRoot, gameScene, rankingManager);
+        Game game = new Game(mainRoot, rankingManager);
+        game.play();
         stage.setScene(gameScene);
     }
 }

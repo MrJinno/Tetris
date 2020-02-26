@@ -19,29 +19,37 @@ public class Square {
         rectangle.setStroke(Color.BLACK);
         rectangle.setFill(color);
     }
+
     public void moveBottom() {
         rectangle.setY(rectangle.getY() + HEIGHT);
     }
+
     public void setPositionX(int startingArrayX) {
         startingX = MIN_POSITION + HEIGHT * startingArrayX;
         this.startingArrayX = startingArrayX;
     }
+
     public void setPositionY(int startingArrayY) {
         startingY = MIN_POSITION + HEIGHT * startingArrayY;
         this.startingArrayY = startingArrayY;
     }
+
     int getStartingArrayX() {
         return startingArrayX;
     }
+
     int getStartingArrayY() {
         return startingArrayY;
     }
+
     public Rectangle getRectangle() {
         return rectangle;
     }
+
     int getStartingX() {
         return startingX;
     }
+
     int getStartingY() {
         return startingY;
     }

@@ -1,9 +1,7 @@
 package sample.UserInteraction;
 
 import javafx.application.Platform;
-
 import javafx.scene.control.TextInputDialog;
-
 
 public class SaveScoreWindow {
     private TextInputDialog textInput;
@@ -12,9 +10,10 @@ public class SaveScoreWindow {
 
     public SaveScoreWindow(RankingManager rankingManager) {
         this.rankingManager = rankingManager;
+        manageTextField();
     }
 
-    public void addTextField() {
+    private void manageTextField() {
         Platform.runLater(() -> {
             textInput = new TextInputDialog();
             textInput.setY(50);
@@ -22,16 +21,23 @@ public class SaveScoreWindow {
             textInput.setTitle("Game OVER");
             textInput.setHeaderText("You got: " + player.getScore() + "Points!");
             textInput.setContentText("Enter your name...");
+        });
+    }
+
+    public void ShowSaveScoreWindow() {
+        Platform.runLater(()->{
             textInput.show();
             textInput.setOnHidden(e -> savePlayer());
         });
     }
 
-    public void savePlayer() {
-        String name = textInput.resultProperty().get();
-        if (!name.isEmpty()) {
+    private void savePlayer() {
+        try {
+            String name = textInput.resultProperty().get();
             player.setName(name);
             rankingManager.saveScore(player);
+        }catch (NullPointerException e){
+            System.out.println("You did not save your Score!");
         }
     }
 }

@@ -15,13 +15,13 @@ public class Background extends Pane {
     private static final int MAX_BOARD_ARRAY = 25;
     private Square[][] background = new Square[MAX_BOARD_ARRAY][MAX_BOARD_ARRAY];
     private Square[][] board = new Square[(BOARD_HEIGHT / SQUARE_HEIGHT)][(BOARD_WIDTH / SQUARE_HEIGHT)];
-    static final int Y_BOARD_SIZE = BOARD_HEIGHT / SQUARE_HEIGHT - 2;
-    static final int X_BOARD_SIZE = BOARD_WIDTH / SQUARE_HEIGHT - 2;
+    static final int Y_BOARD_SIZE = BOARD_HEIGHT / SQUARE_HEIGHT - 2; //20
+    static final int X_BOARD_SIZE = BOARD_WIDTH / SQUARE_HEIGHT - 2; //10
     private static final int NEXT_BLOCK_BOARD_MIN_Y = 7;
     private static final int NEXT_BLOCK_BOARD_MIN_X = maxX;
     private static final int NEXT_BLOCK_BOARD_MAX_Y = 12;
 
-    Background() {
+   public Background() {
         createBackGround();
         fillTheBoard();
         scoreBoard();

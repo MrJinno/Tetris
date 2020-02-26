@@ -8,7 +8,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class RankingWindow {
-    private Stage stage = new Stage();
 
     public RankingWindow(RankingManager rankingManager) {
         VBox vBox = new VBox(5);
@@ -18,6 +17,7 @@ public class RankingWindow {
         ListView<Player> playerListView = new ListView<>();
         playerListView.getItems().addAll(rankingManager.getPlayers());
         vBox.getChildren().add(playerListView);
+        Stage stage = new Stage();
         stage.setWidth(300);
         stage.setHeight(500);
         stage.setScene(scene);
