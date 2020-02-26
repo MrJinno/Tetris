@@ -11,7 +11,7 @@
 * [Contact](#contact)
 
 ## General info
-The purpose of the project is to show how I managed to do a complete Project.
+The purpose of it is to show how I managed to do a complete Project. Made only by myself.
 
 ## Screenshot
 ![Example screenshot](./resources/TetrisPNG.png)
