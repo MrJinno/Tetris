@@ -1,8 +1,8 @@
-package sample;
+package Game;
 
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
-import sample.UserInteraction.Music;
+import Game.UserInteraction.Music;
 import shape.Shape;
 import shape.Square;
 

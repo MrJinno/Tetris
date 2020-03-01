@@ -1,6 +1,6 @@
-package sample.UserInteraction;
+package Game.UserInteraction;
 
-import sample.ScoreBoard;
+import Game.ScoreBoard;
 import java.io.Serializable;
 
 public class Player implements Serializable, Comparable<Player> {

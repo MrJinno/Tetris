@@ -2,8 +2,8 @@ package shape;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-import sample.Background;
-import sample.GameBoard;
+import Game.Background;
+import Game.GameBoard;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

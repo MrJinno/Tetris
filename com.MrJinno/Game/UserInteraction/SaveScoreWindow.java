@@ -1,4 +1,4 @@
-package sample.UserInteraction;
+package Game.UserInteraction;
 
 import javafx.application.Platform;
 import javafx.scene.control.TextInputDialog;

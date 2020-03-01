@@ -2,7 +2,7 @@ package shape;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import sample.Background;
+import Game.Background;
 
 public class Square {
     private static final int HEIGHT = Background.SQUARE_HEIGHT;

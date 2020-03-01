@@ -1,4 +1,4 @@
-package sample.UserInteraction;
+package Game.UserInteraction;
 
 import java.io.*;
 import java.util.ArrayList;

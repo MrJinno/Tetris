@@ -4,5 +4,5 @@ module Tetris {
     requires javafx.media;
     requires java.desktop;
 
-    opens sample;
+    opens Game;
 }

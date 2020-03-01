@@ -1,4 +1,4 @@
-package sample;
+package Game;
 
 import javafx.scene.layout.Pane;
 import shape.GameBoardSquare;

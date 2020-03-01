@@ -1,10 +1,10 @@
-package sample;
+package Game;
 
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
-import sample.UserInteraction.RankingManager;
-import sample.UserInteraction.SaveScoreWindow;
+import Game.UserInteraction.RankingManager;
+import Game.UserInteraction.SaveScoreWindow;
 import shape.AllShapes.*;
 import shape.Shape;
 import shape.*;

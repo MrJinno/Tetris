@@ -1,4 +1,4 @@
-package sample;
+package Game;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;

@@ -1,4 +1,4 @@
-package sample.UserInteraction;
+package Game.UserInteraction;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

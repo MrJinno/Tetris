@@ -1,4 +1,4 @@
-package sample.UserInteraction;
+package Game.UserInteraction;
 
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;

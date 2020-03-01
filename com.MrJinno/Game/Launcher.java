@@ -1,13 +1,13 @@
-package sample;
+package Game;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import sample.UserInteraction.Menu;
-import sample.UserInteraction.Music;
-import sample.UserInteraction.RankingManager;
+import Game.UserInteraction.Menu;
+import Game.UserInteraction.Music;
+import Game.UserInteraction.RankingManager;
 
 
 public class Launcher extends Application {
