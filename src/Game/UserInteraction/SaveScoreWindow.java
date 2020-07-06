@@ -27,13 +27,28 @@ public class SaveScoreWindow {
     public void ShowSaveScoreWindow() {
         Platform.runLater(()->{
             textInput.show();
-            textInput.setOnHidden(e -> savePlayer());
+            textInput.setOnHidden(e -> {
+                try {
+                    savePlayer();
+                } catch (PlayerNickExceptions playerNickExceptions) {
+                    System.out.println(playerNickExceptions);
+                }
+            });
         });
     }
 
-    private void savePlayer() {
+    private void savePlayer() throws PlayerNickExceptions {
         try {
             String name = textInput.resultProperty().get();
+            if (name.equals("")){
+                throw new PlayerNickExceptions(PlayerNickExceptions.NO_TEXT);
+            }
+            char[] chars = name.toCharArray();
+            for (char s:chars){
+                if (Character.isDigit(s)){
+                    throw new PlayerNickExceptions(PlayerNickExceptions.NO_STRING);
+                }
+            }
             player.setName(name);
             rankingManager.saveScore(player);
         }catch (NullPointerException e){
